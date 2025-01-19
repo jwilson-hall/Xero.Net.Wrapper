@@ -6,8 +6,8 @@ using Xero.NetStandard.OAuth2.Model.Identity;
 namespace Xero.NetStandard.Wrapper;
 public partial class XeroService : IAccountingApi
 {
-    public IReadableConfiguration Configuration { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public ExceptionFactory ExceptionFactory { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public IReadableConfiguration Configuration { get ; set; }
+    public ExceptionFactory ExceptionFactory { get; set; }
 
     public Task<Accounts> CreateAccountAsync(string accessToken, string xeroTenantId, Account account, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -159,16 +159,24 @@ public partial class XeroService : IAccountingApi
         throw new NotImplementedException();
     }
 
-    public Task<Contacts> CreateContactsAsync(string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Contacts> CreateContactsAsync(Contacts contacts, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateContactsAsync(accessToken, xeroExtendedConfiguration.TenantId, contacts, summarizeErrors, idempotencyKey, cancellationToken);
+    }
+    public async Task<Contacts> CreateContactsAsync(string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Contacts> response = await CreateContactsAsyncWithHttpInfo(accessToken, xeroTenantId, contacts, summarizeErrors, idempotencyKey, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ApiResponse<Contacts>> CreateContactsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<Contacts>> CreateContactsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return accountingXeroClient.CreateContactsAsyncWithHttpInfo(accessToken, xeroTenantId, contacts, summarizeErrors, idempotencyKey, cancellationToken);
     }
-
+    #region NotImplemented
     public Task<Allocations> CreateCreditNoteAllocationAsync(string accessToken, string xeroTenantId, Guid creditNoteID, Allocations allocations, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
@@ -268,16 +276,26 @@ public partial class XeroService : IAccountingApi
     {
         throw new NotImplementedException();
     }
-
-    public Task<Invoices> CreateInvoicesAsync(string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Invoices> CreateInvoicesAsync(Invoices invoices, bool? summarizeErrors = null, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateInvoicesAsync(accessToken, xeroExtendedConfiguration.TenantId, invoices, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<Invoices>> CreateInvoicesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Invoices> CreateInvoicesAsync(string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Invoices> response = await CreateInvoicesAsyncWithHttpInfo(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
+        return response.Data;
     }
+
+    public async Task<ApiResponse<Invoices>> CreateInvoicesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Invoices> response = await accountingXeroClient.CreateInvoicesAsyncWithHttpInfo(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
+        return response;
+    }
+
 
     public Task<HistoryRecords> CreateItemHistoryAsync(string accessToken, string xeroTenantId, Guid itemID, HistoryRecords historyRecords, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -439,14 +457,24 @@ public partial class XeroService : IAccountingApi
         throw new NotImplementedException();
     }
 
-    public Task<PurchaseOrders> CreatePurchaseOrdersAsync(string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<PurchaseOrders> CreatePurchaseOrdersAsync(PurchaseOrders purchaseOrders, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreatePurchaseOrdersAsync(accessToken, xeroExtendedConfiguration.TenantId, purchaseOrders, summarizeErrors, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<PurchaseOrders>> CreatePurchaseOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<PurchaseOrders> CreatePurchaseOrdersAsync(string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<PurchaseOrders> response = await CreatePurchaseOrdersAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrders, summarizeErrors, idempotencyKey, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<PurchaseOrders>> CreatePurchaseOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<PurchaseOrders> response = await accountingXeroClient.CreatePurchaseOrdersAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrders, summarizeErrors, idempotencyKey, cancellationToken);
+        return response;
     }
 
     public Task<Attachments> CreateQuoteAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -1053,7 +1081,8 @@ public partial class XeroService : IAccountingApi
     {
         throw new NotImplementedException();
     }
-    public async Task<Contacts> GetContactsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, List<Guid> iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
+#endregion
+    public async Task<Contacts> GetContactsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
@@ -1061,14 +1090,13 @@ public partial class XeroService : IAccountingApi
         ApiResponse<Contacts> response = await GetContactsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, iDs, page, includeArchived, summaryOnly, searchTerm, pageSize, cancellationToken);
         return response.Data;
     }
-
-    public async Task<Contacts> GetContactsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, List<Guid> iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<Contacts> GetContactsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string? searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Contacts> response = await GetContactsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived, summaryOnly, searchTerm, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Contacts>> GetContactsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, List<Guid> iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Contacts>> GetContactsAsyncWithHttpInfo(string? accessToken, string? xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string? searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Contacts> response = await accountingXeroClient.GetContactsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived, summaryOnly, searchTerm, pageSize, cancellationToken);
         return response;
@@ -1204,15 +1232,27 @@ public partial class XeroService : IAccountingApi
         throw new NotImplementedException();
     }
 
-    public Task<Stream> GetInvoiceAsPdfAsync(string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
+    public async Task<Stream> GetInvoiceAsPdfAsync(Guid invoiceID, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetInvoiceAsPdfAsync(accessToken, xeroExtendedConfiguration.TenantId, invoiceID, cancellationToken);
     }
 
-    public Task<ApiResponse<Stream>> GetInvoiceAsPdfAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
+    public async Task<Stream> GetInvoiceAsPdfAsync(string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Stream> response = await GetInvoiceAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
+        return response.Data;
     }
+
+    public async Task<ApiResponse<Stream>> GetInvoiceAsPdfAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Stream> response = await accountingXeroClient.GetInvoiceAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
+        return response;
+    }
+
+
 
     public Task<Invoices> GetInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
@@ -1564,24 +1604,44 @@ public partial class XeroService : IAccountingApi
         throw new NotImplementedException();
     }
 
-    public Task<Stream> GetPurchaseOrderAsPdfAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+    public async Task<Stream> GetPurchaseOrderAsPdfAsync(Guid purchaseOrderID, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPurchaseOrderAsPdfAsync(accessToken, xeroExtendedConfiguration.TenantId, purchaseOrderID, cancellationToken);
     }
 
-    public Task<ApiResponse<Stream>> GetPurchaseOrderAsPdfAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+    public async Task<Stream> GetPurchaseOrderAsPdfAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Stream> response = await GetPurchaseOrderAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
+        return response.Data;
     }
 
-    public Task<PurchaseOrders> GetPurchaseOrderAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Stream>> GetPurchaseOrderAsPdfAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Stream> response = await accountingXeroClient.GetPurchaseOrderAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
+        return response;
     }
 
-    public Task<ApiResponse<PurchaseOrders>> GetPurchaseOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+    public async Task<PurchaseOrders> GetPurchaseOrderAsync(Guid purchaseOrderID, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPurchaseOrderAsync(accessToken, xeroExtendedConfiguration.TenantId, purchaseOrderID, cancellationToken);
+    }
+
+    public async Task<PurchaseOrders> GetPurchaseOrderAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<PurchaseOrders> response = await GetPurchaseOrderAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<PurchaseOrders>> GetPurchaseOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<PurchaseOrders> response = await accountingXeroClient.GetPurchaseOrderAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
+        return response;
     }
 
     public Task<Stream> GetPurchaseOrderAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default)
@@ -2064,34 +2124,63 @@ public partial class XeroService : IAccountingApi
         throw new NotImplementedException();
     }
 
-    public Task<Contacts> UpdateContactAsync(string accessToken, string xeroTenantId, Guid contactID, Contacts contacts, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Contacts> UpdateContactAsync(Guid contactID, Contacts contacts, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateContactAsync(accessToken, xeroExtendedConfiguration.TenantId, contactID, contacts, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<Contacts>> UpdateContactAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid contactID, Contacts contacts, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Contacts> UpdateContactAsync(string accessToken, string xeroTenantId, Guid contactID, Contacts contacts, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Contacts> response = await UpdateContactAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, contacts, idempotencyKey, cancellationToken);
+        return response.Data;
     }
 
-    public Task<Attachments> UpdateContactAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Contacts>> UpdateContactAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid contactID, Contacts contacts, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Contacts> response = await accountingXeroClient.UpdateContactAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, contacts, idempotencyKey, cancellationToken);
+        return response;
+    }
+    public async Task<Attachments> UpdateContactAttachmentByFileNameAsync(Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateContactAttachmentByFileNameAsync(accessToken, xeroExtendedConfiguration.TenantId, contactID, fileName, body, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<Attachments>> UpdateContactAttachmentByFileNameAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Attachments> UpdateContactAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Attachments> response = await UpdateContactAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ContactGroups> UpdateContactGroupAsync(string accessToken, string xeroTenantId, Guid contactGroupID, ContactGroups contactGroups, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Attachments>> UpdateContactAttachmentByFileNameAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Attachments> response = await accountingXeroClient.UpdateContactAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey, cancellationToken);
+        return response;
     }
 
-    public Task<ApiResponse<ContactGroups>> UpdateContactGroupAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid contactGroupID, ContactGroups contactGroups, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ContactGroups> UpdateContactGroupAsync(Guid contactGroupID, ContactGroups contactGroups, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateContactGroupAsync(accessToken, xeroExtendedConfiguration.TenantId, contactGroupID, contactGroups, idempotencyKey, cancellationToken);
+    }
+
+    public async Task<ContactGroups> UpdateContactGroupAsync(string accessToken, string xeroTenantId, Guid contactGroupID, ContactGroups contactGroups, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<ContactGroups> response = await UpdateContactGroupAsyncWithHttpInfo(accessToken, xeroTenantId, contactGroupID, contactGroups, idempotencyKey, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<ContactGroups>> UpdateContactGroupAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid contactGroupID, ContactGroups contactGroups, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<ContactGroups> response = await accountingXeroClient.UpdateContactGroupAsyncWithHttpInfo(accessToken, xeroTenantId, contactGroupID, contactGroups, idempotencyKey, cancellationToken);
+        return response;
     }
 
     public Task<CreditNotes> UpdateCreditNoteAsync(string accessToken, string xeroTenantId, Guid creditNoteID, CreditNotes creditNotes, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -2124,24 +2213,44 @@ public partial class XeroService : IAccountingApi
         throw new NotImplementedException();
     }
 
-    public Task<Invoices> UpdateInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, Invoices invoices, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Invoices> UpdateInvoiceAsync(Guid invoiceID, Invoices invoices, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateInvoiceAsync(accessToken, xeroExtendedConfiguration.TenantId, invoiceID, invoices, unitdp, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<Invoices>> UpdateInvoiceAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, Invoices invoices, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Invoices> UpdateInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, Invoices invoices, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Invoices> response = await UpdateInvoiceAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, invoices, unitdp, idempotencyKey, cancellationToken);
+        return response.Data;
     }
 
-    public Task<Attachments> UpdateInvoiceAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Invoices>> UpdateInvoiceAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, Invoices invoices, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Invoices> response = await accountingXeroClient.UpdateInvoiceAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, invoices, unitdp, idempotencyKey, cancellationToken);
+        return response;
     }
 
-    public Task<ApiResponse<Attachments>> UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Attachments> UpdateInvoiceAttachmentByFileNameAsync(Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateInvoiceAttachmentByFileNameAsync(accessToken, xeroExtendedConfiguration.TenantId, invoiceID, fileName, body, idempotencyKey, cancellationToken);
+    }
+
+    public async Task<Attachments> UpdateInvoiceAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Attachments> response = await UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, fileName, body, idempotencyKey, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<Attachments>> UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Attachments> response = await accountingXeroClient.UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, fileName, body, idempotencyKey, cancellationToken);
+        return response;
     }
 
     public Task<Items> UpdateItemAsync(string accessToken, string xeroTenantId, Guid itemID, Items items, int? unitdp = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -2284,14 +2393,24 @@ public partial class XeroService : IAccountingApi
         throw new NotImplementedException();
     }
 
-    public Task<PurchaseOrders> UpdatePurchaseOrderAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, PurchaseOrders purchaseOrders, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<PurchaseOrders> UpdatePurchaseOrderAsync(Guid purchaseOrderID, PurchaseOrders purchaseOrders, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdatePurchaseOrderAsync(accessToken, xeroExtendedConfiguration.TenantId, purchaseOrderID, purchaseOrders, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<PurchaseOrders>> UpdatePurchaseOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid purchaseOrderID, PurchaseOrders purchaseOrders, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<PurchaseOrders> UpdatePurchaseOrderAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, PurchaseOrders purchaseOrders, string idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<PurchaseOrders> response = await UpdatePurchaseOrderAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, purchaseOrders, idempotencyKey, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<PurchaseOrders>> UpdatePurchaseOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid purchaseOrderID, PurchaseOrders purchaseOrders, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<PurchaseOrders> response = await accountingXeroClient.UpdatePurchaseOrderAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, purchaseOrders, idempotencyKey, cancellationToken);
+        return response;
     }
 
     public Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
