@@ -1,9 +1,9 @@
 ﻿using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
-using Xero.NetStandard.Wrapper.Models;
+using Xero.Net.Wrapper.Models;
 using Microsoft.Extensions.Options;
-using Xero.NetStandard.Wrapper;
+using Xero.Net.Wrapper;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Xero.NetStandard.OAuth2.Token;
 
-namespace Xero.NetStandard.Wrapper;
+namespace Xero.Net.Wrapper;
 
 public class XeroCache(IMemoryCache memoryCache)
 {

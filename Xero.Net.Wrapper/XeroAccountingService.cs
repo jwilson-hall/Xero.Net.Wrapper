@@ -3,7 +3,7 @@ using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Model.Accounting;
 using Xero.NetStandard.OAuth2.Model.Identity;
 
-namespace Xero.NetStandard.Wrapper;
+namespace Xero.Net.Wrapper;
 public partial class XeroService : IAccountingApi
 {
     public IReadableConfiguration Configuration { get ; set; }

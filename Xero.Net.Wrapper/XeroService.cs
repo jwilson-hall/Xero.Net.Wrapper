@@ -8,9 +8,9 @@ using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Models;
 using Xero.NetStandard.OAuth2.Token;
-using Xero.NetStandard.Wrapper.Models;
+using Xero.Net.Wrapper.Models;
 
-namespace Xero.NetStandard.Wrapper;
+namespace Xero.Net.Wrapper;
 /// <summary>
 /// Base api
 /// </summary>

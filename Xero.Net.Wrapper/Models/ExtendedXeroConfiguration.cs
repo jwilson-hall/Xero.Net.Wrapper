@@ -1,6 +1,6 @@
 ﻿using Xero.NetStandard.OAuth2.Config;
 
-namespace Xero.NetStandard.Wrapper.Models;
+namespace Xero.Net.Wrapper.Models;
 
 public class ExtendedXeroConfiguration : ExtendedXeroConfiguration<List<string>> { }
 
