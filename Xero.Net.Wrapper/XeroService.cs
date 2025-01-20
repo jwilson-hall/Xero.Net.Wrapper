@@ -86,10 +86,10 @@ public partial class XeroService(ExtendedXeroConfiguration xeroExtendedConfigura
     #endregion
     public async Task<IXeroToken> RequestClientCredentialsTokenAsync(bool fetchTenants = false)
     {
-        IXeroToken xeroToken;
+        IXeroToken? xeroToken;
         bool tokenNotFound = !(xeroCache.TryGet("ClientCredentialsToken", out xeroToken));
 
-        if (tokenNotFound)
+        if (tokenNotFound || xeroExtendedConfiguration.DisableTokenCaching)
         {
             xeroToken = await baseXeroClient.RequestClientCredentialsTokenAsync(fetchTenants);
             var timeToExpiry = xeroToken.ExpiresAtUtc - DateTime.UtcNow;
@@ -97,13 +97,13 @@ public partial class XeroService(ExtendedXeroConfiguration xeroExtendedConfigura
             xeroCache.Set("ClientCredentialsToken", xeroToken, timeToExpiry);
         }
 
-        return xeroToken;
+        return xeroToken ?? throw new InvalidOperationException("Failed to retrieve the client credentials token.");
     }
     public async Task RevokeAccessTokenAsync(string key)
     {
-        if (xeroCache.TryGet(key, out IXeroToken token))
+        if (xeroCache.TryGet(key, out IXeroToken? token))
         {
-            await RevokeAccessTokenAsync(token);
+            await RevokeAccessTokenAsync(token!);
         }        
     }
 

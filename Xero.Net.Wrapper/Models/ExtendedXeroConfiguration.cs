@@ -8,4 +8,5 @@ public class ExtendedXeroConfiguration<T> : XeroConfiguration
 {
     public string? TenantId { get; set; }
     public T? TenantIds { get; set; }
+    public bool DisableTokenCaching { get; set; }
 }

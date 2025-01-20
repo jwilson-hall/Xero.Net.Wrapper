@@ -1,7 +1,6 @@
 ﻿using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Model.Accounting;
-using Xero.NetStandard.OAuth2.Model.Identity;
 
 namespace Xero.Net.Wrapper;
 public partial class XeroService : IAccountingApi

@@ -15,7 +15,7 @@ public class XeroCache(IMemoryCache memoryCache)
 
     public T? Get<T>(string key)
     {
-        memoryCache.TryGetValue(GetPrefixedKey(key), out T value);
+        memoryCache.TryGetValue(GetPrefixedKey(key), out T? value);
         return value;
     }
 
@@ -27,7 +27,7 @@ public class XeroCache(IMemoryCache memoryCache)
         memoryCache.Set(GetPrefixedKey(key), value, cacheEntryOptions);
     }
 
-    public bool TryGet<T>(string key, out T value)
+    public bool TryGet<T>(string key, out T? value)
     {
         return memoryCache.TryGetValue(GetPrefixedKey(key), out value);
     }
