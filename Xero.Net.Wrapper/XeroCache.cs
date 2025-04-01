@@ -1,14 +1,11 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using System;
-using System.Threading.Tasks;
-using Xero.NetStandard.OAuth2.Token;
 
 namespace Xero.Net.Wrapper;
 
 public class XeroCache(IMemoryCache memoryCache)
 {
     private const string CacheKeyPrefix = "XeroCache_";
-    public void Delete(string key)
+    public void Remove(string key)
     {
         memoryCache.Remove(GetPrefixedKey(key));
     }
@@ -27,7 +24,7 @@ public class XeroCache(IMemoryCache memoryCache)
         memoryCache.Set(GetPrefixedKey(key), value, cacheEntryOptions);
     }
 
-    public bool TryGet<T>(string key, out T? value)
+    public bool TryGetValue<T>(string key, out T? value)
     {
         return memoryCache.TryGetValue(GetPrefixedKey(key), out value);
     }

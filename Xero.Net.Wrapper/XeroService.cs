@@ -87,7 +87,7 @@ public partial class XeroService(ExtendedXeroConfiguration xeroExtendedConfigura
     public async Task<IXeroToken> RequestClientCredentialsTokenAsync(bool fetchTenants = false)
     {
         IXeroToken? xeroToken;
-        bool tokenNotFound = !(xeroCache.TryGet("ClientCredentialsToken", out xeroToken));
+        bool tokenNotFound = !(xeroCache.TryGetValue("ClientCredentialsToken", out xeroToken));
 
         if (tokenNotFound || xeroExtendedConfiguration.DisableTokenCaching)
         {
@@ -101,7 +101,7 @@ public partial class XeroService(ExtendedXeroConfiguration xeroExtendedConfigura
     }
     public async Task RevokeAccessTokenAsync(string key)
     {
-        if (xeroCache.TryGet(key, out IXeroToken? token))
+        if (xeroCache.TryGetValue(key, out IXeroToken? token))
         {
             await RevokeAccessTokenAsync(token!);
         }        

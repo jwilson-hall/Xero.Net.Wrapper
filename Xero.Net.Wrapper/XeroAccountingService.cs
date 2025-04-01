@@ -904,6 +904,7 @@ public partial class XeroService : IAccountingApi
         return accountingXeroClient.CreateQuotesAsyncWithHttpInfo(accessToken, xeroTenantId, quotes, summarizeErrors, idempotencyKey, cancellationToken);
     }
 
+    #region NotImplemented
 
     public Task<Receipts> CreateReceiptAsync(string accessToken, string xeroTenantId, Receipts receipts, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1479,7 +1480,8 @@ public partial class XeroService : IAccountingApi
     {
         throw new NotImplementedException();
     }
-    public async Task<Contacts> GetContactsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    #endregion
+    public async Task<Contacts> GetContactsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string? searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
