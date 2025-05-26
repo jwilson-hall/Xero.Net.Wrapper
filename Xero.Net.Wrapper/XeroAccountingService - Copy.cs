@@ -1807,9 +1807,7 @@ public partial class XeroService : IAccountingApi
         ApiResponse<Stream> response = await accountingXeroClient.GetInvoiceAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
         return response;
     }
-
-
-
+    
     public Task<Invoices> GetInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
