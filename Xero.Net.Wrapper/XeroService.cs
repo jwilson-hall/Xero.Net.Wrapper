@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Xero.Net.Wrapper.Models;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Models;
 using Xero.NetStandard.OAuth2.Token;
-using Xero.Net.Wrapper.Models;
 
 namespace Xero.Net.Wrapper;
 /// <summary>
@@ -104,7 +99,7 @@ public partial class XeroService(ExtendedXeroConfiguration xeroExtendedConfigura
         if (xeroCache.TryGetValue(key, out IXeroToken? token))
         {
             await RevokeAccessTokenAsync(token!);
-        }        
+        }
     }
 
     public async Task RevokeAccessTokenAsync(IXeroToken xeroToken)

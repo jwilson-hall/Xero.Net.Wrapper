@@ -1,11 +1,11 @@
-﻿using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Model.Accounting;
 
 namespace Xero.Net.Wrapper;
 public partial class XeroService : IAccountingApi
 {
-    public IReadableConfiguration Configuration { get ; set; }
+    public IReadableConfiguration Configuration { get; set; }
     public ExceptionFactory ExceptionFactory { get; set; }
 
     public async Task<Accounts> CreateAccountAsync(Account account, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -274,7 +274,6 @@ public partial class XeroService : IAccountingApi
         return accountingXeroClient.CreateContactGroupContactsAsyncWithHttpInfo(accessToken, xeroTenantId, contactGroupID, contacts, idempotencyKey, cancellationToken);
     }
 
-
     public async Task<HistoryRecords> CreateContactHistoryAsync(Guid contactID, HistoryRecords historyRecords, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -293,7 +292,6 @@ public partial class XeroService : IAccountingApi
     {
         return accountingXeroClient.CreateContactHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, historyRecords, idempotencyKey, cancellationToken);
     }
-
 
     public async Task<Contacts> CreateContactsAsync(Contacts contacts, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -826,7 +824,6 @@ public partial class XeroService : IAccountingApi
         return accountingXeroClient.CreatePurchaseOrderHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, historyRecords, idempotencyKey, cancellationToken);
     }
 
-
     public async Task<PurchaseOrders> CreatePurchaseOrdersAsync(PurchaseOrders purchaseOrders, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -1075,7 +1072,7 @@ public partial class XeroService : IAccountingApi
     {
         return accountingXeroClient.CreateTrackingOptionsAsyncWithHttpInfo(accessToken, xeroTenantId, trackingCategoryID, trackingOption, idempotencyKey, cancellationToken);
     }
-    
+
     public async Task<Accounts> DeleteAccountAsync(Guid accountID, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -1242,15 +1239,24 @@ public partial class XeroService : IAccountingApi
     {
         return accountingXeroClient.DeleteOverpaymentAllocationsAsyncWithHttpInfo(accessToken, xeroTenantId, overpaymentID, allocationID, cancellationToken);
     }
-
-    public Task<Payments> DeletePaymentAsync(string accessToken, string xeroTenantId, Guid paymentID, PaymentDelete paymentDelete, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Payments> DeletePaymentAsync(Guid paymentID, PaymentDelete paymentDelete, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await DeletePaymentAsync(accessToken, xeroExtendedConfiguration.TenantId, paymentID, paymentDelete, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<Payments>> DeletePaymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid paymentID, PaymentDelete paymentDelete, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<Payments> DeletePaymentAsync(string accessToken, string xeroTenantId, Guid paymentID, PaymentDelete paymentDelete, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<Payments> response = await DeletePaymentAsyncWithHttpInfo(accessToken, xeroTenantId, paymentID, paymentDelete, idempotencyKey, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<Payments>> DeletePaymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid paymentID, PaymentDelete paymentDelete, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Payments> response = await accountingXeroClient.DeletePaymentAsyncWithHttpInfo(accessToken, xeroTenantId, paymentID, paymentDelete, idempotencyKey, cancellationToken);
+        return response;
     }
 
     public Task<Allocation> DeletePrepaymentAllocationsAsync(string accessToken, string xeroTenantId, Guid prepaymentID, Guid allocationID, CancellationToken cancellationToken = default)
@@ -1807,8 +1813,6 @@ public partial class XeroService : IAccountingApi
         ApiResponse<Stream> response = await accountingXeroClient.GetInvoiceAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
         return response;
     }
-
-
 
     public Task<Invoices> GetInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
