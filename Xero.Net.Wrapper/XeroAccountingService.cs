@@ -3,14 +3,14 @@ using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Model.Accounting;
 
 namespace Xero.Net.Wrapper;
-public partial class XeroService : IAccountingApi
+public class XeroAccountingService(XeroService xeroService, IAccountingApi accountingXeroClient) : IAccountingApi
 {
     public IReadableConfiguration Configuration { get; set; }
     public ExceptionFactory ExceptionFactory { get; set; }
 
     public async Task<Accounts> CreateAccountAsync(Account account, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
         return await CreateAccountAsync(accessToken, xeroExtendedConfiguration.TenantId, account, idempotencyKey, cancellationToken);
