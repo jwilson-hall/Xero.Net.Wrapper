@@ -901,8 +901,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return accountingXeroClient.CreateQuotesAsyncWithHttpInfo(accessToken, xeroTenantId, quotes, summarizeErrors, idempotencyKey, cancellationToken);
     }
 
-    #region NotImplemented
-
     public async Task<Receipts> CreateReceiptAsync(string xeroTenantId, Receipts receipts, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
@@ -1266,8 +1264,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await DeletePrepaymentAllocationsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, prepaymentID, allocationID, cancellationToken);
     }
 
-
-
     public async Task<Allocation> DeletePrepaymentAllocationsAsync(string accessToken, string xeroTenantId, Guid prepaymentID, Guid allocationID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Allocation> response = await DeletePrepaymentAllocationsAsyncWithHttpInfo(accessToken, xeroTenantId, prepaymentID, allocationID, cancellationToken);
@@ -1287,8 +1283,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await DeleteTrackingCategoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, trackingCategoryID, cancellationToken);
     }
 
-
-
     public async Task<TrackingCategories> DeleteTrackingCategoryAsync(string accessToken, string xeroTenantId, Guid trackingCategoryID, CancellationToken cancellationToken = default)
     {
         ApiResponse<TrackingCategories> response = await DeleteTrackingCategoryAsyncWithHttpInfo(accessToken, xeroTenantId, trackingCategoryID, cancellationToken);
@@ -1307,8 +1301,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await DeleteTrackingOptionsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, trackingCategoryID, trackingOptionID, cancellationToken);
     }
-
-
 
     public async Task<TrackingOptions> DeleteTrackingOptionsAsync(string accessToken, string xeroTenantId, Guid trackingCategoryID, Guid trackingOptionID, CancellationToken cancellationToken = default)
     {
@@ -1339,8 +1331,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetAccountAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, accountID, cancellationToken);
     }
 
-
-
     public async Task<Accounts> GetAccountAsync(string accessToken, string xeroTenantId, Guid accountID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Accounts> response = await GetAccountAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, cancellationToken);
@@ -1359,8 +1349,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetAccountAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, accountID, fileName, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetAccountAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
@@ -1381,8 +1369,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetAccountAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, accountID, attachmentID, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetAccountAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetAccountAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, attachmentID, contentType, cancellationToken);
@@ -1402,8 +1388,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetAccountAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, accountID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetAccountAttachmentsAsync(string accessToken, string xeroTenantId, Guid accountID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetAccountAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, cancellationToken);
@@ -1415,7 +1399,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<Attachments> response = await accountingXeroClient.GetAccountAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, cancellationToken);
         return response;
     }
-    public async Task<Accounts> GetAccountsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Accounts> GetAccountsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -1423,15 +1407,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetAccountsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
 
-
-
-    public async Task<Accounts> GetAccountsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Accounts> GetAccountsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Accounts> response = await GetAccountsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Accounts>> GetAccountsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Accounts>> GetAccountsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Accounts> response = await accountingXeroClient.GetAccountsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response;
@@ -1443,8 +1425,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBankTransactionAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactionID, unitdp, cancellationToken);
     }
-
-
 
     public async Task<BankTransactions> GetBankTransactionAsync(string accessToken, string xeroTenantId, Guid bankTransactionID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
@@ -1465,8 +1445,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBankTransactionAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactionID, fileName, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetBankTransactionAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetBankTransactionAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, fileName, contentType, cancellationToken);
@@ -1485,8 +1463,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBankTransactionAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactionID, attachmentID, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetBankTransactionAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
@@ -1507,8 +1483,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBankTransactionAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactionID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetBankTransactionAttachmentsAsync(string accessToken, string xeroTenantId, Guid bankTransactionID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetBankTransactionAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, cancellationToken);
@@ -1520,7 +1494,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<Attachments> response = await accountingXeroClient.GetBankTransactionAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, cancellationToken);
         return response;
     }
-    public async Task<BankTransactions> GetBankTransactionsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<BankTransactions> GetBankTransactionsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -1528,15 +1502,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBankTransactionsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
     }
 
-
-
-    public async Task<BankTransactions> GetBankTransactionsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<BankTransactions> GetBankTransactionsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BankTransactions> response = await GetBankTransactionsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<BankTransactions>> GetBankTransactionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<BankTransactions>> GetBankTransactionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BankTransactions> response = await accountingXeroClient.GetBankTransactionsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response;
@@ -1548,8 +1520,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBankTransactionsHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactionID, cancellationToken);
     }
-
-
 
     public async Task<HistoryRecords> GetBankTransactionsHistoryAsync(string accessToken, string xeroTenantId, Guid bankTransactionID, CancellationToken cancellationToken = default)
     {
@@ -1570,8 +1540,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBankTransferAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransferID, cancellationToken);
     }
 
-
-
     public async Task<BankTransfers> GetBankTransferAsync(string accessToken, string xeroTenantId, Guid bankTransferID, CancellationToken cancellationToken = default)
     {
         ApiResponse<BankTransfers> response = await GetBankTransferAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, cancellationToken);
@@ -1590,8 +1558,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBankTransferAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransferID, fileName, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetBankTransferAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
@@ -1612,8 +1578,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBankTransferAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransferID, attachmentID, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetBankTransferAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetBankTransferAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, attachmentID, contentType, cancellationToken);
@@ -1632,8 +1596,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBankTransferAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransferID, cancellationToken);
     }
-
-
 
     public async Task<Attachments> GetBankTransferAttachmentsAsync(string accessToken, string xeroTenantId, Guid bankTransferID, CancellationToken cancellationToken = default)
     {
@@ -1654,8 +1616,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBankTransferHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransferID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetBankTransferHistoryAsync(string accessToken, string xeroTenantId, Guid bankTransferID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetBankTransferHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, cancellationToken);
@@ -1667,7 +1627,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetBankTransferHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, cancellationToken);
         return response;
     }
-    public async Task<BankTransfers> GetBankTransfersAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<BankTransfers> GetBankTransfersAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -1675,15 +1635,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBankTransfersAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
 
-
-
-    public async Task<BankTransfers> GetBankTransfersAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<BankTransfers> GetBankTransfersAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BankTransfers> response = await GetBankTransfersAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<BankTransfers>> GetBankTransfersAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<BankTransfers>> GetBankTransfersAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BankTransfers> response = await accountingXeroClient.GetBankTransfersAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response;
@@ -1700,8 +1658,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBatchPaymentAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, batchPaymentID, cancellationToken);
     }
-
-
 
     public async Task<BatchPayments> GetBatchPaymentAsync(string accessToken, string xeroTenantId, Guid batchPaymentID, CancellationToken cancellationToken = default)
     {
@@ -1722,8 +1678,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBatchPaymentHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, batchPaymentID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetBatchPaymentHistoryAsync(string accessToken, string xeroTenantId, Guid batchPaymentID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetBatchPaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, batchPaymentID, cancellationToken);
@@ -1735,7 +1689,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetBatchPaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, batchPaymentID, cancellationToken);
         return response;
     }
-    public async Task<BatchPayments> GetBatchPaymentsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<BatchPayments> GetBatchPaymentsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -1743,15 +1697,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBatchPaymentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
 
-
-
-    public async Task<BatchPayments> GetBatchPaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<BatchPayments> GetBatchPaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BatchPayments> response = await GetBatchPaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<BatchPayments>> GetBatchPaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<BatchPayments>> GetBatchPaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BatchPayments> response = await accountingXeroClient.GetBatchPaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response;
@@ -1763,8 +1715,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBrandingThemeAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, brandingThemeID, cancellationToken);
     }
-
-
 
     public async Task<BrandingThemes> GetBrandingThemeAsync(string accessToken, string xeroTenantId, Guid brandingThemeID, CancellationToken cancellationToken = default)
     {
@@ -1785,8 +1735,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBrandingThemePaymentServicesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, brandingThemeID, cancellationToken);
     }
 
-
-
     public async Task<PaymentServices> GetBrandingThemePaymentServicesAsync(string accessToken, string xeroTenantId, Guid brandingThemeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<PaymentServices> response = await GetBrandingThemePaymentServicesAsyncWithHttpInfo(accessToken, xeroTenantId, brandingThemeID, cancellationToken);
@@ -1805,8 +1753,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetBrandingThemesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, cancellationToken);
     }
-
-
 
     public async Task<BrandingThemes> GetBrandingThemesAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
@@ -1827,8 +1773,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBudgetAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, budgetID, dateTo, dateFrom, cancellationToken);
     }
 
-
-
     public async Task<Budgets> GetBudgetAsync(string accessToken, string xeroTenantId, Guid budgetID, DateTime? dateTo = null, DateTime? dateFrom = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Budgets> response = await GetBudgetAsyncWithHttpInfo(accessToken, xeroTenantId, budgetID, dateTo, dateFrom, cancellationToken);
@@ -1840,7 +1784,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<Budgets> response = await accountingXeroClient.GetBudgetAsyncWithHttpInfo(accessToken, xeroTenantId, budgetID, dateTo, dateFrom, cancellationToken);
         return response;
     }
-    public async Task<Budgets> GetBudgetsAsync(List<Guid> iDs = null, DateTime? dateTo = null, DateTime? dateFrom = null, CancellationToken cancellationToken = default)
+    public async Task<Budgets> GetBudgetsAsync(List<Guid>? iDs = null, DateTime? dateTo = null, DateTime? dateFrom = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -1848,15 +1792,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetBudgetsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, iDs, dateTo, dateFrom, cancellationToken);
     }
 
-
-
-    public async Task<Budgets> GetBudgetsAsync(string accessToken, string xeroTenantId, List<Guid> iDs = null, DateTime? dateTo = null, DateTime? dateFrom = null, CancellationToken cancellationToken = default)
+    public async Task<Budgets> GetBudgetsAsync(string accessToken, string xeroTenantId, List<Guid>? iDs = null, DateTime? dateTo = null, DateTime? dateFrom = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Budgets> response = await GetBudgetsAsyncWithHttpInfo(accessToken, xeroTenantId, iDs, dateTo, dateFrom, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Budgets>> GetBudgetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> iDs = null, DateTime? dateTo = null, DateTime? dateFrom = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Budgets>> GetBudgetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid>? iDs = null, DateTime? dateTo = null, DateTime? dateFrom = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Budgets> response = await accountingXeroClient.GetBudgetsAsyncWithHttpInfo(accessToken, xeroTenantId, iDs, dateTo, dateFrom, cancellationToken);
         return response;
@@ -1868,8 +1810,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetContactAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactID, cancellationToken);
     }
-
-
 
     public async Task<Contacts> GetContactAsync(string accessToken, string xeroTenantId, Guid contactID, CancellationToken cancellationToken = default)
     {
@@ -1890,8 +1830,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetContactAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactID, fileName, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetContactAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetContactAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, fileName, contentType, cancellationToken);
@@ -1910,8 +1848,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetContactAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactID, attachmentID, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetContactAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
@@ -1932,8 +1868,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetContactAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetContactAttachmentsAsync(string accessToken, string xeroTenantId, Guid contactID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetContactAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, cancellationToken);
@@ -1952,8 +1886,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetContactByContactNumberAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactNumber, cancellationToken);
     }
-
-
 
     public async Task<Contacts> GetContactByContactNumberAsync(string accessToken, string xeroTenantId, string contactNumber, CancellationToken cancellationToken = default)
     {
@@ -1974,8 +1906,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetContactCISSettingsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactID, cancellationToken);
     }
 
-
-
     public async Task<CISSettings> GetContactCISSettingsAsync(string accessToken, string xeroTenantId, Guid contactID, CancellationToken cancellationToken = default)
     {
         ApiResponse<CISSettings> response = await GetContactCISSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, cancellationToken);
@@ -1995,8 +1925,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetContactGroupAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactGroupID, cancellationToken);
     }
 
-
-
     public async Task<ContactGroups> GetContactGroupAsync(string accessToken, string xeroTenantId, Guid contactGroupID, CancellationToken cancellationToken = default)
     {
         ApiResponse<ContactGroups> response = await GetContactGroupAsyncWithHttpInfo(accessToken, xeroTenantId, contactGroupID, cancellationToken);
@@ -2008,7 +1936,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<ContactGroups> response = await accountingXeroClient.GetContactGroupAsyncWithHttpInfo(accessToken, xeroTenantId, contactGroupID, cancellationToken);
         return response;
     }
-    public async Task<ContactGroups> GetContactGroupsAsync(string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ContactGroups> GetContactGroupsAsync(string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2016,15 +1944,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetContactGroupsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, where, order, cancellationToken);
     }
 
-
-
-    public async Task<ContactGroups> GetContactGroupsAsync(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ContactGroups> GetContactGroupsAsync(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ContactGroups> response = await GetContactGroupsAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<ContactGroups>> GetContactGroupsAsyncWithHttpInfo(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<ContactGroups>> GetContactGroupsAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ContactGroups> response = await accountingXeroClient.GetContactGroupsAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response;
@@ -2037,8 +1963,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetContactHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetContactHistoryAsync(string accessToken, string xeroTenantId, Guid contactID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetContactHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, cancellationToken);
@@ -2050,7 +1974,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetContactHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, cancellationToken);
         return response;
     }
-    #endregion
+
     public async Task<Contacts> GetContactsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, int? page = null, bool? includeArchived = null, bool? summaryOnly = null, string? searchTerm = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
@@ -2070,7 +1994,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<Contacts> response = await accountingXeroClient.GetContactsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived, summaryOnly, searchTerm, pageSize, cancellationToken);
         return response;
     }
-    #region
+
     public async Task<Stream> GetCreditNoteAsPdfAsync(Guid creditNoteID, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
@@ -2079,7 +2003,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetCreditNoteAsPdfAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, cancellationToken);
     }
 
-    NotImplemented
     public async Task<Stream> GetCreditNoteAsPdfAsync(string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetCreditNoteAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, cancellationToken);
@@ -2098,8 +2021,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetCreditNoteAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, unitdp, cancellationToken);
     }
-
-
 
     public async Task<CreditNotes> GetCreditNoteAsync(string accessToken, string xeroTenantId, Guid creditNoteID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
@@ -2120,8 +2041,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetCreditNoteAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, fileName, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetCreditNoteAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetCreditNoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, fileName, contentType, cancellationToken);
@@ -2140,8 +2059,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetCreditNoteAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, attachmentID, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetCreditNoteAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
@@ -2162,8 +2079,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetCreditNoteAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetCreditNoteAttachmentsAsync(string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetCreditNoteAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, cancellationToken);
@@ -2183,8 +2098,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetCreditNoteHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetCreditNoteHistoryAsync(string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetCreditNoteHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, cancellationToken);
@@ -2196,7 +2109,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetCreditNoteHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, cancellationToken);
         return response;
     }
-    public async Task<CreditNotes> GetCreditNotesAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<CreditNotes> GetCreditNotesAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2204,20 +2117,18 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetCreditNotesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
     }
 
-
-
-    public async Task<CreditNotes> GetCreditNotesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<CreditNotes> GetCreditNotesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<CreditNotes> response = await GetCreditNotesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<CreditNotes>> GetCreditNotesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<CreditNotes>> GetCreditNotesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<CreditNotes> response = await accountingXeroClient.GetCreditNotesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response;
     }
-    public async Task<Currencies> GetCurrenciesAsync(string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Currencies> GetCurrenciesAsync(string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2225,15 +2136,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetCurrenciesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, where, order, cancellationToken);
     }
 
-
-
-    public async Task<Currencies> GetCurrenciesAsync(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Currencies> GetCurrenciesAsync(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Currencies> response = await GetCurrenciesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Currencies>> GetCurrenciesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Currencies>> GetCurrenciesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Currencies> response = await accountingXeroClient.GetCurrenciesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response;
@@ -2246,8 +2155,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetEmployeeAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<Employees> GetEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Employees> response = await GetEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -2259,7 +2166,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<Employees> response = await accountingXeroClient.GetEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
         return response;
     }
-    public async Task<Employees> GetEmployeesAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Employees> GetEmployeesAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2267,15 +2174,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetEmployeesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
 
-
-
-    public async Task<Employees> GetEmployeesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Employees> GetEmployeesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Employees> response = await GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Employees> response = await accountingXeroClient.GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response;
@@ -2287,8 +2192,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetExpenseClaimAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, expenseClaimID, cancellationToken);
     }
-
-
 
     public async Task<ExpenseClaims> GetExpenseClaimAsync(string accessToken, string xeroTenantId, Guid expenseClaimID, CancellationToken cancellationToken = default)
     {
@@ -2309,8 +2212,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetExpenseClaimHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, expenseClaimID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetExpenseClaimHistoryAsync(string accessToken, string xeroTenantId, Guid expenseClaimID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetExpenseClaimHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, expenseClaimID, cancellationToken);
@@ -2322,7 +2223,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetExpenseClaimHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, expenseClaimID, cancellationToken);
         return response;
     }
-    public async Task<ExpenseClaims> GetExpenseClaimsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ExpenseClaims> GetExpenseClaimsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2330,15 +2231,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetExpenseClaimsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
 
-
-
-    public async Task<ExpenseClaims> GetExpenseClaimsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ExpenseClaims> GetExpenseClaimsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ExpenseClaims> response = await GetExpenseClaimsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<ExpenseClaims>> GetExpenseClaimsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<ExpenseClaims>> GetExpenseClaimsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ExpenseClaims> response = await accountingXeroClient.GetExpenseClaimsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response;
@@ -2371,8 +2270,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetInvoiceAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, invoiceID, unitdp, cancellationToken);
     }
 
-
-
     public async Task<Invoices> GetInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Invoices> response = await GetInvoiceAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, unitdp, cancellationToken);
@@ -2391,8 +2288,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetInvoiceAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, invoiceID, fileName, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetInvoiceAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
@@ -2413,8 +2308,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetInvoiceAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, invoiceID, attachmentID, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetInvoiceAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetInvoiceAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, attachmentID, contentType, cancellationToken);
@@ -2433,8 +2326,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetInvoiceAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, invoiceID, cancellationToken);
     }
-
-
 
     public async Task<Attachments> GetInvoiceAttachmentsAsync(string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
     {
@@ -2455,8 +2346,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetInvoiceHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, invoiceID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetInvoiceHistoryAsync(string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetInvoiceHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
@@ -2476,8 +2365,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetInvoiceRemindersAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, cancellationToken);
     }
 
-
-
     public async Task<InvoiceReminders> GetInvoiceRemindersAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
         ApiResponse<InvoiceReminders> response = await GetInvoiceRemindersAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
@@ -2489,7 +2376,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<InvoiceReminders> response = await accountingXeroClient.GetInvoiceRemindersAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response;
     }
-    public async Task<Invoices> GetInvoicesAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, List<Guid> iDs = null, List<string> invoiceNumbers = null, List<Guid> contactIDs = null, List<string> statuses = null, int? page = null, bool? includeArchived = null, bool? createdByMyApp = null, int? unitdp = null, bool? summaryOnly = null, int? pageSize = null, string searchTerm = null, CancellationToken cancellationToken = default)
+    public async Task<Invoices> GetInvoicesAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, List<string>? invoiceNumbers = null, List<Guid>? contactIDs = null, List<string>? statuses = null, int? page = null, bool? includeArchived = null, bool? createdByMyApp = null, int? unitdp = null, bool? summaryOnly = null, int? pageSize = null, string? searchTerm = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2497,15 +2384,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetInvoicesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp, summaryOnly, pageSize, searchTerm, cancellationToken);
     }
 
-
-
-    public async Task<Invoices> GetInvoicesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, List<Guid> iDs = null, List<string> invoiceNumbers = null, List<Guid> contactIDs = null, List<string> statuses = null, int? page = null, bool? includeArchived = null, bool? createdByMyApp = null, int? unitdp = null, bool? summaryOnly = null, int? pageSize = null, string searchTerm = null, CancellationToken cancellationToken = default)
+    public async Task<Invoices> GetInvoicesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, List<string>? invoiceNumbers = null, List<Guid>? contactIDs = null, List<string>? statuses = null, int? page = null, bool? includeArchived = null, bool? createdByMyApp = null, int? unitdp = null, bool? summaryOnly = null, int? pageSize = null, string? searchTerm = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Invoices> response = await GetInvoicesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp, summaryOnly, pageSize, searchTerm, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Invoices>> GetInvoicesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, List<Guid> iDs = null, List<string> invoiceNumbers = null, List<Guid> contactIDs = null, List<string> statuses = null, int? page = null, bool? includeArchived = null, bool? createdByMyApp = null, int? unitdp = null, bool? summaryOnly = null, int? pageSize = null, string searchTerm = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Invoices>> GetInvoicesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, List<Guid>? iDs = null, List<string>? invoiceNumbers = null, List<Guid>? contactIDs = null, List<string>? statuses = null, int? page = null, bool? includeArchived = null, bool? createdByMyApp = null, int? unitdp = null, bool? summaryOnly = null, int? pageSize = null, string? searchTerm = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Invoices> response = await accountingXeroClient.GetInvoicesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp, summaryOnly, pageSize, searchTerm, cancellationToken);
         return response;
@@ -2517,8 +2402,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetItemAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, itemID, unitdp, cancellationToken);
     }
-
-
 
     public async Task<Items> GetItemAsync(string accessToken, string xeroTenantId, Guid itemID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
@@ -2539,8 +2422,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetItemHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, itemID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetItemHistoryAsync(string accessToken, string xeroTenantId, Guid itemID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetItemHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, itemID, cancellationToken);
@@ -2552,7 +2433,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetItemHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, itemID, cancellationToken);
         return response;
     }
-    public async Task<Items> GetItemsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? unitdp = null, CancellationToken cancellationToken = default)
+    public async Task<Items> GetItemsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2560,15 +2441,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetItemsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, unitdp, cancellationToken);
     }
 
-
-
-    public async Task<Items> GetItemsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? unitdp = null, CancellationToken cancellationToken = default)
+    public async Task<Items> GetItemsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Items> response = await GetItemsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Items>> GetItemsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? unitdp = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Items>> GetItemsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Items> response = await accountingXeroClient.GetItemsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp, cancellationToken);
         return response;
@@ -2580,8 +2459,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetJournalAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, journalID, cancellationToken);
     }
-
-
 
     public async Task<Journals> GetJournalAsync(string accessToken, string xeroTenantId, Guid journalID, CancellationToken cancellationToken = default)
     {
@@ -2602,8 +2479,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetJournalByNumberAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, journalNumber, cancellationToken);
     }
 
-
-
     public async Task<Journals> GetJournalByNumberAsync(string accessToken, string xeroTenantId, int journalNumber, CancellationToken cancellationToken = default)
     {
         ApiResponse<Journals> response = await GetJournalByNumberAsyncWithHttpInfo(accessToken, xeroTenantId, journalNumber, cancellationToken);
@@ -2622,8 +2497,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetJournalsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, offset, paymentsOnly, cancellationToken);
     }
-
-
 
     public async Task<Journals> GetJournalsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, int? offset = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
@@ -2644,8 +2517,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetLinkedTransactionAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, linkedTransactionID, cancellationToken);
     }
 
-
-
     public async Task<LinkedTransactions> GetLinkedTransactionAsync(string accessToken, string xeroTenantId, Guid linkedTransactionID, CancellationToken cancellationToken = default)
     {
         ApiResponse<LinkedTransactions> response = await GetLinkedTransactionAsyncWithHttpInfo(accessToken, xeroTenantId, linkedTransactionID, cancellationToken);
@@ -2657,7 +2528,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<LinkedTransactions> response = await accountingXeroClient.GetLinkedTransactionAsyncWithHttpInfo(accessToken, xeroTenantId, linkedTransactionID, cancellationToken);
         return response;
     }
-    public async Task<LinkedTransactions> GetLinkedTransactionsAsync(int? page = null, Guid? linkedTransactionID = null, Guid? sourceTransactionID = null, Guid? contactID = null, string status = null, Guid? targetTransactionID = null, CancellationToken cancellationToken = default)
+    public async Task<LinkedTransactions> GetLinkedTransactionsAsync(int? page = null, Guid? linkedTransactionID = null, Guid? sourceTransactionID = null, Guid? contactID = null, string? status = null, Guid? targetTransactionID = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2665,15 +2536,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetLinkedTransactionsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID, cancellationToken);
     }
 
-
-
-    public async Task<LinkedTransactions> GetLinkedTransactionsAsync(string accessToken, string xeroTenantId, int? page = null, Guid? linkedTransactionID = null, Guid? sourceTransactionID = null, Guid? contactID = null, string status = null, Guid? targetTransactionID = null, CancellationToken cancellationToken = default)
+    public async Task<LinkedTransactions> GetLinkedTransactionsAsync(string accessToken, string xeroTenantId, int? page = null, Guid? linkedTransactionID = null, Guid? sourceTransactionID = null, Guid? contactID = null, string? status = null, Guid? targetTransactionID = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LinkedTransactions> response = await GetLinkedTransactionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<LinkedTransactions>> GetLinkedTransactionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, Guid? linkedTransactionID = null, Guid? sourceTransactionID = null, Guid? contactID = null, string status = null, Guid? targetTransactionID = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<LinkedTransactions>> GetLinkedTransactionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, Guid? linkedTransactionID = null, Guid? sourceTransactionID = null, Guid? contactID = null, string? status = null, Guid? targetTransactionID = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LinkedTransactions> response = await accountingXeroClient.GetLinkedTransactionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID, cancellationToken);
         return response;
@@ -2685,8 +2554,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetManualJournalAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournalID, cancellationToken);
     }
-
-
 
     public async Task<ManualJournals> GetManualJournalAsync(string accessToken, string xeroTenantId, Guid manualJournalID, CancellationToken cancellationToken = default)
     {
@@ -2707,8 +2574,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetManualJournalAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournalID, fileName, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetManualJournalAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetManualJournalAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, fileName, contentType, cancellationToken);
@@ -2727,8 +2592,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetManualJournalAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournalID, attachmentID, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetManualJournalAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
@@ -2749,8 +2612,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetManualJournalAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournalID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetManualJournalAttachmentsAsync(string accessToken, string xeroTenantId, Guid manualJournalID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetManualJournalAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, cancellationToken);
@@ -2762,7 +2623,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<Attachments> response = await accountingXeroClient.GetManualJournalAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, cancellationToken);
         return response;
     }
-    public async Task<ManualJournals> GetManualJournalsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ManualJournals> GetManualJournalsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2770,15 +2631,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetManualJournalsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, pageSize, cancellationToken);
     }
 
-
-
-    public async Task<ManualJournals> GetManualJournalsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ManualJournals> GetManualJournalsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ManualJournals> response = await GetManualJournalsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<ManualJournals>> GetManualJournalsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<ManualJournals>> GetManualJournalsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ManualJournals> response = await accountingXeroClient.GetManualJournalsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, pageSize, cancellationToken);
         return response;
@@ -2790,8 +2649,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetManualJournalsHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournalID, cancellationToken);
     }
-
-
 
     public async Task<HistoryRecords> GetManualJournalsHistoryAsync(string accessToken, string xeroTenantId, Guid manualJournalID, CancellationToken cancellationToken = default)
     {
@@ -2812,8 +2669,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetOnlineInvoiceAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, invoiceID, cancellationToken);
     }
 
-
-
     public async Task<OnlineInvoices> GetOnlineInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
     {
         ApiResponse<OnlineInvoices> response = await GetOnlineInvoiceAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
@@ -2832,8 +2687,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetOrganisationActionsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, cancellationToken);
     }
-
-
 
     public async Task<Actions> GetOrganisationActionsAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
@@ -2854,8 +2707,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetOrganisationCISSettingsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, organisationID, cancellationToken);
     }
 
-
-
     public async Task<CISOrgSettings> GetOrganisationCISSettingsAsync(string accessToken, string xeroTenantId, Guid organisationID, CancellationToken cancellationToken = default)
     {
         ApiResponse<CISOrgSettings> response = await GetOrganisationCISSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, organisationID, cancellationToken);
@@ -2874,8 +2725,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetOrganisationsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, cancellationToken);
     }
-
-
 
     public async Task<Organisations> GetOrganisationsAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
@@ -2896,8 +2745,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetOverpaymentAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, overpaymentID, cancellationToken);
     }
 
-
-
     public async Task<Overpayments> GetOverpaymentAsync(string accessToken, string xeroTenantId, Guid overpaymentID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Overpayments> response = await GetOverpaymentAsyncWithHttpInfo(accessToken, xeroTenantId, overpaymentID, cancellationToken);
@@ -2917,8 +2764,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetOverpaymentHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, overpaymentID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetOverpaymentHistoryAsync(string accessToken, string xeroTenantId, Guid overpaymentID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetOverpaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, overpaymentID, cancellationToken);
@@ -2930,7 +2775,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetOverpaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, overpaymentID, cancellationToken);
         return response;
     }
-    public async Task<Overpayments> GetOverpaymentsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<Overpayments> GetOverpaymentsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -2938,15 +2783,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetOverpaymentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
     }
 
-
-
-    public async Task<Overpayments> GetOverpaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<Overpayments> GetOverpaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Overpayments> response = await GetOverpaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Overpayments>> GetOverpaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Overpayments>> GetOverpaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Overpayments> response = await accountingXeroClient.GetOverpaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response;
@@ -2958,8 +2801,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetPaymentAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, paymentID, cancellationToken);
     }
-
-
 
     public async Task<Payments> GetPaymentAsync(string accessToken, string xeroTenantId, Guid paymentID, CancellationToken cancellationToken = default)
     {
@@ -2980,8 +2821,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPaymentHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, paymentID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetPaymentHistoryAsync(string accessToken, string xeroTenantId, Guid paymentID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetPaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, paymentID, cancellationToken);
@@ -2993,7 +2832,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetPaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, paymentID, cancellationToken);
         return response;
     }
-    public async Task<Payments> GetPaymentsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<Payments> GetPaymentsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3001,15 +2840,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPaymentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, pageSize, cancellationToken);
     }
 
-
-
-    public async Task<Payments> GetPaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<Payments> GetPaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Payments> response = await GetPaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Payments>> GetPaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Payments>> GetPaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Payments> response = await accountingXeroClient.GetPaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, pageSize, cancellationToken);
         return response;
@@ -3021,8 +2858,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetPaymentServicesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, cancellationToken);
     }
-
-
 
     public async Task<PaymentServices> GetPaymentServicesAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
@@ -3043,8 +2878,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPrepaymentAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, prepaymentID, cancellationToken);
     }
 
-
-
     public async Task<Prepayments> GetPrepaymentAsync(string accessToken, string xeroTenantId, Guid prepaymentID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Prepayments> response = await GetPrepaymentAsyncWithHttpInfo(accessToken, xeroTenantId, prepaymentID, cancellationToken);
@@ -3064,8 +2897,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPrepaymentHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, prepaymentID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetPrepaymentHistoryAsync(string accessToken, string xeroTenantId, Guid prepaymentID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetPrepaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, prepaymentID, cancellationToken);
@@ -3077,7 +2908,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetPrepaymentHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, prepaymentID, cancellationToken);
         return response;
     }
-    public async Task<Prepayments> GetPrepaymentsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<Prepayments> GetPrepaymentsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3085,15 +2916,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPrepaymentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
     }
 
-
-
-    public async Task<Prepayments> GetPrepaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<Prepayments> GetPrepaymentsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Prepayments> response = await GetPrepaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Prepayments>> GetPrepaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Prepayments>> GetPrepaymentsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, int? unitdp = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Prepayments> response = await accountingXeroClient.GetPrepaymentsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, cancellationToken);
         return response;
@@ -3146,8 +2975,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPurchaseOrderAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, purchaseOrderID, fileName, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetPurchaseOrderAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, contentType, cancellationToken);
@@ -3166,8 +2993,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetPurchaseOrderAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, purchaseOrderID, attachmentID, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetPurchaseOrderAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
@@ -3188,8 +3013,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPurchaseOrderAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, purchaseOrderID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetPurchaseOrderAttachmentsAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetPurchaseOrderAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
@@ -3208,8 +3031,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetPurchaseOrderByNumberAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, purchaseOrderNumber, cancellationToken);
     }
-
-
 
     public async Task<PurchaseOrders> GetPurchaseOrderByNumberAsync(string accessToken, string xeroTenantId, string purchaseOrderNumber, CancellationToken cancellationToken = default)
     {
@@ -3230,8 +3051,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPurchaseOrderHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, purchaseOrderID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetPurchaseOrderHistoryAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetPurchaseOrderHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
@@ -3243,7 +3062,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetPurchaseOrderHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
         return response;
     }
-    public async Task<PurchaseOrders> GetPurchaseOrdersAsync(DateTime? ifModifiedSince = null, string status = null, string dateFrom = null, string dateTo = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<PurchaseOrders> GetPurchaseOrdersAsync(DateTime? ifModifiedSince = null, string? status = null, string dateFrom = null, string dateTo = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3251,15 +3070,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetPurchaseOrdersAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, status, dateFrom, dateTo, order, page, pageSize, cancellationToken);
     }
 
-
-
-    public async Task<PurchaseOrders> GetPurchaseOrdersAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string status = null, string dateFrom = null, string dateTo = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<PurchaseOrders> GetPurchaseOrdersAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? status = null, string dateFrom = null, string dateTo = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PurchaseOrders> response = await GetPurchaseOrdersAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, status, dateFrom, dateTo, order, page, pageSize, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<PurchaseOrders>> GetPurchaseOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string status = null, string dateFrom = null, string dateTo = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<PurchaseOrders>> GetPurchaseOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? status = null, string dateFrom = null, string dateTo = null, string order = null, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PurchaseOrders> response = await accountingXeroClient.GetPurchaseOrdersAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, status, dateFrom, dateTo, order, page, pageSize, cancellationToken);
         return response;
@@ -3271,8 +3088,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetQuoteAsPdfAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetQuoteAsPdfAsync(string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
     {
@@ -3293,8 +3108,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetQuoteAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, cancellationToken);
     }
 
-
-
     public async Task<Quotes> GetQuoteAsync(string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Quotes> response = await GetQuoteAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, cancellationToken);
@@ -3313,8 +3126,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetQuoteAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, fileName, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetQuoteAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
@@ -3335,8 +3146,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetQuoteAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, attachmentID, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetQuoteAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetQuoteAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, attachmentID, contentType, cancellationToken);
@@ -3355,8 +3164,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetQuoteAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, cancellationToken);
     }
-
-
 
     public async Task<Attachments> GetQuoteAttachmentsAsync(string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
     {
@@ -3377,8 +3184,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetQuoteHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetQuoteHistoryAsync(string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetQuoteHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, cancellationToken);
@@ -3390,7 +3195,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetQuoteHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, cancellationToken);
         return response;
     }
-    public async Task<Quotes> GetQuotesAsync(DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string status = null, int? page = null, string order = null, string quoteNumber = null, CancellationToken cancellationToken = default)
+    public async Task<Quotes> GetQuotesAsync(DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string? status = null, int? page = null, string order = null, string quoteNumber = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3398,15 +3203,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetQuotesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order, quoteNumber, cancellationToken);
     }
 
-
-
-    public async Task<Quotes> GetQuotesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string status = null, int? page = null, string order = null, string quoteNumber = null, CancellationToken cancellationToken = default)
+    public async Task<Quotes> GetQuotesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string? status = null, int? page = null, string order = null, string quoteNumber = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Quotes> response = await GetQuotesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order, quoteNumber, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Quotes>> GetQuotesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string status = null, int? page = null, string order = null, string quoteNumber = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Quotes>> GetQuotesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string? status = null, int? page = null, string order = null, string quoteNumber = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Quotes> response = await accountingXeroClient.GetQuotesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order, quoteNumber, cancellationToken);
         return response;
@@ -3418,8 +3221,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetReceiptAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, receiptID, unitdp, cancellationToken);
     }
-
-
 
     public async Task<Receipts> GetReceiptAsync(string accessToken, string xeroTenantId, Guid receiptID, int? unitdp = null, CancellationToken cancellationToken = default)
     {
@@ -3440,8 +3241,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReceiptAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, receiptID, fileName, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetReceiptAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetReceiptAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, fileName, contentType, cancellationToken);
@@ -3460,8 +3259,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetReceiptAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, receiptID, attachmentID, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetReceiptAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
@@ -3482,8 +3279,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReceiptAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, receiptID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetReceiptAttachmentsAsync(string accessToken, string xeroTenantId, Guid receiptID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetReceiptAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, cancellationToken);
@@ -3503,8 +3298,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReceiptHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, receiptID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetReceiptHistoryAsync(string accessToken, string xeroTenantId, Guid receiptID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetReceiptHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, cancellationToken);
@@ -3516,7 +3309,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetReceiptHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, cancellationToken);
         return response;
     }
-    public async Task<Receipts> GetReceiptsAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, int? unitdp = null, CancellationToken cancellationToken = default)
+    public async Task<Receipts> GetReceiptsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3524,15 +3317,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReceiptsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, unitdp, cancellationToken);
     }
 
-
-
-    public async Task<Receipts> GetReceiptsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? unitdp = null, CancellationToken cancellationToken = default)
+    public async Task<Receipts> GetReceiptsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Receipts> response = await GetReceiptsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Receipts>> GetReceiptsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, int? unitdp = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Receipts>> GetReceiptsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? unitdp = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Receipts> response = await accountingXeroClient.GetReceiptsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp, cancellationToken);
         return response;
@@ -3544,8 +3335,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetRepeatingInvoiceAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoiceID, cancellationToken);
     }
-
-
 
     public async Task<RepeatingInvoices> GetRepeatingInvoiceAsync(string accessToken, string xeroTenantId, Guid repeatingInvoiceID, CancellationToken cancellationToken = default)
     {
@@ -3566,8 +3355,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoiceID, fileName, contentType, cancellationToken);
     }
 
-
-
     public async Task<Stream> GetRepeatingInvoiceAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
     {
         ApiResponse<Stream> response = await GetRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, fileName, contentType, cancellationToken);
@@ -3586,8 +3373,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetRepeatingInvoiceAttachmentByIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoiceID, attachmentID, contentType, cancellationToken);
     }
-
-
 
     public async Task<Stream> GetRepeatingInvoiceAttachmentByIdAsync(string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
     {
@@ -3608,8 +3393,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetRepeatingInvoiceAttachmentsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoiceID, cancellationToken);
     }
 
-
-
     public async Task<Attachments> GetRepeatingInvoiceAttachmentsAsync(string accessToken, string xeroTenantId, Guid repeatingInvoiceID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await GetRepeatingInvoiceAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, cancellationToken);
@@ -3629,8 +3412,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetRepeatingInvoiceHistoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoiceID, cancellationToken);
     }
 
-
-
     public async Task<HistoryRecords> GetRepeatingInvoiceHistoryAsync(string accessToken, string xeroTenantId, Guid repeatingInvoiceID, CancellationToken cancellationToken = default)
     {
         ApiResponse<HistoryRecords> response = await GetRepeatingInvoiceHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, cancellationToken);
@@ -3642,7 +3423,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<HistoryRecords> response = await accountingXeroClient.GetRepeatingInvoiceHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, cancellationToken);
         return response;
     }
-    public async Task<RepeatingInvoices> GetRepeatingInvoicesAsync(string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<RepeatingInvoices> GetRepeatingInvoicesAsync(string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3650,15 +3431,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetRepeatingInvoicesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, where, order, cancellationToken);
     }
 
-
-
-    public async Task<RepeatingInvoices> GetRepeatingInvoicesAsync(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<RepeatingInvoices> GetRepeatingInvoicesAsync(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<RepeatingInvoices> response = await GetRepeatingInvoicesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<RepeatingInvoices>> GetRepeatingInvoicesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<RepeatingInvoices>> GetRepeatingInvoicesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<RepeatingInvoices> response = await accountingXeroClient.GetRepeatingInvoicesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response;
@@ -3670,8 +3449,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetReportAgedPayablesByContactAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactId, date, fromDate, toDate, cancellationToken);
     }
-
-
 
     public async Task<ReportWithRows> GetReportAgedPayablesByContactAsync(string accessToken, string xeroTenantId, Guid contactId, DateTime? date = null, DateTime? fromDate = null, DateTime? toDate = null, CancellationToken cancellationToken = default)
     {
@@ -3692,8 +3469,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReportAgedReceivablesByContactAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contactId, date, fromDate, toDate, cancellationToken);
     }
 
-
-
     public async Task<ReportWithRows> GetReportAgedReceivablesByContactAsync(string accessToken, string xeroTenantId, Guid contactId, DateTime? date = null, DateTime? fromDate = null, DateTime? toDate = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await GetReportAgedReceivablesByContactAsyncWithHttpInfo(accessToken, xeroTenantId, contactId, date, fromDate, toDate, cancellationToken);
@@ -3705,7 +3480,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<ReportWithRows> response = await accountingXeroClient.GetReportAgedReceivablesByContactAsyncWithHttpInfo(accessToken, xeroTenantId, contactId, date, fromDate, toDate, cancellationToken);
         return response;
     }
-    public async Task<ReportWithRows> GetReportBalanceSheetAsync(DateTime? date = null, int? periods = null, string timeframe = null, string trackingOptionID1 = null, string trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
+    public async Task<ReportWithRows> GetReportBalanceSheetAsync(DateTime? date = null, int? periods = null, string? timeframe = null, string trackingOptionID1 = null, string? trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3713,15 +3488,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReportBalanceSheetAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly, cancellationToken);
     }
 
-
-
-    public async Task<ReportWithRows> GetReportBalanceSheetAsync(string accessToken, string xeroTenantId, DateTime? date = null, int? periods = null, string timeframe = null, string trackingOptionID1 = null, string trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
+    public async Task<ReportWithRows> GetReportBalanceSheetAsync(string accessToken, string xeroTenantId, DateTime? date = null, int? periods = null, string? timeframe = null, string trackingOptionID1 = null, string? trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await GetReportBalanceSheetAsyncWithHttpInfo(accessToken, xeroTenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<ReportWithRows>> GetReportBalanceSheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? date = null, int? periods = null, string timeframe = null, string trackingOptionID1 = null, string trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<ReportWithRows>> GetReportBalanceSheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? date = null, int? periods = null, string? timeframe = null, string trackingOptionID1 = null, string? trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await accountingXeroClient.GetReportBalanceSheetAsyncWithHttpInfo(accessToken, xeroTenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly, cancellationToken);
         return response;
@@ -3733,8 +3506,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetReportBankSummaryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, fromDate, toDate, cancellationToken);
     }
-
-
 
     public async Task<ReportWithRows> GetReportBankSummaryAsync(string accessToken, string xeroTenantId, DateTime? fromDate = null, DateTime? toDate = null, CancellationToken cancellationToken = default)
     {
@@ -3755,8 +3526,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReportBudgetSummaryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, date, periods, timeframe, cancellationToken);
     }
 
-
-
     public async Task<ReportWithRows> GetReportBudgetSummaryAsync(string accessToken, string xeroTenantId, DateTime? date = null, int? periods = null, int? timeframe = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await GetReportBudgetSummaryAsyncWithHttpInfo(accessToken, xeroTenantId, date, periods, timeframe, cancellationToken);
@@ -3775,8 +3544,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetReportExecutiveSummaryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, date, cancellationToken);
     }
-
-
 
     public async Task<ReportWithRows> GetReportExecutiveSummaryAsync(string accessToken, string xeroTenantId, DateTime? date = null, CancellationToken cancellationToken = default)
     {
@@ -3797,8 +3564,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReportFromIdAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, reportID, cancellationToken);
     }
 
-
-
     public async Task<ReportWithRows> GetReportFromIdAsync(string accessToken, string xeroTenantId, string reportID, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await GetReportFromIdAsyncWithHttpInfo(accessToken, xeroTenantId, reportID, cancellationToken);
@@ -3810,7 +3575,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<ReportWithRows> response = await accountingXeroClient.GetReportFromIdAsyncWithHttpInfo(accessToken, xeroTenantId, reportID, cancellationToken);
         return response;
     }
-    public async Task<ReportWithRows> GetReportProfitAndLossAsync(DateTime? fromDate = null, DateTime? toDate = null, int? periods = null, string timeframe = null, string trackingCategoryID = null, string trackingCategoryID2 = null, string trackingOptionID = null, string trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
+    public async Task<ReportWithRows> GetReportProfitAndLossAsync(DateTime? fromDate = null, DateTime? toDate = null, int? periods = null, string? timeframe = null, string? trackingCategoryID = null, string? trackingCategoryID2 = null, string? trackingOptionID = null, string? trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3818,15 +3583,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReportProfitAndLossAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly, cancellationToken);
     }
 
-
-
-    public async Task<ReportWithRows> GetReportProfitAndLossAsync(string accessToken, string xeroTenantId, DateTime? fromDate = null, DateTime? toDate = null, int? periods = null, string timeframe = null, string trackingCategoryID = null, string trackingCategoryID2 = null, string trackingOptionID = null, string trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
+    public async Task<ReportWithRows> GetReportProfitAndLossAsync(string accessToken, string xeroTenantId, DateTime? fromDate = null, DateTime? toDate = null, int? periods = null, string? timeframe = null, string? trackingCategoryID = null, string? trackingCategoryID2 = null, string? trackingOptionID = null, string? trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await GetReportProfitAndLossAsyncWithHttpInfo(accessToken, xeroTenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<ReportWithRows>> GetReportProfitAndLossAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? fromDate = null, DateTime? toDate = null, int? periods = null, string timeframe = null, string trackingCategoryID = null, string trackingCategoryID2 = null, string trackingOptionID = null, string trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<ReportWithRows>> GetReportProfitAndLossAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? fromDate = null, DateTime? toDate = null, int? periods = null, string? timeframe = null, string? trackingCategoryID = null, string? trackingCategoryID2 = null, string? trackingOptionID = null, string? trackingOptionID2 = null, bool? standardLayout = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await accountingXeroClient.GetReportProfitAndLossAsyncWithHttpInfo(accessToken, xeroTenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly, cancellationToken);
         return response;
@@ -3839,8 +3602,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReportsListAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, cancellationToken);
     }
 
-
-
     public async Task<ReportWithRows> GetReportsListAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReportWithRows> response = await GetReportsListAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
@@ -3852,7 +3613,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<ReportWithRows> response = await accountingXeroClient.GetReportsListAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response;
     }
-    public async Task<Reports> GetReportTenNinetyNineAsync(string reportYear = null, CancellationToken cancellationToken = default)
+    public async Task<Reports> GetReportTenNinetyNineAsync(string? reportYear = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3860,15 +3621,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetReportTenNinetyNineAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, reportYear, cancellationToken);
     }
 
-
-
-    public async Task<Reports> GetReportTenNinetyNineAsync(string accessToken, string xeroTenantId, string reportYear = null, CancellationToken cancellationToken = default)
+    public async Task<Reports> GetReportTenNinetyNineAsync(string accessToken, string xeroTenantId, string? reportYear = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Reports> response = await GetReportTenNinetyNineAsyncWithHttpInfo(accessToken, xeroTenantId, reportYear, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Reports>> GetReportTenNinetyNineAsyncWithHttpInfo(string accessToken, string xeroTenantId, string reportYear = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Reports>> GetReportTenNinetyNineAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? reportYear = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Reports> response = await accountingXeroClient.GetReportTenNinetyNineAsyncWithHttpInfo(accessToken, xeroTenantId, reportYear, cancellationToken);
         return response;
@@ -3880,8 +3639,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetReportTrialBalanceAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, date, paymentsOnly, cancellationToken);
     }
-
-
 
     public async Task<ReportWithRows> GetReportTrialBalanceAsync(string accessToken, string xeroTenantId, DateTime? date = null, bool? paymentsOnly = null, CancellationToken cancellationToken = default)
     {
@@ -3902,8 +3659,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetTaxRateByTaxTypeAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, taxType, cancellationToken);
     }
 
-
-
     public async Task<TaxRates> GetTaxRateByTaxTypeAsync(string accessToken, string xeroTenantId, string taxType, CancellationToken cancellationToken = default)
     {
         ApiResponse<TaxRates> response = await GetTaxRateByTaxTypeAsyncWithHttpInfo(accessToken, xeroTenantId, taxType, cancellationToken);
@@ -3915,7 +3670,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<TaxRates> response = await accountingXeroClient.GetTaxRateByTaxTypeAsyncWithHttpInfo(accessToken, xeroTenantId, taxType, cancellationToken);
         return response;
     }
-    public async Task<TaxRates> GetTaxRatesAsync(string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<TaxRates> GetTaxRatesAsync(string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3923,20 +3678,18 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetTaxRatesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, where, order, cancellationToken);
     }
 
-
-
-    public async Task<TaxRates> GetTaxRatesAsync(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<TaxRates> GetTaxRatesAsync(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TaxRates> response = await GetTaxRatesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<TaxRates>> GetTaxRatesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<TaxRates>> GetTaxRatesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TaxRates> response = await accountingXeroClient.GetTaxRatesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
         return response;
     }
-    public async Task<TrackingCategories> GetTrackingCategoriesAsync(string where = null, string order = null, bool? includeArchived = null, CancellationToken cancellationToken = default)
+    public async Task<TrackingCategories> GetTrackingCategoriesAsync(string? where = null, string? order = null, bool? includeArchived = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -3944,15 +3697,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetTrackingCategoriesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, where, order, includeArchived, cancellationToken);
     }
 
-
-
-    public async Task<TrackingCategories> GetTrackingCategoriesAsync(string accessToken, string xeroTenantId, string where = null, string order = null, bool? includeArchived = null, CancellationToken cancellationToken = default)
+    public async Task<TrackingCategories> GetTrackingCategoriesAsync(string accessToken, string xeroTenantId, string? where = null, string? order = null, bool? includeArchived = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TrackingCategories> response = await GetTrackingCategoriesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, includeArchived, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<TrackingCategories>> GetTrackingCategoriesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string where = null, string order = null, bool? includeArchived = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<TrackingCategories>> GetTrackingCategoriesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? where = null, string? order = null, bool? includeArchived = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TrackingCategories> response = await accountingXeroClient.GetTrackingCategoriesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, includeArchived, cancellationToken);
         return response;
@@ -3964,8 +3715,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await GetTrackingCategoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, trackingCategoryID, cancellationToken);
     }
-
-
 
     public async Task<TrackingCategories> GetTrackingCategoryAsync(string accessToken, string xeroTenantId, Guid trackingCategoryID, CancellationToken cancellationToken = default)
     {
@@ -3986,8 +3735,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetUserAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, userID, cancellationToken);
     }
 
-
-
     public async Task<Users> GetUserAsync(string accessToken, string xeroTenantId, Guid userID, CancellationToken cancellationToken = default)
     {
         ApiResponse<Users> response = await GetUserAsyncWithHttpInfo(accessToken, xeroTenantId, userID, cancellationToken);
@@ -3999,7 +3746,7 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<Users> response = await accountingXeroClient.GetUserAsyncWithHttpInfo(accessToken, xeroTenantId, userID, cancellationToken);
         return response;
     }
-    public async Task<Users> GetUsersAsync(DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Users> GetUsersAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroService.xeroExtendedConfiguration.TenantId, nameof(xeroService.xeroExtendedConfiguration.TenantId));
         string accessToken = (await xeroService.RequestClientCredentialsTokenAsync()).AccessToken;
@@ -4007,15 +3754,13 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await GetUsersAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
 
-
-
-    public async Task<Users> GetUsersAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<Users> GetUsersAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Users> response = await GetUsersAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Users>> GetUsersAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string where = null, string order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Users>> GetUsersAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Users> response = await accountingXeroClient.GetUsersAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response;
@@ -4027,8 +3772,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await PostSetupAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, setup, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ImportSummaryObject> PostSetupAsync(string accessToken, string xeroTenantId, Setup setup, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4049,8 +3792,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateAccountAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, accountID, accounts, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Accounts> UpdateAccountAsync(string accessToken, string xeroTenantId, Guid accountID, Accounts accounts, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Accounts> response = await UpdateAccountAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, accounts, idempotencyKey, cancellationToken);
@@ -4069,8 +3810,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateAccountAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, accountID, fileName, body, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Attachments> UpdateAccountAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4091,8 +3830,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateBankTransactionAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactionID, bankTransactions, unitdp, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<BankTransactions> UpdateBankTransactionAsync(string accessToken, string xeroTenantId, Guid bankTransactionID, BankTransactions bankTransactions, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BankTransactions> response = await UpdateBankTransactionAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, bankTransactions, unitdp, idempotencyKey, cancellationToken);
@@ -4112,8 +3849,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateBankTransactionAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactionID, fileName, body, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Attachments> UpdateBankTransactionAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await UpdateBankTransactionAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, fileName, body, idempotencyKey, cancellationToken);
@@ -4132,8 +3867,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateBankTransferAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransferID, fileName, body, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Attachments> UpdateBankTransferAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4213,8 +3946,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateCreditNoteAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, creditNotes, unitdp, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<CreditNotes> UpdateCreditNoteAsync(string accessToken, string xeroTenantId, Guid creditNoteID, CreditNotes creditNotes, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<CreditNotes> response = await UpdateCreditNoteAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, creditNotes, unitdp, idempotencyKey, cancellationToken);
@@ -4234,8 +3965,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNoteID, fileName, body, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Attachments> UpdateCreditNoteAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await UpdateCreditNoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, fileName, body, idempotencyKey, cancellationToken);
@@ -4254,8 +3983,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateExpenseClaimAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, expenseClaimID, expenseClaims, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ExpenseClaims> UpdateExpenseClaimAsync(string accessToken, string xeroTenantId, Guid expenseClaimID, ExpenseClaims expenseClaims, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4316,8 +4043,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateItemAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, itemID, items, unitdp, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Items> UpdateItemAsync(string accessToken, string xeroTenantId, Guid itemID, Items items, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Items> response = await UpdateItemAsyncWithHttpInfo(accessToken, xeroTenantId, itemID, items, unitdp, idempotencyKey, cancellationToken);
@@ -4336,8 +4061,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateLinkedTransactionAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, linkedTransactionID, linkedTransactions, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<LinkedTransactions> UpdateLinkedTransactionAsync(string accessToken, string xeroTenantId, Guid linkedTransactionID, LinkedTransactions linkedTransactions, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4358,8 +4081,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateManualJournalAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournalID, manualJournals, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ManualJournals> UpdateManualJournalAsync(string accessToken, string xeroTenantId, Guid manualJournalID, ManualJournals manualJournals, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ManualJournals> response = await UpdateManualJournalAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, manualJournals, idempotencyKey, cancellationToken);
@@ -4378,8 +4099,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateManualJournalAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournalID, fileName, body, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Attachments> UpdateManualJournalAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4400,8 +4119,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateOrCreateBankTransactionsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, bankTransactions, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<BankTransactions> UpdateOrCreateBankTransactionsAsync(string accessToken, string xeroTenantId, BankTransactions bankTransactions, bool? summarizeErrors = null, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BankTransactions> response = await UpdateOrCreateBankTransactionsAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactions, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
@@ -4420,8 +4137,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateOrCreateContactsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, contacts, summarizeErrors, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Contacts> UpdateOrCreateContactsAsync(string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4442,8 +4157,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateOrCreateCreditNotesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, creditNotes, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<CreditNotes> UpdateOrCreateCreditNotesAsync(string accessToken, string xeroTenantId, CreditNotes creditNotes, bool? summarizeErrors = null, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<CreditNotes> response = await UpdateOrCreateCreditNotesAsyncWithHttpInfo(accessToken, xeroTenantId, creditNotes, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
@@ -4462,8 +4175,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateOrCreateEmployeesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, employees, summarizeErrors, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Employees> UpdateOrCreateEmployeesAsync(string accessToken, string xeroTenantId, Employees employees, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4484,8 +4195,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateOrCreateInvoicesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, invoices, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Invoices> UpdateOrCreateInvoicesAsync(string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Invoices> response = await UpdateOrCreateInvoicesAsyncWithHttpInfo(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
@@ -4504,8 +4213,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateOrCreateItemsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, items, summarizeErrors, unitdp, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Items> UpdateOrCreateItemsAsync(string accessToken, string xeroTenantId, Items items, bool? summarizeErrors = null, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4526,8 +4233,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateOrCreateManualJournalsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, manualJournals, summarizeErrors, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ManualJournals> UpdateOrCreateManualJournalsAsync(string accessToken, string xeroTenantId, ManualJournals manualJournals, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ManualJournals> response = await UpdateOrCreateManualJournalsAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournals, summarizeErrors, idempotencyKey, cancellationToken);
@@ -4546,8 +4251,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, purchaseOrders, summarizeErrors, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<PurchaseOrders> UpdateOrCreatePurchaseOrdersAsync(string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4568,8 +4271,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateOrCreateQuotesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quotes, summarizeErrors, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Quotes> UpdateOrCreateQuotesAsync(string accessToken, string xeroTenantId, Quotes quotes, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Quotes> response = await UpdateOrCreateQuotesAsyncWithHttpInfo(accessToken, xeroTenantId, quotes, summarizeErrors, idempotencyKey, cancellationToken);
@@ -4588,8 +4289,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateOrCreateRepeatingInvoicesAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoices, summarizeErrors, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<RepeatingInvoices> UpdateOrCreateRepeatingInvoicesAsync(string accessToken, string xeroTenantId, RepeatingInvoices repeatingInvoices, bool? summarizeErrors = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4630,8 +4329,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdatePurchaseOrderAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, purchaseOrderID, fileName, body, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, body, idempotencyKey, cancellationToken);
@@ -4650,8 +4347,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateQuoteAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, quotes, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Quotes> UpdateQuoteAsync(string accessToken, string xeroTenantId, Guid quoteID, Quotes quotes, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4672,8 +4367,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateQuoteAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, quoteID, fileName, body, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Attachments> UpdateQuoteAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await UpdateQuoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, fileName, body, idempotencyKey, cancellationToken);
@@ -4692,8 +4385,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateReceiptAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, receiptID, receipts, unitdp, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<Receipts> UpdateReceiptAsync(string accessToken, string xeroTenantId, Guid receiptID, Receipts receipts, int? unitdp = null, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4714,8 +4405,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateReceiptAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, receiptID, fileName, body, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Attachments> UpdateReceiptAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await UpdateReceiptAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, fileName, body, idempotencyKey, cancellationToken);
@@ -4734,8 +4423,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateRepeatingInvoiceAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoiceID, repeatingInvoices, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<RepeatingInvoices> UpdateRepeatingInvoiceAsync(string accessToken, string xeroTenantId, Guid repeatingInvoiceID, RepeatingInvoices repeatingInvoices, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4756,8 +4443,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, repeatingInvoiceID, fileName, body, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Attachments> UpdateRepeatingInvoiceAttachmentByFileNameAsync(string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Attachments> response = await UpdateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body, idempotencyKey, cancellationToken);
@@ -4776,8 +4461,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
 
         return await UpdateTaxRateAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, taxRates, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TaxRates> UpdateTaxRateAsync(string accessToken, string xeroTenantId, TaxRates taxRates, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -4798,8 +4481,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateTrackingCategoryAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, trackingCategoryID, trackingCategory, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<TrackingCategories> UpdateTrackingCategoryAsync(string accessToken, string xeroTenantId, Guid trackingCategoryID, TrackingCategory trackingCategory, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TrackingCategories> response = await UpdateTrackingCategoryAsyncWithHttpInfo(accessToken, xeroTenantId, trackingCategoryID, trackingCategory, idempotencyKey, cancellationToken);
@@ -4819,8 +4500,6 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         return await UpdateTrackingOptionsAsync(accessToken, xeroService.xeroExtendedConfiguration.TenantId, trackingCategoryID, trackingOptionID, trackingOption, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<TrackingOptions> UpdateTrackingOptionsAsync(string accessToken, string xeroTenantId, Guid trackingCategoryID, Guid trackingOptionID, TrackingOption trackingOption, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TrackingOptions> response = await UpdateTrackingOptionsAsyncWithHttpInfo(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption, idempotencyKey, cancellationToken);
@@ -4832,5 +4511,4 @@ public class XeroAccountingService(Configuration configuration, XeroService xero
         ApiResponse<TrackingOptions> response = await accountingXeroClient.UpdateTrackingOptionsAsyncWithHttpInfo(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption, idempotencyKey, cancellationToken);
         return response;
     }
-    #endregion
 }
