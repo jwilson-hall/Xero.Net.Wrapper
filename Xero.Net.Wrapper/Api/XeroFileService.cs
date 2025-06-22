@@ -100,6 +100,7 @@ public partial class XeroService : IFilesApi
     {
         return fileXeroClient.DeleteFileAsync(accessToken, xeroTenantId, fileId, cancellationToken);
     }
+
     public async Task<ApiResponse<object>> DeleteFileAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -126,6 +127,7 @@ public partial class XeroService : IFilesApi
     {
         return fileXeroClient.DeleteFolderAsync(accessToken, xeroTenantId, folderId, cancellationToken);
     }
+
     public async Task<ApiResponse<object>> DeleteFolderAsyncWithHttpInfo(Guid folderId, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -153,6 +155,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<List<Association>> response = await GetAssociationsByObjectAsyncWithHttpInfo(accessToken, xeroTenantId, objectId, pagesize, page, sort, direction, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<List<Association>>> GetAssociationsByObjectAsyncWithHttpInfo(Guid objectId, int? pagesize = null, int? page = null, string? sort = null, string? direction = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -179,6 +182,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<object> response = await GetAssociationsCountAsyncWithHttpInfo(accessToken, xeroTenantId, objectIds, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<object>> GetAssociationsCountAsyncWithHttpInfo(List<Guid> objectIds, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -206,6 +210,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<List<Association>> response = await GetFileAssociationsAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<List<Association>>> GetFileAssociationsAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -232,6 +237,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<FileObject> response = await GetFileAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<FileObject>> GetFileAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -258,6 +264,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<Stream> response = await GetFileContentAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<Stream>> GetFileContentAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -284,6 +291,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<Files> response = await GetFilesAsyncWithHttpInfo(accessToken, xeroTenantId, pagesize, page, sort, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<Files>> GetFilesAsyncWithHttpInfo(int? pagesize = null, int? page = null, string? sort = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -310,6 +318,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<Folder> response = await GetFolderAsyncWithHttpInfo(accessToken, xeroTenantId, folderId, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<Folder>> GetFolderAsyncWithHttpInfo(Guid folderId, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -336,6 +345,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<List<Folder>> response = await GetFoldersAsyncWithHttpInfo(accessToken, xeroTenantId, sort, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<List<Folder>>> GetFoldersAsyncWithHttpInfo(string? sort = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -388,6 +398,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<FileObject> response = await UpdateFileAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, fileObject, idempotencyKey, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<FileObject>> UpdateFileAsyncWithHttpInfo(Guid fileId, FileObject fileObject, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -414,6 +425,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<Folder> response = await UpdateFolderAsyncWithHttpInfo(accessToken, xeroTenantId, folderId, folder, idempotencyKey, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<Folder>> UpdateFolderAsyncWithHttpInfo(Guid folderId, Folder folder, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -440,6 +452,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<FileObject> response = await UploadFileAsyncWithHttpInfo(accessToken, xeroTenantId, body, name, filename, idempotencyKey, mimeType, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<FileObject>> UploadFileAsyncWithHttpInfo(byte[] body, string name, string filename, string? idempotencyKey = null, string? mimeType = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -466,6 +479,7 @@ public partial class XeroService : IFilesApi
         ApiResponse<FileObject> response = await UploadFileToFolderAsyncWithHttpInfo(accessToken, xeroTenantId, folderId, body, name, filename, idempotencyKey, mimeType, cancellationToken);
         return response.Data;
     }
+
     public async Task<ApiResponse<FileObject>> UploadFileToFolderAsyncWithHttpInfo(Guid folderId, byte[] body, string name, string filename, string? idempotencyKey = null, string? mimeType = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));

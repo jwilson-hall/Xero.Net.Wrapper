@@ -1,4 +1,4 @@
-﻿using Xero.Net.Wrapper.Models;
+using Xero.Net.Wrapper.Models;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
