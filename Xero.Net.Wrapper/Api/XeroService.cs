@@ -1,4 +1,5 @@
 ﻿using Xero.Net.Wrapper.Models;
+using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Models;
@@ -13,7 +14,7 @@ namespace Xero.Net.Wrapper.Api;
 /// <param name="xeroCache"></param>
 /// <param name="baseXeroClient"></param>
 /// <param name="accountingXeroClient"></param>
-public partial class XeroService(ExtendedXeroConfiguration _xeroExtendedConfiguration, XeroConfiguration _xeroConfiguration, XeroCache xeroCache, IXeroClient baseXeroClient) : IXeroClient
+public partial class XeroService(ExtendedXeroConfiguration _xeroExtendedConfiguration, XeroConfiguration _xeroConfiguration, XeroCache xeroCache, IXeroClient baseXeroClient, IAccountingApi accountingXeroClient, IFilesApi fileXeroClient) : IXeroClient
 {
     public XeroConfiguration xeroConfiguration { get; set; } = _xeroConfiguration;
     public ExtendedXeroConfiguration xeroExtendedConfiguration { get; set; } = _xeroExtendedConfiguration;

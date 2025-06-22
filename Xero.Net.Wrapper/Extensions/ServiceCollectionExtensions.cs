@@ -33,10 +33,15 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IXeroClient, XeroClient>();
 
         services.AddScoped<IAccountingApi, AccountingApi>();
-        services.AddScoped<XeroAccountingService>();
-
+        services.AddScoped<IAppStoreApi, AppStoreApi>();
+        services.AddScoped<IAssetApi, AssetApi>();
+        services.AddScoped<IBankFeedsApi, BankFeedsApi>();
         services.AddScoped<IFilesApi, FilesApi>();
-        services.AddScoped<XeroFileService>();
+        services.AddScoped<IFinanceApi, FinanceApi>();
+        services.AddScoped<IIdentityApi, IdentityApi>();
+        services.AddScoped<IPayrollAuApi, PayrollAuApi>();
+        services.AddScoped<IPayrollNzApi, PayrollNzApi>();
+        services.AddScoped<IPayrollUkApi, PayrollUkApi>();
 
         services.AddSingleton<XeroCache>();
         services.AddScoped<XeroService>();

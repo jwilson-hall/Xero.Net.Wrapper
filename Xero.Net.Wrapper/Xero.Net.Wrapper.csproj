@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Xero.Net.Wrapper</PackageId>
-    <Version>0.9.0</Version>
+    <Version>0.9.1</Version>
     <Author>jwilson-hall</Author>
     <Product>Xero.Net.Wrapper</Product>
   </PropertyGroup>
