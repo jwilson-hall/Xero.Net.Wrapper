@@ -18,7 +18,7 @@ public class XeroCache(IMemoryCache memoryCache)
 
     public void Set<T>(string key, T value, TimeSpan expiration)
     {
-        var cacheEntryOptions = new MemoryCacheEntryOptions()
+        MemoryCacheEntryOptions cacheEntryOptions = new MemoryCacheEntryOptions()
             .SetAbsoluteExpiration(expiration);
 
         memoryCache.Set(GetPrefixedKey(key), value, cacheEntryOptions);

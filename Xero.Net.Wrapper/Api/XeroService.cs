@@ -72,7 +72,7 @@ public partial class XeroService(ExtendedXeroConfiguration _xeroExtendedConfigur
         if (tokenNotFound || xeroExtendedConfiguration.DisableTokenCaching)
         {
             xeroToken = await baseXeroClient.RequestAccessTokenAsync(code);
-            var timeToExpiry = xeroToken.ExpiresAtUtc - DateTime.UtcNow;
+            TimeSpan timeToExpiry = xeroToken.ExpiresAtUtc - DateTime.UtcNow;
 
             xeroCache.Set($"AccessToken_{code}", xeroToken, timeToExpiry);
         }
@@ -92,7 +92,7 @@ public partial class XeroService(ExtendedXeroConfiguration _xeroExtendedConfigur
         if (tokenNotFound || xeroExtendedConfiguration.DisableTokenCaching)
         {
             xeroToken = await baseXeroClient.RequestAccessTokenAsync(code);
-            var timeToExpiry = xeroToken.ExpiresAtUtc - DateTime.UtcNow;
+            TimeSpan timeToExpiry = xeroToken.ExpiresAtUtc - DateTime.UtcNow;
 
             xeroCache.Set($"AccessToken_{code}", xeroToken, timeToExpiry);
         }
@@ -113,7 +113,7 @@ public partial class XeroService(ExtendedXeroConfiguration _xeroExtendedConfigur
         if (tokenNotFound || xeroExtendedConfiguration.DisableTokenCaching)
         {
             xeroToken = await baseXeroClient.RequestClientCredentialsTokenAsync(fetchTenants);
-            var timeToExpiry = xeroToken.ExpiresAtUtc - DateTime.UtcNow;
+            TimeSpan timeToExpiry = xeroToken.ExpiresAtUtc - DateTime.UtcNow;
 
             xeroCache.Set("ClientCredentialsToken", xeroToken, timeToExpiry);
         }

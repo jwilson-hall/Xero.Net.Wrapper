@@ -1656,9 +1656,9 @@ public partial class XeroService : IAccountingApi
     }
 
     public string GetBasePath()
-	{
-		return fileXeroClient.GetBasePath();
-	}
+    {
+        return fileXeroClient.GetBasePath();
+    }
     public async Task<BatchPayments> GetBatchPaymentAsync(Guid batchPaymentID, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));

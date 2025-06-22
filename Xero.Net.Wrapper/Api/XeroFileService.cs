@@ -19,11 +19,20 @@ public partial class XeroService : IFilesApi
         return response.Data;
     }
 
+    public async Task<ApiResponse<Association>> CreateFileAssociationAsyncWithHttpInfo(Guid fileId, Association association, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateFileAssociationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, fileId, association, idempotencyKey, cancellationToken);
+    }
+
     public async Task<ApiResponse<Association>> CreateFileAssociationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, Association association, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Association> response = await fileXeroClient.CreateFileAssociationAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, association, idempotencyKey, cancellationToken);
         return response;
     }
+
     public async Task<Folder> CreateFolderAsync(Folder folder, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -38,11 +47,20 @@ public partial class XeroService : IFilesApi
         return response.Data;
     }
 
+    public async Task<ApiResponse<Folder>> CreateFolderAsyncWithHttpInfo(Folder folder, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateFolderAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, folder, idempotencyKey, cancellationToken);
+    }
+
     public async Task<ApiResponse<Folder>> CreateFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Folder folder, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Folder> response = await fileXeroClient.CreateFolderAsyncWithHttpInfo(accessToken, xeroTenantId, folder, idempotencyKey, cancellationToken);
         return response;
     }
+
     public async Task DeleteFileAssociationAsync(Guid fileId, Guid objectId, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -54,6 +72,14 @@ public partial class XeroService : IFilesApi
     public Task DeleteFileAssociationAsync(string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default)
     {
         return fileXeroClient.DeleteFileAssociationAsync(accessToken, xeroTenantId, fileId, objectId, cancellationToken);
+    }
+
+    public async Task<ApiResponse<object>> DeleteFileAssociationAsyncWithHttpInfo(Guid fileId, Guid objectId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await DeleteFileAssociationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, fileId, objectId, cancellationToken);
     }
 
     public async Task<ApiResponse<object>> DeleteFileAssociationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default)
@@ -74,6 +100,13 @@ public partial class XeroService : IFilesApi
     {
         return fileXeroClient.DeleteFileAsync(accessToken, xeroTenantId, fileId, cancellationToken);
     }
+    public async Task<ApiResponse<object>> DeleteFileAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await DeleteFileAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, fileId, cancellationToken);
+    }
 
     public async Task<ApiResponse<object>> DeleteFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
     {
@@ -92,6 +125,13 @@ public partial class XeroService : IFilesApi
     public Task DeleteFolderAsync(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default)
     {
         return fileXeroClient.DeleteFolderAsync(accessToken, xeroTenantId, folderId, cancellationToken);
+    }
+    public async Task<ApiResponse<object>> DeleteFolderAsyncWithHttpInfo(Guid folderId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await DeleteFolderAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, folderId, cancellationToken);
     }
 
     public async Task<ApiResponse<object>> DeleteFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default)
@@ -113,6 +153,13 @@ public partial class XeroService : IFilesApi
         ApiResponse<List<Association>> response = await GetAssociationsByObjectAsyncWithHttpInfo(accessToken, xeroTenantId, objectId, pagesize, page, sort, direction, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<List<Association>>> GetAssociationsByObjectAsyncWithHttpInfo(Guid objectId, int? pagesize = null, int? page = null, string? sort = null, string? direction = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAssociationsByObjectAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, objectId, pagesize, page, sort, direction, cancellationToken);
+    }
 
     public async Task<ApiResponse<List<Association>>> GetAssociationsByObjectAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid objectId, int? pagesize = null, int? page = null, string? sort = null, string? direction = null, CancellationToken cancellationToken = default)
     {
@@ -131,6 +178,13 @@ public partial class XeroService : IFilesApi
     {
         ApiResponse<object> response = await GetAssociationsCountAsyncWithHttpInfo(accessToken, xeroTenantId, objectIds, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<object>> GetAssociationsCountAsyncWithHttpInfo(List<Guid> objectIds, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAssociationsCountAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, objectIds, cancellationToken);
     }
 
     public async Task<ApiResponse<object>> GetAssociationsCountAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> objectIds, CancellationToken cancellationToken = default)
@@ -152,6 +206,13 @@ public partial class XeroService : IFilesApi
         ApiResponse<List<Association>> response = await GetFileAssociationsAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<List<Association>>> GetFileAssociationsAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFileAssociationsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, fileId, cancellationToken);
+    }
 
     public async Task<ApiResponse<List<Association>>> GetFileAssociationsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
     {
@@ -170,6 +231,13 @@ public partial class XeroService : IFilesApi
     {
         ApiResponse<FileObject> response = await GetFileAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<FileObject>> GetFileAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFileAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, fileId, cancellationToken);
     }
 
     public async Task<ApiResponse<FileObject>> GetFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
@@ -190,6 +258,13 @@ public partial class XeroService : IFilesApi
         ApiResponse<Stream> response = await GetFileContentAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Stream>> GetFileContentAsyncWithHttpInfo(Guid fileId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFileContentAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, fileId, cancellationToken);
+    }
 
     public async Task<ApiResponse<Stream>> GetFileContentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
     {
@@ -208,6 +283,13 @@ public partial class XeroService : IFilesApi
     {
         ApiResponse<Files> response = await GetFilesAsyncWithHttpInfo(accessToken, xeroTenantId, pagesize, page, sort, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<Files>> GetFilesAsyncWithHttpInfo(int? pagesize = null, int? page = null, string? sort = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFilesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, pagesize, page, sort, cancellationToken);
     }
 
     public async Task<ApiResponse<Files>> GetFilesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? pagesize = null, int? page = null, string? sort = null, CancellationToken cancellationToken = default)
@@ -228,6 +310,13 @@ public partial class XeroService : IFilesApi
         ApiResponse<Folder> response = await GetFolderAsyncWithHttpInfo(accessToken, xeroTenantId, folderId, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Folder>> GetFolderAsyncWithHttpInfo(Guid folderId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFolderAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, folderId, cancellationToken);
+    }
 
     public async Task<ApiResponse<Folder>> GetFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default)
     {
@@ -246,6 +335,13 @@ public partial class XeroService : IFilesApi
     {
         ApiResponse<List<Folder>> response = await GetFoldersAsyncWithHttpInfo(accessToken, xeroTenantId, sort, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<List<Folder>>> GetFoldersAsyncWithHttpInfo(string? sort = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFoldersAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, sort, cancellationToken);
     }
 
     public async Task<ApiResponse<List<Folder>>> GetFoldersAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? sort = null, CancellationToken cancellationToken = default)
@@ -266,6 +362,13 @@ public partial class XeroService : IFilesApi
         ApiResponse<Folder> response = await GetInboxAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Folder>> GetInboxAsyncWithHttpInfo(CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetInboxAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, cancellationToken);
+    }
 
     public async Task<ApiResponse<Folder>> GetInboxAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
@@ -284,6 +387,13 @@ public partial class XeroService : IFilesApi
     {
         ApiResponse<FileObject> response = await UpdateFileAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, fileObject, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<FileObject>> UpdateFileAsyncWithHttpInfo(Guid fileId, FileObject fileObject, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateFileAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, fileId, fileObject, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<FileObject>> UpdateFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, FileObject fileObject, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -304,6 +414,13 @@ public partial class XeroService : IFilesApi
         ApiResponse<Folder> response = await UpdateFolderAsyncWithHttpInfo(accessToken, xeroTenantId, folderId, folder, idempotencyKey, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Folder>> UpdateFolderAsyncWithHttpInfo(Guid folderId, Folder folder, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateFolderAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, folderId, folder, idempotencyKey, cancellationToken);
+    }
 
     public async Task<ApiResponse<Folder>> UpdateFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, Folder folder, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -323,6 +440,13 @@ public partial class XeroService : IFilesApi
         ApiResponse<FileObject> response = await UploadFileAsyncWithHttpInfo(accessToken, xeroTenantId, body, name, filename, idempotencyKey, mimeType, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<FileObject>> UploadFileAsyncWithHttpInfo(byte[] body, string name, string filename, string? idempotencyKey = null, string? mimeType = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UploadFileAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, body, name, filename, idempotencyKey, mimeType, cancellationToken);
+    }
 
     public async Task<ApiResponse<FileObject>> UploadFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, byte[] body, string name, string filename, string? idempotencyKey = null, string? mimeType = null, CancellationToken cancellationToken = default)
     {
@@ -341,6 +465,13 @@ public partial class XeroService : IFilesApi
     {
         ApiResponse<FileObject> response = await UploadFileToFolderAsyncWithHttpInfo(accessToken, xeroTenantId, folderId, body, name, filename, idempotencyKey, mimeType, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<FileObject>> UploadFileToFolderAsyncWithHttpInfo(Guid folderId, byte[] body, string name, string filename, string? idempotencyKey = null, string? mimeType = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UploadFileToFolderAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, folderId, body, name, filename, idempotencyKey, mimeType, cancellationToken);
     }
 
     public async Task<ApiResponse<FileObject>> UploadFileToFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, byte[] body, string name, string filename, string? idempotencyKey = null, string? mimeType = null, CancellationToken cancellationToken = default)

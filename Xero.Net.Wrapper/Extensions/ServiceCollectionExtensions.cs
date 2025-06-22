@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Options;
-using Xero.Net.Wrapper;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Xero.Net.Wrapper.Api;
 using Xero.Net.Wrapper.Models;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Config;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Xero.Net.Wrapper.Extensions;
 
 public static class ServiceCollectionExtensions
 {
