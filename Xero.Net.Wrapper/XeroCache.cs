@@ -4,7 +4,7 @@ namespace Xero.Net.Wrapper;
 
 public class XeroCache(IMemoryCache memoryCache)
 {
-    private const string CacheKeyPrefix = "XeroCache_";
+    private const string CacheKeyPrefix = "XeroCache";
     public void Remove(string key)
     {
         memoryCache.Remove(GetPrefixedKey(key));
@@ -31,6 +31,6 @@ public class XeroCache(IMemoryCache memoryCache)
 
     private string GetPrefixedKey(string key)
     {
-        return $"{CacheKeyPrefix}{key}";
+        return $"{CacheKeyPrefix}_{key}";
     }
 }
