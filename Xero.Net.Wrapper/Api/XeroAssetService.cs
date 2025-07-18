@@ -4,22 +4,22 @@ using Xero.NetStandard.OAuth2.Model.Asset;
 
 public partial class XeroService : IAssetApi
 {
-    public Task<Asset> CreateAssetAsync(string accessToken, string xeroTenantId, Asset asset, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<Asset> CreateAssetAsync(string accessToken, string xeroTenantId, Asset asset, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<Asset>> CreateAssetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Asset asset, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<Asset>> CreateAssetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Asset asset, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<AssetType> CreateAssetTypeAsync(string accessToken, string xeroTenantId, AssetType assetType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<AssetType> CreateAssetTypeAsync(string accessToken, string xeroTenantId, AssetType assetType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<AssetType>> CreateAssetTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, AssetType assetType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<AssetType>> CreateAssetTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, AssetType assetType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
@@ -34,12 +34,12 @@ public partial class XeroService : IAssetApi
         throw new NotImplementedException();
     }
 
-    public Task<Assets> GetAssetsAsync(string accessToken, string xeroTenantId, AssetStatusQueryParam status, int? page = null, int? pageSize = null, string orderBy = null, string sortDirection = null, string filterBy = null, CancellationToken cancellationToken = default)
+    public Task<Assets> GetAssetsAsync(string accessToken, string xeroTenantId, AssetStatusQueryParam status, int? page = null, int? pageSize = null, string? orderBy = null, string? sortDirection = null, string? filterBy = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<Assets>> GetAssetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, AssetStatusQueryParam status, int? page = null, int? pageSize = null, string orderBy = null, string sortDirection = null, string filterBy = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<Assets>> GetAssetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, AssetStatusQueryParam status, int? page = null, int? pageSize = null, string? orderBy = null, string? sortDirection = null, string? filterBy = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

@@ -4,182 +4,182 @@ using Xero.NetStandard.OAuth2.Model.PayrollUk;
 
 public partial class XeroService : IPayrollUkApi
 {
-    public Task<BenefitObject> CreateBenefitAsync(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<BenefitObject> CreateBenefitAsync(string accessToken, string xeroTenantId, Benefit benefit, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<BenefitObject>> CreateBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<BenefitObject>> CreateBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Benefit benefit, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<DeductionObject> CreateDeductionAsync(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<DeductionObject> CreateDeductionAsync(string accessToken, string xeroTenantId, Deduction deduction, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Deduction deduction, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EarningsRateObject> CreateEarningsRateAsync(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EarningsRateObject> CreateEarningsRateAsync(string accessToken, string xeroTenantId, EarningsRate earningsRate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, EarningsRate earningsRate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeObject> CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeObject> CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeStatutorySickLeaveObject> CreateEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeStatutorySickLeaveObject> CreateEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeStatutorySickLeaveObject>> CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeStatutorySickLeaveObject>> CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmploymentObject> CreateEmploymentAsync(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmploymentObject> CreateEmploymentAsync(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<LeaveTypeObject> CreateLeaveTypeAsync(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<LeaveTypeObject> CreateLeaveTypeAsync(string accessToken, string xeroTenantId, LeaveType leaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, LeaveType leaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeePayTemplates> CreateMultipleEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeePayTemplates> CreateMultipleEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeePayTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeePayTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<PayRunCalendarObject> CreatePayRunCalendarAsync(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<PayRunCalendarObject> CreatePayRunCalendarAsync(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ReimbursementObject> CreateReimbursementAsync(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ReimbursementObject> CreateReimbursementAsync(string accessToken, string xeroTenantId, Reimbursement reimbursement, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Reimbursement reimbursement, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TimesheetObject> CreateTimesheetAsync(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<TimesheetObject> CreateTimesheetAsync(string accessToken, string xeroTenantId, Timesheet timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Timesheet timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TimesheetLineObject> CreateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<TimesheetLineObject> CreateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
@@ -244,12 +244,12 @@ public partial class XeroService : IPayrollUkApi
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeStatutoryLeaveBalanceObject> GetEmployeeStatutoryLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeStatutoryLeaveBalanceObject> GetEmployeeStatutoryLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, string? leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeStatutoryLeaveBalanceObject>> GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeStatutoryLeaveBalanceObject>> GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, string? leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
@@ -274,72 +274,72 @@ public partial class XeroService : IPayrollUkApi
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeObject> UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeObject> UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<EmployeeOpeningBalancesObject> UpdateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<EmployeeOpeningBalancesObject> UpdateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<EmployeeOpeningBalancesObject>> UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<EmployeeOpeningBalancesObject>> UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<PayRunObject> UpdatePayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<PayRunObject> UpdatePayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<TimesheetLineObject> UpdateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<TimesheetLineObject> UpdateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<TimesheetLineObject>> UpdateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<TimesheetLineObject>> UpdateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

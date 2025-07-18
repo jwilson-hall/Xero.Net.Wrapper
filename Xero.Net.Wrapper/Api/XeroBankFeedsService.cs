@@ -4,32 +4,32 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 
 public partial class XeroService : IBankFeedsApi
 {
-    public Task<FeedConnections> CreateFeedConnectionsAsync(string accessToken, string xeroTenantId, FeedConnections feedConnections, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<FeedConnections> CreateFeedConnectionsAsync(string accessToken, string xeroTenantId, FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<FeedConnections>> CreateFeedConnectionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, FeedConnections feedConnections, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<FeedConnections>> CreateFeedConnectionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Statements> CreateStatementsAsync(string accessToken, string xeroTenantId, Statements statements, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<Statements> CreateStatementsAsync(string accessToken, string xeroTenantId, Statements statements, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<Statements>> CreateStatementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Statements statements, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<Statements>> CreateStatementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Statements statements, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<FeedConnections> DeleteFeedConnectionsAsync(string accessToken, string xeroTenantId, FeedConnections feedConnections, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<FeedConnections> DeleteFeedConnectionsAsync(string accessToken, string xeroTenantId, FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<FeedConnections>> DeleteFeedConnectionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, FeedConnections feedConnections, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<FeedConnections>> DeleteFeedConnectionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
@@ -64,12 +64,12 @@ public partial class XeroService : IBankFeedsApi
         throw new NotImplementedException();
     }
 
-    public Task<Statements> GetStatementsAsync(string accessToken, string xeroTenantId, int? page = null, int? pageSize = null, string xeroApplicationId = null, string xeroUserId = null, CancellationToken cancellationToken = default)
+    public Task<Statements> GetStatementsAsync(string accessToken, string xeroTenantId, int? page = null, int? pageSize = null, string? xeroApplicationId = null, string? xeroUserId = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<Statements>> GetStatementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, int? pageSize = null, string xeroApplicationId = null, string xeroUserId = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<Statements>> GetStatementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, int? pageSize = null, string? xeroApplicationId = null, string? xeroUserId = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

@@ -32,22 +32,22 @@ public partial class XeroService : IAppStoreApi
         throw new NotImplementedException();
     }
 
-    public Task<UsageRecord> PostUsageRecordsAsync(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<UsageRecord> PostUsageRecordsAsync(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<UsageRecord> PutUsageRecordsAsync(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<UsageRecord> PutUsageRecordsAsync(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
+    public Task<ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
