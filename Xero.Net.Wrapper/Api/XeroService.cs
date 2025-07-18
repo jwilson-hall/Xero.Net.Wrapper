@@ -14,7 +14,10 @@ namespace Xero.Net.Wrapper.Api;
 /// <param name="xeroCache"></param>
 /// <param name="baseXeroClient"></param>
 /// <param name="accountingXeroClient"></param>
-public partial class XeroService(ExtendedXeroConfiguration _xeroExtendedConfiguration, XeroConfiguration _xeroConfiguration, XeroCache xeroCache, IXeroClient baseXeroClient, IAccountingApi accountingXeroClient, IAppStoreApi appStoreXeroClient, IAssetApi assetXeroClient, IBankFeedsApi bankFeedXeroClient, IFilesApi fileXeroClient, IFinanceApi financeXeroClient, IIdentityApi identityXeroClient, IPayrollAuApi payrollAuXeroClient, IPayrollNzApi payrollNzXeroClient, IPayrollUkApi payrollUkXeroClient, IProjectApi projectXeroClient) : IXeroClient
+public partial class XeroService(ExtendedXeroConfiguration _xeroExtendedConfiguration, XeroConfiguration _xeroConfiguration, XeroCache xeroCache,
+IXeroClient baseXeroClient, IAccountingApi accountingXeroClient, IAppStoreApi appStoreXeroClient, IAssetApi assetXeroClient,
+IBankFeedsApi bankFeedXeroClient, IFilesApi fileXeroClient, IFinanceApi financeXeroClient, IIdentityApi identityXeroClient,
+IPayrollAuApi payrollAuXeroClient, IPayrollNzApi payrollNzXeroClient, IPayrollUkApi payrollUkXeroClient, IProjectApi projectXeroClient) : IXeroClient
 {
     public XeroConfiguration xeroConfiguration { get; set; } = _xeroConfiguration;
     public ExtendedXeroConfiguration xeroExtendedConfiguration { get; set; } = _xeroExtendedConfiguration;
