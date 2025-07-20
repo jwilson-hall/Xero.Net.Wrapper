@@ -1,7 +1,8 @@
-using System.Security.Principal;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Model.Identity;
+
+namespace Xero.Net.Wrapper.Api;
 
 public partial class XeroService : IIdentityApi
 {

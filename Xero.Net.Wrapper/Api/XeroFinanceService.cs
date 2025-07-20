@@ -2,125 +2,253 @@ using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Model.Finance;
 
+namespace Xero.Net.Wrapper.Api;
+
 public partial class XeroService : IFinanceApi
 {
-    public Task<AccountUsageResponse> GetAccountingActivityAccountUsageAsync(string accessToken, string xeroTenantId, string? startMonth = null, string? endMonth = null, CancellationToken cancellationToken = default)
+    public async Task<AccountUsageResponse> GetAccountingActivityAccountUsageAsync(string? startMonth = null, string? endMonth = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAccountingActivityAccountUsageAsync(accessToken, xeroExtendedConfiguration.TenantId, startMonth, endMonth, cancellationToken);
     }
 
-    public Task<ApiResponse<AccountUsageResponse>> GetAccountingActivityAccountUsageAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? startMonth = null, string? endMonth = null, CancellationToken cancellationToken = default)
+    public async Task<AccountUsageResponse> GetAccountingActivityAccountUsageAsync(string accessToken, string xeroTenantId, string? startMonth = null, string? endMonth = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<AccountUsageResponse> response = await GetAccountingActivityAccountUsageAsyncWithHttpInfo(accessToken, xeroTenantId, startMonth, endMonth, cancellationToken);
+        return response.Data;
     }
 
-    public Task<LockHistoryResponse> GetAccountingActivityLockHistoryAsync(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<AccountUsageResponse>> GetAccountingActivityAccountUsageAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? startMonth = null, string? endMonth = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<AccountUsageResponse> response = await financeXeroClient.GetAccountingActivityAccountUsageAsyncWithHttpInfo(accessToken, xeroTenantId, startMonth, endMonth, cancellationToken);
+        return response;
     }
 
-    public Task<ApiResponse<LockHistoryResponse>> GetAccountingActivityLockHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<LockHistoryResponse> GetAccountingActivityLockHistoryAsync(string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAccountingActivityLockHistoryAsync(accessToken, xeroExtendedConfiguration.TenantId, endDate, cancellationToken);
     }
 
-    public Task<ReportHistoryResponse> GetAccountingActivityReportHistoryAsync(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<LockHistoryResponse> GetAccountingActivityLockHistoryAsync(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<LockHistoryResponse> response = await GetAccountingActivityLockHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, endDate, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ApiResponse<ReportHistoryResponse>> GetAccountingActivityReportHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<LockHistoryResponse>> GetAccountingActivityLockHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<LockHistoryResponse> response = await financeXeroClient.GetAccountingActivityLockHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, endDate, cancellationToken);
+        return response;
     }
 
-    public Task<UserActivitiesResponse> GetAccountingActivityUserActivitiesAsync(string accessToken, string xeroTenantId, string? dataMonth = null, CancellationToken cancellationToken = default)
+    public async Task<ReportHistoryResponse> GetAccountingActivityReportHistoryAsync(string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAccountingActivityReportHistoryAsync(accessToken, xeroExtendedConfiguration.TenantId, endDate, cancellationToken);
     }
 
-    public Task<ApiResponse<UserActivitiesResponse>> GetAccountingActivityUserActivitiesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? dataMonth = null, CancellationToken cancellationToken = default)
+    public async Task<ReportHistoryResponse> GetAccountingActivityReportHistoryAsync(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<ReportHistoryResponse> response = await GetAccountingActivityReportHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, endDate, cancellationToken);
+        return response.Data;
     }
 
-    public Task<BankStatementAccountingResponse> GetBankStatementAccountingAsync(string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<ReportHistoryResponse>> GetAccountingActivityReportHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<ReportHistoryResponse> response = await financeXeroClient.GetAccountingActivityReportHistoryAsyncWithHttpInfo(accessToken, xeroTenantId, endDate, cancellationToken);
+        return response;
     }
 
-    public Task<ApiResponse<BankStatementAccountingResponse>> GetBankStatementAccountingAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default)
+    public async Task<UserActivitiesResponse> GetAccountingActivityUserActivitiesAsync(string? dataMonth = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAccountingActivityUserActivitiesAsync(accessToken, xeroExtendedConfiguration.TenantId, dataMonth, cancellationToken);
     }
 
-    public Task<List<CashValidationResponse>> GetCashValidationAsync(string accessToken, string xeroTenantId, string? balanceDate = null, string? asAtSystemDate = null, string? beginDate = null, CancellationToken cancellationToken = default)
+    public async Task<UserActivitiesResponse> GetAccountingActivityUserActivitiesAsync(string accessToken, string xeroTenantId, string? dataMonth = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<UserActivitiesResponse> response = await GetAccountingActivityUserActivitiesAsyncWithHttpInfo(accessToken, xeroTenantId, dataMonth, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ApiResponse<List<CashValidationResponse>>> GetCashValidationAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? balanceDate = null, string? asAtSystemDate = null, string? beginDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<UserActivitiesResponse>> GetAccountingActivityUserActivitiesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? dataMonth = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<UserActivitiesResponse> response = await financeXeroClient.GetAccountingActivityUserActivitiesAsyncWithHttpInfo(accessToken, xeroTenantId, dataMonth, cancellationToken);
+        return response;
     }
 
-    public Task<BalanceSheetResponse> GetFinancialStatementBalanceSheetAsync(string accessToken, string xeroTenantId, string? balanceDate = null, CancellationToken cancellationToken = default)
+    public async Task<BankStatementAccountingResponse> GetBankStatementAccountingAsync(Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetBankStatementAccountingAsync(accessToken, xeroExtendedConfiguration.TenantId, bankAccountID, fromDate, toDate, summaryOnly, cancellationToken);
     }
 
-    public Task<ApiResponse<BalanceSheetResponse>> GetFinancialStatementBalanceSheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? balanceDate = null, CancellationToken cancellationToken = default)
+    public async Task<BankStatementAccountingResponse> GetBankStatementAccountingAsync(string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<BankStatementAccountingResponse> response = await GetBankStatementAccountingAsyncWithHttpInfo(accessToken, xeroTenantId, bankAccountID, fromDate, toDate, summaryOnly, cancellationToken);
+        return response.Data;
     }
 
-    public Task<CashflowResponse> GetFinancialStatementCashflowAsync(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<BankStatementAccountingResponse>> GetBankStatementAccountingAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<BankStatementAccountingResponse> response = await financeXeroClient.GetBankStatementAccountingAsyncWithHttpInfo(accessToken, xeroTenantId, bankAccountID, fromDate, toDate, summaryOnly, cancellationToken);
+        return response;
     }
 
-    public Task<ApiResponse<CashflowResponse>> GetFinancialStatementCashflowAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<List<CashValidationResponse>> GetCashValidationAsync(string? balanceDate = null, string? asAtSystemDate = null, string? beginDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetCashValidationAsync(accessToken, xeroExtendedConfiguration.TenantId, balanceDate, asAtSystemDate, beginDate, cancellationToken);
     }
 
-    public Task<IncomeByContactResponse> GetFinancialStatementContactsExpenseAsync(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<List<CashValidationResponse>> GetCashValidationAsync(string accessToken, string xeroTenantId, string? balanceDate = null, string? asAtSystemDate = null, string? beginDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<List<CashValidationResponse>> response = await GetCashValidationAsyncWithHttpInfo(accessToken, xeroTenantId, balanceDate, asAtSystemDate, beginDate, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsExpenseAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<List<CashValidationResponse>>> GetCashValidationAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? balanceDate = null, string? asAtSystemDate = null, string? beginDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<List<CashValidationResponse>> response = await financeXeroClient.GetCashValidationAsyncWithHttpInfo(accessToken, xeroTenantId, balanceDate, asAtSystemDate, beginDate, cancellationToken);
+        return response;
+    }
+    public async Task<BalanceSheetResponse> GetFinancialStatementBalanceSheetAsync(string? balanceDate = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFinancialStatementBalanceSheetAsync(accessToken, xeroExtendedConfiguration.TenantId, balanceDate, cancellationToken);
     }
 
-    public Task<IncomeByContactResponse> GetFinancialStatementContactsRevenueAsync(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+
+
+    public async Task<BalanceSheetResponse> GetFinancialStatementBalanceSheetAsync(string accessToken, string xeroTenantId, string? balanceDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<BalanceSheetResponse> response = await GetFinancialStatementBalanceSheetAsyncWithHttpInfo(accessToken, xeroTenantId, balanceDate, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsRevenueAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<BalanceSheetResponse>> GetFinancialStatementBalanceSheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? balanceDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<BalanceSheetResponse> response = await financeXeroClient.GetFinancialStatementBalanceSheetAsyncWithHttpInfo(accessToken, xeroTenantId, balanceDate, cancellationToken);
+        return response;
+    }
+    public async Task<CashflowResponse> GetFinancialStatementCashflowAsync(string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFinancialStatementCashflowAsync(accessToken, xeroExtendedConfiguration.TenantId, startDate, endDate, cancellationToken);
     }
 
-    public Task<ProfitAndLossResponse> GetFinancialStatementProfitAndLossAsync(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+
+
+    public async Task<CashflowResponse> GetFinancialStatementCashflowAsync(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<CashflowResponse> response = await GetFinancialStatementCashflowAsyncWithHttpInfo(accessToken, xeroTenantId, startDate, endDate, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ApiResponse<ProfitAndLossResponse>> GetFinancialStatementProfitAndLossAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<CashflowResponse>> GetFinancialStatementCashflowAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<CashflowResponse> response = await financeXeroClient.GetFinancialStatementCashflowAsyncWithHttpInfo(accessToken, xeroTenantId, startDate, endDate, cancellationToken);
+        return response;
+    }
+    public async Task<IncomeByContactResponse> GetFinancialStatementContactsExpenseAsync(List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFinancialStatementContactsExpenseAsync(accessToken, xeroExtendedConfiguration.TenantId, contactIds, includeManualJournals, startDate, endDate, cancellationToken);
     }
 
-    public Task<TrialBalanceResponse> GetFinancialStatementTrialBalanceAsync(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+
+
+    public async Task<IncomeByContactResponse> GetFinancialStatementContactsExpenseAsync(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<IncomeByContactResponse> response = await GetFinancialStatementContactsExpenseAsyncWithHttpInfo(accessToken, xeroTenantId, contactIds, includeManualJournals, startDate, endDate, cancellationToken);
+        return response.Data;
     }
 
-    public Task<ApiResponse<TrialBalanceResponse>> GetFinancialStatementTrialBalanceAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsExpenseAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<IncomeByContactResponse> response = await financeXeroClient.GetFinancialStatementContactsExpenseAsyncWithHttpInfo(accessToken, xeroTenantId, contactIds, includeManualJournals, startDate, endDate, cancellationToken);
+        return response;
+    }
+    public async Task<IncomeByContactResponse> GetFinancialStatementContactsRevenueAsync(List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFinancialStatementContactsRevenueAsync(accessToken, xeroExtendedConfiguration.TenantId, contactIds, includeManualJournals, startDate, endDate, cancellationToken);
+    }
+
+
+
+    public async Task<IncomeByContactResponse> GetFinancialStatementContactsRevenueAsync(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<IncomeByContactResponse> response = await GetFinancialStatementContactsRevenueAsyncWithHttpInfo(accessToken, xeroTenantId, contactIds, includeManualJournals, startDate, endDate, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsRevenueAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid>? contactIds = null, bool? includeManualJournals = null, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<IncomeByContactResponse> response = await financeXeroClient.GetFinancialStatementContactsRevenueAsyncWithHttpInfo(accessToken, xeroTenantId, contactIds, includeManualJournals, startDate, endDate, cancellationToken);
+        return response;
+    }
+    public async Task<ProfitAndLossResponse> GetFinancialStatementProfitAndLossAsync(string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFinancialStatementProfitAndLossAsync(accessToken, xeroExtendedConfiguration.TenantId, startDate, endDate, cancellationToken);
+    }
+
+
+
+    public async Task<ProfitAndLossResponse> GetFinancialStatementProfitAndLossAsync(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<ProfitAndLossResponse> response = await GetFinancialStatementProfitAndLossAsyncWithHttpInfo(accessToken, xeroTenantId, startDate, endDate, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<ProfitAndLossResponse>> GetFinancialStatementProfitAndLossAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? startDate = null, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<ProfitAndLossResponse> response = await financeXeroClient.GetFinancialStatementProfitAndLossAsyncWithHttpInfo(accessToken, xeroTenantId, startDate, endDate, cancellationToken);
+        return response;
+    }
+    public async Task<TrialBalanceResponse> GetFinancialStatementTrialBalanceAsync(string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFinancialStatementTrialBalanceAsync(accessToken, xeroExtendedConfiguration.TenantId, endDate, cancellationToken);
+    }
+
+
+
+    public async Task<TrialBalanceResponse> GetFinancialStatementTrialBalanceAsync(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<TrialBalanceResponse> response = await GetFinancialStatementTrialBalanceAsyncWithHttpInfo(accessToken, xeroTenantId, endDate, cancellationToken);
+        return response.Data;
+    }
+
+    public async Task<ApiResponse<TrialBalanceResponse>> GetFinancialStatementTrialBalanceAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? endDate = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<TrialBalanceResponse> response = await financeXeroClient.GetFinancialStatementTrialBalanceAsyncWithHttpInfo(accessToken, xeroTenantId, endDate, cancellationToken);
+        return response;
     }
 }
