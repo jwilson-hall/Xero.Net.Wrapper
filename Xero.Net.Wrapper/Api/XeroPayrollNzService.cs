@@ -14,7 +14,6 @@ public partial class XeroService : IPayrollNzApi
         return await ApproveTimesheetAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, idempotencyKey, cancellationToken);
     }
 
-
     public async Task<TimesheetObject> ApproveTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetObject> response = await ApproveTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, idempotencyKey, cancellationToken);
@@ -27,8 +26,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await ApproveTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<TimesheetObject>> ApproveTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -56,8 +53,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateDeductionAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, deduction, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Deduction deduction, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<DeductionObject> response = await payrollNzXeroClient.CreateDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, deduction, idempotencyKey, cancellationToken);
@@ -70,8 +65,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEarningsRateAsync(accessToken, xeroExtendedConfiguration.TenantId, earningsRate, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EarningsRateObject> CreateEarningsRateAsync(string accessToken, string xeroTenantId, EarningsRate earningsRate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -86,39 +79,33 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEarningsRateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, earningsRate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, EarningsRate earningsRate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsRateObject> response = await payrollNzXeroClient.CreateEarningsRateAsyncWithHttpInfo(accessToken, xeroTenantId, earningsRate, idempotencyKey, cancellationToken);
         return response;
     }
-    public async Task<EmployeeObject> CreateEmployeeAsync(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<EmployeeObject> PayrollNzCreateEmployeeAsync(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await CreateEmployeeAsync(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
+        return await PayrollNzCreateEmployeeAsync(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
     }
 
-
-
-    public async Task<EmployeeObject> CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<EmployeeObject> PayrollNzCreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        ApiResponse<EmployeeObject> response = await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
+        ApiResponse<EmployeeObject> response = await PayrollNzCreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
         return response.Data;
     }
-    public async Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<EmployeeObject>> PayrollNzCreateEmployeeAsyncWithHttpInfo(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
+        return await PayrollNzCreateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
     }
 
-
-
-    public async Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<EmployeeObject>> PayrollNzCreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeObject> response = await payrollNzXeroClient.CreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
         return response;
@@ -130,8 +117,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeeEarningsTemplateAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -146,8 +131,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsTemplateObject> response = await payrollNzXeroClient.CreateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
@@ -160,8 +143,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeeLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -176,8 +157,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveObject> response = await payrollNzXeroClient.CreateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
@@ -190,8 +169,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeeLeaveSetupAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeaveSetup, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveSetupObject> CreateEmployeeLeaveSetupAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveSetup employeeLeaveSetup, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -206,8 +183,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeeLeaveSetupAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeaveSetup, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveSetupObject>> CreateEmployeeLeaveSetupAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveSetup employeeLeaveSetup, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveSetupObject> response = await payrollNzXeroClient.CreateEmployeeLeaveSetupAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeaveSetup, idempotencyKey, cancellationToken);
@@ -220,8 +195,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeeLeaveTypeAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -236,8 +209,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeeLeaveTypeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveTypeObject> response = await payrollNzXeroClient.CreateEmployeeLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
@@ -250,8 +221,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeeOpeningBalancesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeOpeningBalance, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EmployeeOpeningBalance> employeeOpeningBalance, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -266,8 +235,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeOpeningBalance, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EmployeeOpeningBalance> employeeOpeningBalance, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeOpeningBalancesObject> response = await payrollNzXeroClient.CreateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeOpeningBalance, idempotencyKey, cancellationToken);
@@ -280,8 +247,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeePaymentMethodAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -296,8 +261,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PaymentMethodObject> response = await payrollNzXeroClient.CreateEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
@@ -310,8 +273,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeeSalaryAndWageAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -326,8 +287,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWageObject> response = await payrollNzXeroClient.CreateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
@@ -340,8 +299,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmployeeWorkingPatternAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeWorkingPatternWithWorkingWeeksRequest, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeWorkingPatternWithWorkingWeeksObject> CreateEmployeeWorkingPatternAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -356,8 +313,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeWorkingPatternWithWorkingWeeksRequest, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject>> CreateEmployeeWorkingPatternAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject> response = await payrollNzXeroClient.CreateEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternWithWorkingWeeksRequest, idempotencyKey, cancellationToken);
@@ -370,8 +325,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateEmploymentAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employment, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmploymentObject> CreateEmploymentAsync(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -386,8 +339,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateEmploymentAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employment, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmploymentObject> response = await payrollNzXeroClient.CreateEmploymentAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employment, idempotencyKey, cancellationToken);
@@ -400,8 +351,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateLeaveTypeAsync(accessToken, xeroExtendedConfiguration.TenantId, leaveType, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<LeaveTypeObject> CreateLeaveTypeAsync(string accessToken, string xeroTenantId, LeaveType leaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -416,8 +365,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateLeaveTypeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveType, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, LeaveType leaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveTypeObject> response = await payrollNzXeroClient.CreateLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, leaveType, idempotencyKey, cancellationToken);
@@ -430,8 +377,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateMultipleEmployeeEarningsTemplateAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeEarningsTemplates> CreateMultipleEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -446,8 +391,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeEarningsTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeEarningsTemplates> response = await payrollNzXeroClient.CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
@@ -460,8 +403,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreatePayRunAsync(accessToken, xeroExtendedConfiguration.TenantId, payRun, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<PayRunObject> CreatePayRunAsync(string accessToken, string xeroTenantId, PayRun payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -476,8 +417,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreatePayRunAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRun, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRunObject>> CreatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRun payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRunObject> response = await payrollNzXeroClient.CreatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRun, idempotencyKey, cancellationToken);
@@ -490,8 +429,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreatePayRunCalendarAsync(accessToken, xeroExtendedConfiguration.TenantId, payRunCalendar, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<PayRunCalendarObject> CreatePayRunCalendarAsync(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -506,8 +443,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreatePayRunCalendarAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRunCalendar, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRunCalendarObject> response = await payrollNzXeroClient.CreatePayRunCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payRunCalendar, idempotencyKey, cancellationToken);
@@ -520,8 +455,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateReimbursementAsync(accessToken, xeroExtendedConfiguration.TenantId, reimbursement, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ReimbursementObject> CreateReimbursementAsync(string accessToken, string xeroTenantId, Reimbursement reimbursement, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -536,8 +469,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateReimbursementAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, reimbursement, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Reimbursement reimbursement, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReimbursementObject> response = await payrollNzXeroClient.CreateReimbursementAsyncWithHttpInfo(accessToken, xeroTenantId, reimbursement, idempotencyKey, cancellationToken);
@@ -550,8 +481,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateSuperannuationAsync(accessToken, xeroExtendedConfiguration.TenantId, benefit, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<SuperannuationObject> CreateSuperannuationAsync(string accessToken, string xeroTenantId, Benefit benefit, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -566,8 +495,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateSuperannuationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, benefit, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<SuperannuationObject>> CreateSuperannuationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Benefit benefit, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SuperannuationObject> response = await payrollNzXeroClient.CreateSuperannuationAsyncWithHttpInfo(accessToken, xeroTenantId, benefit, idempotencyKey, cancellationToken);
@@ -580,8 +507,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateTimesheetAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheet, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TimesheetObject> CreateTimesheetAsync(string accessToken, string xeroTenantId, Timesheet timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -596,8 +521,6 @@ public partial class XeroService : IPayrollNzApi
         return await CreateTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheet, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Timesheet timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetObject> response = await payrollNzXeroClient.CreateTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheet, idempotencyKey, cancellationToken);
@@ -610,8 +533,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await CreateTimesheetLineAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TimesheetLineObject> CreateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -626,14 +547,32 @@ public partial class XeroService : IPayrollNzApi
         return await CreateTimesheetLineAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetLineObject> response = await payrollNzXeroClient.CreateTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
         return response;
     }
     // Explicit interface implementation
+    Task<EmployeeObject> IPayrollNzApiAsync.CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey, CancellationToken cancellationToken)
+    {
+        return PayrollNzCreateEmployeeAsync(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
+    }
+
+    Task<ApiResponse<EmployeeObject>> IPayrollNzApiAsync.CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey, CancellationToken cancellationToken)
+    {
+        return PayrollNzCreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
+    }
+
+    Task<Employees> IPayrollNzApiAsync.GetEmployeesAsync(string accessToken, string xeroTenantId, string? filter, int? page, CancellationToken cancellationToken)
+    {
+        return PayrollNzGetEmployeesAsync(accessToken, xeroTenantId, filter, page, cancellationToken);
+    }
+
+    Task<ApiResponse<Employees>> IPayrollNzApiAsync.GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? filter, int? page, CancellationToken cancellationToken)
+    {
+        return PayrollNzGetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
+    }
+
     Task<EarningsTemplateObject> IPayrollNzApiAsync.DeleteEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken)
     {
         return PayrollNzDeleteEmployeeEarningsTemplateAsync(accessToken, xeroTenantId, employeeID, payTemplateEarningID, cancellationToken);
@@ -679,8 +618,6 @@ public partial class XeroService : IPayrollNzApi
         return await DeleteEmployeeLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, cancellationToken);
     }
 
-
-
     public async Task<EmployeeLeaveObject> DeleteEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveObject> response = await DeleteEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, cancellationToken);
@@ -693,8 +630,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await DeleteEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeeLeaveObject>> DeleteEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
     {
@@ -709,8 +644,6 @@ public partial class XeroService : IPayrollNzApi
         return await DeleteEmployeeSalaryAndWageAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, cancellationToken);
     }
 
-
-
     public async Task<SalaryAndWageObject> DeleteEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWageObject> response = await DeleteEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, cancellationToken);
@@ -723,8 +656,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await DeleteEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<SalaryAndWageObject>> DeleteEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
     {
@@ -739,8 +670,6 @@ public partial class XeroService : IPayrollNzApi
         return await DeleteEmployeeWorkingPatternAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeWorkingPatternID, cancellationToken);
     }
 
-
-
     public async Task<EmployeeLeaveObject> DeleteEmployeeWorkingPatternAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveObject> response = await DeleteEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternID, cancellationToken);
@@ -753,8 +682,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await DeleteEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeWorkingPatternID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeeLeaveObject>> DeleteEmployeeWorkingPatternAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
     {
@@ -769,8 +696,6 @@ public partial class XeroService : IPayrollNzApi
         return await DeleteTimesheetAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, cancellationToken);
     }
 
-
-
     public async Task<TimesheetLine> DeleteTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetLine> response = await DeleteTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, cancellationToken);
@@ -783,8 +708,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await DeleteTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<TimesheetLine>> DeleteTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
     {
@@ -799,8 +722,6 @@ public partial class XeroService : IPayrollNzApi
         return await DeleteTimesheetLineAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLineID, cancellationToken);
     }
 
-
-
     public async Task<TimesheetLine> DeleteTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetLine> response = await DeleteTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLineID, cancellationToken);
@@ -813,8 +734,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await DeleteTimesheetLineAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLineID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<TimesheetLine>> DeleteTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default)
     {
@@ -829,8 +748,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetDeductionAsync(accessToken, xeroExtendedConfiguration.TenantId, deductionId, cancellationToken);
     }
 
-
-
     public async Task<DeductionObject> GetDeductionAsync(string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default)
     {
         ApiResponse<DeductionObject> response = await GetDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, deductionId, cancellationToken);
@@ -843,8 +760,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetDeductionAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, deductionId, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<DeductionObject>> GetDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default)
     {
@@ -859,8 +774,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetDeductionsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<Deductions> GetDeductionsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Deductions> response = await GetDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
@@ -873,8 +786,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetDeductionsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<Deductions>> GetDeductionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -889,8 +800,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEarningsRateAsync(accessToken, xeroExtendedConfiguration.TenantId, earningsRateID, cancellationToken);
     }
 
-
-
     public async Task<EarningsRateObject> GetEarningsRateAsync(string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsRateObject> response = await GetEarningsRateAsyncWithHttpInfo(accessToken, xeroTenantId, earningsRateID, cancellationToken);
@@ -903,8 +812,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEarningsRateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, earningsRateID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EarningsRateObject>> GetEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default)
     {
@@ -919,8 +826,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEarningsRatesAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<EarningsRates> GetEarningsRatesAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsRates> response = await GetEarningsRatesAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
@@ -933,8 +838,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEarningsRatesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EarningsRates>> GetEarningsRatesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -949,8 +852,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeLeaveBalancesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<EmployeeLeaveBalances> GetEmployeeLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveBalances> response = await GetEmployeeLeaveBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -963,8 +864,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeLeaveBalancesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeeLeaveBalances>> GetEmployeeLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -979,8 +878,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeLeavePeriodsAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, startDate, endDate, cancellationToken);
     }
 
-
-
     public async Task<LeavePeriods> GetEmployeeLeavePeriodsAsync(string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeavePeriods> response = await GetEmployeeLeavePeriodsAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, startDate, endDate, cancellationToken);
@@ -993,8 +890,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeLeavePeriodsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, startDate, endDate, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<LeavePeriods>> GetEmployeeLeavePeriodsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
@@ -1009,8 +904,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeLeavesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<EmployeeLeaves> GetEmployeeLeavesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaves> response = await GetEmployeeLeavesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -1023,8 +916,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeLeavesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeeLeaves>> GetEmployeeLeavesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -1039,8 +930,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeLeaveTypesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<EmployeeLeaveTypes> GetEmployeeLeaveTypesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveTypes> response = await GetEmployeeLeaveTypesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -1053,8 +942,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeLeaveTypesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeeLeaveTypes>> GetEmployeeLeaveTypesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -1069,8 +956,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeOpeningBalancesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<EmployeeOpeningBalancesObject> GetEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeOpeningBalancesObject> response = await GetEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -1083,8 +968,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeeOpeningBalancesObject>> GetEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -1099,8 +982,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeePaymentMethodAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<PaymentMethodObject> GetEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<PaymentMethodObject> response = await GetEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -1113,8 +994,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<PaymentMethodObject>> GetEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -1129,8 +1008,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeePayTemplatesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<EmployeePayTemplates> GetEmployeePayTemplatesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeePayTemplates> response = await GetEmployeePayTemplatesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -1143,8 +1020,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeePayTemplatesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeePayTemplates>> GetEmployeePayTemplatesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -1159,8 +1034,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeSalaryAndWageAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, cancellationToken);
     }
 
-
-
     public async Task<SalaryAndWages> GetEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWages> response = await GetEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, cancellationToken);
@@ -1173,8 +1046,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
     {
@@ -1189,8 +1060,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeSalaryAndWagesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, page, cancellationToken);
     }
 
-
-
     public async Task<SalaryAndWages> GetEmployeeSalaryAndWagesAsync(string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWages> response = await GetEmployeeSalaryAndWagesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, page, cancellationToken);
@@ -1204,39 +1073,33 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeSalaryAndWagesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWagesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWages> response = await payrollNzXeroClient.GetEmployeeSalaryAndWagesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, page, cancellationToken);
         return response;
     }
-    public async Task<Employees> GetEmployeesAsync(string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    public async Task<Employees> PayrollNzGetEmployeesAsync(string? filter = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await GetEmployeesAsync(accessToken, xeroExtendedConfiguration.TenantId, filter, page, cancellationToken);
+        return await PayrollNzGetEmployeesAsync(accessToken, xeroExtendedConfiguration.TenantId, filter, page, cancellationToken);
     }
 
-
-
-    public async Task<Employees> GetEmployeesAsync(string accessToken, string xeroTenantId, string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    public async Task<Employees> PayrollNzGetEmployeesAsync(string accessToken, string xeroTenantId, string? filter = null, int? page = null, CancellationToken cancellationToken = default)
     {
-        ApiResponse<Employees> response = await GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
+        ApiResponse<Employees> response = await PayrollNzGetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
         return response.Data;
     }
-    public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Employees>> PayrollNzGetEmployeesAsyncWithHttpInfo(string? filter = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await GetEmployeesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, filter, page, cancellationToken);
+        return await PayrollNzGetEmployeesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, filter, page, cancellationToken);
     }
 
-
-
-    public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Employees>> PayrollNzGetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? filter = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Employees> response = await payrollNzXeroClient.GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
         return response;
@@ -1248,8 +1111,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeTaxAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<EmployeeTaxObject> GetEmployeeTaxAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -1264,8 +1125,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeTaxAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeTaxObject>> GetEmployeeTaxAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeTaxObject> response = await payrollNzXeroClient.GetEmployeeTaxAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -1278,8 +1137,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeWorkingPatternAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeWorkingPatternID, cancellationToken);
     }
-
-
 
     public async Task<EmployeeWorkingPatternWithWorkingWeeksObject> GetEmployeeWorkingPatternAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
     {
@@ -1294,8 +1151,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeWorkingPatternID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject>> GetEmployeeWorkingPatternAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject> response = await payrollNzXeroClient.GetEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternID, cancellationToken);
@@ -1308,8 +1163,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetEmployeeWorkingPatternsAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<EmployeeWorkingPatternsObject> GetEmployeeWorkingPatternsAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -1324,8 +1177,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetEmployeeWorkingPatternsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeWorkingPatternsObject>> GetEmployeeWorkingPatternsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeWorkingPatternsObject> response = await payrollNzXeroClient.GetEmployeeWorkingPatternsAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -1338,8 +1189,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetLeaveTypeAsync(accessToken, xeroExtendedConfiguration.TenantId, leaveTypeID, cancellationToken);
     }
-
-
 
     public async Task<LeaveTypeObject> GetLeaveTypeAsync(string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default)
     {
@@ -1354,8 +1203,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetLeaveTypeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveTypeID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<LeaveTypeObject>> GetLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveTypeObject> response = await payrollNzXeroClient.GetLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, leaveTypeID, cancellationToken);
@@ -1368,8 +1215,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetLeaveTypesAsync(accessToken, xeroExtendedConfiguration.TenantId, page, activeOnly, cancellationToken);
     }
-
-
 
     public async Task<LeaveTypes> GetLeaveTypesAsync(string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default)
     {
@@ -1384,8 +1229,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetLeaveTypesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, activeOnly, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<LeaveTypes>> GetLeaveTypesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveTypes> response = await payrollNzXeroClient.GetLeaveTypesAsyncWithHttpInfo(accessToken, xeroTenantId, page, activeOnly, cancellationToken);
@@ -1398,8 +1241,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetPayRunCalendarAsync(accessToken, xeroExtendedConfiguration.TenantId, payrollCalendarID, cancellationToken);
     }
-
-
 
     public async Task<PayRunCalendarObject> GetPayRunCalendarAsync(string accessToken, string xeroTenantId, Guid payrollCalendarID, CancellationToken cancellationToken = default)
     {
@@ -1414,8 +1255,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetPayRunCalendarAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payrollCalendarID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRunCalendarObject>> GetPayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payrollCalendarID, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRunCalendarObject> response = await payrollNzXeroClient.GetPayRunCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payrollCalendarID, cancellationToken);
@@ -1428,8 +1267,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetPayRunCalendarsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<PayRunCalendars> GetPayRunCalendarsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -1444,8 +1281,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetPayRunCalendarsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRunCalendars>> GetPayRunCalendarsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRunCalendars> response = await payrollNzXeroClient.GetPayRunCalendarsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
@@ -1458,8 +1293,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetPayRunsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, status, cancellationToken);
     }
-
-
 
     public async Task<PayRuns> GetPayRunsAsync(string accessToken, string xeroTenantId, int? page = null, string? status = null, CancellationToken cancellationToken = default)
     {
@@ -1474,8 +1307,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetPayRunsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, status, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRuns>> GetPayRunsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, string? status = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRuns> response = await payrollNzXeroClient.GetPayRunsAsyncWithHttpInfo(accessToken, xeroTenantId, page, status, cancellationToken);
@@ -1488,8 +1319,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetPaySlipAsync(accessToken, xeroExtendedConfiguration.TenantId, paySlipID, cancellationToken);
     }
-
-
 
     public async Task<PaySlipObject> GetPaySlipAsync(string accessToken, string xeroTenantId, Guid paySlipID, CancellationToken cancellationToken = default)
     {
@@ -1504,8 +1333,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetPaySlipAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, paySlipID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PaySlipObject>> GetPaySlipAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid paySlipID, CancellationToken cancellationToken = default)
     {
         ApiResponse<PaySlipObject> response = await payrollNzXeroClient.GetPaySlipAsyncWithHttpInfo(accessToken, xeroTenantId, paySlipID, cancellationToken);
@@ -1518,8 +1345,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetPaySlipsAsync(accessToken, xeroExtendedConfiguration.TenantId, payRunID, page, cancellationToken);
     }
-
-
 
     public async Task<PaySlips> GetPaySlipsAsync(string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -1534,8 +1359,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetPaySlipsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRunID, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PaySlips>> GetPaySlipsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PaySlips> response = await payrollNzXeroClient.GetPaySlipsAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, page, cancellationToken);
@@ -1548,8 +1371,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetReimbursementAsync(accessToken, xeroExtendedConfiguration.TenantId, reimbursementID, cancellationToken);
     }
-
-
 
     public async Task<ReimbursementObject> GetReimbursementAsync(string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default)
     {
@@ -1564,8 +1385,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetReimbursementAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, reimbursementID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<ReimbursementObject>> GetReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReimbursementObject> response = await payrollNzXeroClient.GetReimbursementAsyncWithHttpInfo(accessToken, xeroTenantId, reimbursementID, cancellationToken);
@@ -1578,8 +1397,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetReimbursementsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<Reimbursements> GetReimbursementsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -1594,8 +1411,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetReimbursementsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<Reimbursements>> GetReimbursementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Reimbursements> response = await payrollNzXeroClient.GetReimbursementsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
@@ -1608,8 +1423,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetStatutoryDeductionAsync(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
     }
-
-
 
     public async Task<StatutoryDeductionObject> GetStatutoryDeductionAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
     {
@@ -1624,8 +1437,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetStatutoryDeductionAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<StatutoryDeductionObject>> GetStatutoryDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
     {
         ApiResponse<StatutoryDeductionObject> response = await payrollNzXeroClient.GetStatutoryDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
@@ -1638,8 +1449,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetStatutoryDeductionsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<StatutoryDeductions> GetStatutoryDeductionsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -1654,8 +1463,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetStatutoryDeductionsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<StatutoryDeductions>> GetStatutoryDeductionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<StatutoryDeductions> response = await payrollNzXeroClient.GetStatutoryDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
@@ -1668,8 +1475,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetSuperannuationAsync(accessToken, xeroExtendedConfiguration.TenantId, superannuationID, cancellationToken);
     }
-
-
 
     public async Task<SuperannuationObject> GetSuperannuationAsync(string accessToken, string xeroTenantId, Guid superannuationID, CancellationToken cancellationToken = default)
     {
@@ -1684,8 +1489,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetSuperannuationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, superannuationID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<SuperannuationObject>> GetSuperannuationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid superannuationID, CancellationToken cancellationToken = default)
     {
         ApiResponse<SuperannuationObject> response = await payrollNzXeroClient.GetSuperannuationAsyncWithHttpInfo(accessToken, xeroTenantId, superannuationID, cancellationToken);
@@ -1698,8 +1501,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetSuperannuationsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<Superannuations> GetSuperannuationsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -1714,8 +1515,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetSuperannuationsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<Superannuations>> GetSuperannuationsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Superannuations> response = await payrollNzXeroClient.GetSuperannuationsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
@@ -1728,8 +1527,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetTimesheetsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, filter, status, startDate, endDate, sort, cancellationToken);
     }
-
-
 
     public async Task<Timesheets> GetTimesheetsAsync(string accessToken, string xeroTenantId, int? page = null, string? filter = null, string? status = null, string? startDate = null, string? endDate = null, string? sort = null, CancellationToken cancellationToken = default)
     {
@@ -1744,8 +1541,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetTimesheetsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, filter, status, startDate, endDate, sort, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<Timesheets>> GetTimesheetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, string? filter = null, string? status = null, string? startDate = null, string? endDate = null, string? sort = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Timesheets> response = await payrollNzXeroClient.GetTimesheetsAsyncWithHttpInfo(accessToken, xeroTenantId, page, filter, status, startDate, endDate, sort, cancellationToken);
@@ -1758,8 +1553,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await GetTrackingCategoriesAsync(accessToken, xeroExtendedConfiguration.TenantId, cancellationToken);
     }
-
-
 
     public async Task<TrackingCategories> GetTrackingCategoriesAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
@@ -1774,8 +1567,6 @@ public partial class XeroService : IPayrollNzApi
         return await GetTrackingCategoriesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<TrackingCategories>> GetTrackingCategoriesAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
         ApiResponse<TrackingCategories> response = await payrollNzXeroClient.GetTrackingCategoriesAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
@@ -1788,8 +1579,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await RevertTimesheetAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TimesheetObject> RevertTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1804,8 +1593,6 @@ public partial class XeroService : IPayrollNzApi
         return await RevertTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<TimesheetObject>> RevertTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetObject> response = await payrollNzXeroClient.RevertTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, idempotencyKey, cancellationToken);
@@ -1818,8 +1605,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await UpdateEmployeeAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employee, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeObject> UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1834,8 +1619,6 @@ public partial class XeroService : IPayrollNzApi
         return await UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employee, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeObject> response = await payrollNzXeroClient.UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employee, idempotencyKey, cancellationToken);
@@ -1848,8 +1631,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await UpdateEmployeeEarningsTemplateAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1864,8 +1645,6 @@ public partial class XeroService : IPayrollNzApi
         return await UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsTemplateObject> response = await payrollNzXeroClient.UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
@@ -1878,8 +1657,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await UpdateEmployeeLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1894,8 +1671,6 @@ public partial class XeroService : IPayrollNzApi
         return await UpdateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveObject> response = await payrollNzXeroClient.UpdateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
@@ -1908,8 +1683,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await UpdateEmployeeSalaryAndWageAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1924,8 +1697,6 @@ public partial class XeroService : IPayrollNzApi
         return await UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWageObject> response = await payrollNzXeroClient.UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
@@ -1939,8 +1710,6 @@ public partial class XeroService : IPayrollNzApi
         return await UpdateEmployeeTaxAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeTax, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<EmployeeTaxObject> UpdateEmployeeTaxAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeTax employeeTax, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeTaxObject> response = await UpdateEmployeeTaxAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeTax, idempotencyKey, cancellationToken);
@@ -1953,8 +1722,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await UpdateEmployeeTaxAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeTax, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<EmployeeTaxObject>> UpdateEmployeeTaxAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeTax employeeTax, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1982,8 +1749,6 @@ public partial class XeroService : IPayrollNzApi
         return await UpdatePayRunAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRunID, payRun, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRunObject> response = await payrollNzXeroClient.UpdatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, payRun, idempotencyKey, cancellationToken);
@@ -1996,8 +1761,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await UpdatePaySlipLineItemsAsync(accessToken, xeroExtendedConfiguration.TenantId, paySlipID, paySlip, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<PaySlipObject> UpdatePaySlipLineItemsAsync(string accessToken, string xeroTenantId, Guid paySlipID, PaySlip paySlip, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -2026,8 +1789,6 @@ public partial class XeroService : IPayrollNzApi
 
         return await UpdateTimesheetLineAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLineID, timesheetLine, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TimesheetLineObject> UpdateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {

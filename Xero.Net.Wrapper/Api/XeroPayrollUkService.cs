@@ -14,7 +14,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateBenefitAsync(accessToken, xeroExtendedConfiguration.TenantId, benefit, idempotencyKey, cancellationToken);
     }
 
-
     public async Task<BenefitObject> CreateBenefitAsync(string accessToken, string xeroTenantId, Benefit benefit, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BenefitObject> response = await CreateBenefitAsyncWithHttpInfo(accessToken, xeroTenantId, benefit, idempotencyKey, cancellationToken);
@@ -29,8 +28,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateBenefitAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, benefit, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<BenefitObject>> CreateBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Benefit benefit, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<BenefitObject> response = await payrollUkXeroClient.CreateBenefitAsyncWithHttpInfo(accessToken, xeroTenantId, benefit, idempotencyKey, cancellationToken);
@@ -44,8 +41,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateDeductionAsync(accessToken, xeroExtendedConfiguration.TenantId, deduction, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<DeductionObject> CreateDeductionAsync(string accessToken, string xeroTenantId, Deduction deduction, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<DeductionObject> response = await CreateDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, deduction, idempotencyKey, cancellationToken);
@@ -58,8 +53,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateDeductionAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, deduction, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Deduction deduction, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -87,39 +80,33 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEarningsRateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, earningsRate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, EarningsRate earningsRate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsRateObject> response = await payrollUkXeroClient.CreateEarningsRateAsyncWithHttpInfo(accessToken, xeroTenantId, earningsRate, idempotencyKey, cancellationToken);
         return response;
     }
-    public async Task<EmployeeObject> CreateEmployeeAsync(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<EmployeeObject> PayrollUkCreateEmployeeAsync(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await CreateEmployeeAsync(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
+        return await PayrollUkCreateEmployeeAsync(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
     }
 
-
-
-    public async Task<EmployeeObject> CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<EmployeeObject> PayrollUkCreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        ApiResponse<EmployeeObject> response = await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
+        ApiResponse<EmployeeObject> response = await PayrollUkCreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
         return response.Data;
     }
-    public async Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<EmployeeObject>> PayrollUkCreateEmployeeAsyncWithHttpInfo(Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
+        return await PayrollUkCreateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
     }
 
-
-
-    public async Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<EmployeeObject>> PayrollUkCreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeObject> response = await payrollUkXeroClient.CreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
         return response;
@@ -131,8 +118,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmployeeEarningsTemplateAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -147,8 +132,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsTemplateObject> response = await payrollUkXeroClient.CreateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
@@ -161,8 +144,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmployeeLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -177,8 +158,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveObject> response = await payrollUkXeroClient.CreateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
@@ -191,8 +170,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmployeeLeaveTypeAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -207,8 +184,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmployeeLeaveTypeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveTypeObject> response = await payrollUkXeroClient.CreateEmployeeLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
@@ -221,8 +196,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmployeeOpeningBalancesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeOpeningBalances, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -237,8 +210,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeOpeningBalances, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeOpeningBalancesObject> response = await payrollUkXeroClient.CreateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeOpeningBalances, idempotencyKey, cancellationToken);
@@ -251,8 +222,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmployeePaymentMethodAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -267,8 +236,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PaymentMethodObject> response = await payrollUkXeroClient.CreateEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
@@ -281,8 +248,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmployeeSalaryAndWageAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -297,8 +262,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWageObject> response = await payrollUkXeroClient.CreateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
@@ -311,8 +274,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmployeeStatutorySickLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeStatutorySickLeave, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeStatutorySickLeaveObject> CreateEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -327,8 +288,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeStatutorySickLeave, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeStatutorySickLeaveObject>> CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeStatutorySickLeaveObject> response = await payrollUkXeroClient.CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeStatutorySickLeave, idempotencyKey, cancellationToken);
@@ -341,8 +300,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateEmploymentAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employment, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmploymentObject> CreateEmploymentAsync(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -357,8 +314,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateEmploymentAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employment, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmploymentObject> response = await payrollUkXeroClient.CreateEmploymentAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employment, idempotencyKey, cancellationToken);
@@ -371,8 +326,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateLeaveTypeAsync(accessToken, xeroExtendedConfiguration.TenantId, leaveType, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<LeaveTypeObject> CreateLeaveTypeAsync(string accessToken, string xeroTenantId, LeaveType leaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -387,8 +340,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateLeaveTypeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveType, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, LeaveType leaveType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveTypeObject> response = await payrollUkXeroClient.CreateLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, leaveType, idempotencyKey, cancellationToken);
@@ -401,8 +352,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateMultipleEmployeeEarningsTemplateAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeePayTemplates> CreateMultipleEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -417,8 +366,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeePayTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeePayTemplates> response = await payrollUkXeroClient.CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
@@ -431,8 +378,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreatePayRunCalendarAsync(accessToken, xeroExtendedConfiguration.TenantId, payRunCalendar, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<PayRunCalendarObject> CreatePayRunCalendarAsync(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -447,8 +392,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreatePayRunCalendarAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRunCalendar, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRunCalendarObject> response = await payrollUkXeroClient.CreatePayRunCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payRunCalendar, idempotencyKey, cancellationToken);
@@ -461,8 +404,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateReimbursementAsync(accessToken, xeroExtendedConfiguration.TenantId, reimbursement, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ReimbursementObject> CreateReimbursementAsync(string accessToken, string xeroTenantId, Reimbursement reimbursement, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -477,8 +418,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateReimbursementAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, reimbursement, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Reimbursement reimbursement, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ReimbursementObject> response = await payrollUkXeroClient.CreateReimbursementAsyncWithHttpInfo(accessToken, xeroTenantId, reimbursement, idempotencyKey, cancellationToken);
@@ -491,8 +430,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateTimesheetAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheet, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TimesheetObject> CreateTimesheetAsync(string accessToken, string xeroTenantId, Timesheet timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -507,8 +444,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheet, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Timesheet timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetObject> response = await payrollUkXeroClient.CreateTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheet, idempotencyKey, cancellationToken);
@@ -521,8 +456,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await CreateTimesheetLineAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TimesheetLineObject> CreateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -537,8 +470,6 @@ public partial class XeroService : IPayrollUkApi
         return await CreateTimesheetLineAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetLineObject> response = await payrollUkXeroClient.CreateTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
@@ -551,8 +482,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetBenefitAsync(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
     }
-
-
 
     public async Task<BenefitObject> GetBenefitAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
     {
@@ -567,8 +496,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetBenefitAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<BenefitObject>> GetBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
     {
         ApiResponse<BenefitObject> response = await payrollUkXeroClient.GetBenefitAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
@@ -581,8 +508,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetBenefitsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<Benefits> GetBenefitsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -597,8 +522,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetBenefitsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<Benefits>> GetBenefitsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Benefits> response = await payrollUkXeroClient.GetBenefitsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
@@ -611,8 +534,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetEarningsOrderAsync(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
     }
-
-
 
     public async Task<EarningsOrderObject> GetEarningsOrderAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
     {
@@ -627,8 +548,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetEarningsOrderAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsOrderObject>> GetEarningsOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsOrderObject> response = await payrollUkXeroClient.GetEarningsOrderAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
@@ -641,8 +560,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetEarningsOrdersAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
-
-
 
     public async Task<EarningsOrders> GetEarningsOrdersAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -657,11 +574,65 @@ public partial class XeroService : IPayrollUkApi
         return await GetEarningsOrdersAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsOrders>> GetEarningsOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsOrders> response = await payrollUkXeroClient.GetEarningsOrdersAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+        return response;
+    }
+    
+    public async Task<Employees> PayrollUkGetEmployeesAsync(string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await PayrollUkGetEmployeesAsync(accessToken, xeroExtendedConfiguration.TenantId, filter, page, cancellationToken);
+    }
+
+    public async Task<Employees> PayrollUkGetEmployeesAsync(string accessToken, string xeroTenantId, string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Employees> response = await PayrollUkGetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
+        return response.Data;
+    }
+    
+    public async Task<ApiResponse<Employees>> PayrollUkGetEmployeesAsyncWithHttpInfo(string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await PayrollUkGetEmployeesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, filter, page, cancellationToken);
+    }
+
+    public async Task<ApiResponse<Employees>> PayrollUkGetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? filter = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Employees> response = await payrollUkXeroClient.GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
+        return response;
+    }
+    
+    public async Task<Deductions> PayrollUkGetDeductionsAsync(int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await PayrollUkGetDeductionsAsync(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
+    }
+
+    public async Task<Deductions> PayrollUkGetDeductionsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Deductions> response = await PayrollUkGetDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+        return response.Data;
+    }
+    
+    public async Task<ApiResponse<Deductions>> PayrollUkGetDeductionsAsyncWithHttpInfo(int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await PayrollUkGetDeductionsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, cancellationToken);
+    }
+
+    public async Task<ApiResponse<Deductions>> PayrollUkGetDeductionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<Deductions> response = await payrollUkXeroClient.GetDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
         return response;
     }
     public async Task<EmployeeLeaveObject> GetEmployeeLeaveAsync(Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
@@ -671,8 +642,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetEmployeeLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveObject> GetEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
     {
@@ -687,8 +656,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveObject>> GetEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveObject> response = await payrollUkXeroClient.GetEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, cancellationToken);
@@ -701,8 +668,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetEmployeePayTemplateAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
-
-
 
     public async Task<EmployeePayTemplateObject> GetEmployeePayTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
@@ -717,8 +682,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetEmployeePayTemplateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeePayTemplateObject>> GetEmployeePayTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeePayTemplateObject> response = await payrollUkXeroClient.GetEmployeePayTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
@@ -731,8 +694,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetEmployeeStatutoryLeaveBalancesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveType, asOfDate, cancellationToken);
     }
-
-
 
     public async Task<EmployeeStatutoryLeaveBalanceObject> GetEmployeeStatutoryLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, string? leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
     {
@@ -747,8 +708,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveType, asOfDate, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeStatutoryLeaveBalanceObject>> GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, string? leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeStatutoryLeaveBalanceObject> response = await payrollUkXeroClient.GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveType, asOfDate, cancellationToken);
@@ -761,8 +720,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetEmployeeStatutorySickLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, statutorySickLeaveID, cancellationToken);
     }
-
-
 
     public async Task<EmployeeStatutorySickLeaveObject> GetEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default)
     {
@@ -777,8 +734,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetEmployeeStatutorySickLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, statutorySickLeaveID, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeStatutorySickLeaveObject>> GetEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeStatutorySickLeaveObject> response = await payrollUkXeroClient.GetEmployeeStatutorySickLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, statutorySickLeaveID, cancellationToken);
@@ -791,8 +746,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await GetStatutoryLeaveSummaryAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, activeOnly, cancellationToken);
     }
-
-
 
     public async Task<EmployeeStatutoryLeavesSummaries> GetStatutoryLeaveSummaryAsync(string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default)
     {
@@ -807,8 +760,6 @@ public partial class XeroService : IPayrollUkApi
         return await GetStatutoryLeaveSummaryAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, activeOnly, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeStatutoryLeavesSummaries>> GetStatutoryLeaveSummaryAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeStatutoryLeavesSummaries> response = await payrollUkXeroClient.GetStatutoryLeaveSummaryAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, activeOnly, cancellationToken);
@@ -821,8 +772,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await UpdateEmployeeAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employee, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeObject> UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -837,8 +786,6 @@ public partial class XeroService : IPayrollUkApi
         return await UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employee, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeObject> response = await payrollUkXeroClient.UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employee, idempotencyKey, cancellationToken);
@@ -851,8 +798,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await UpdateEmployeeEarningsTemplateAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -867,8 +812,6 @@ public partial class XeroService : IPayrollUkApi
         return await UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EarningsTemplateObject> response = await payrollUkXeroClient.UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
@@ -881,8 +824,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await UpdateEmployeeLeaveAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -897,8 +838,6 @@ public partial class XeroService : IPayrollUkApi
         return await UpdateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeLeaveObject> response = await payrollUkXeroClient.UpdateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
@@ -911,8 +850,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await UpdateEmployeeOpeningBalancesAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeOpeningBalances, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<EmployeeOpeningBalancesObject> UpdateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -927,8 +864,6 @@ public partial class XeroService : IPayrollUkApi
         return await UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employeeOpeningBalances, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<EmployeeOpeningBalancesObject>> UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<EmployeeOpeningBalancesObject> response = await payrollUkXeroClient.UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeOpeningBalances, idempotencyKey, cancellationToken);
@@ -942,8 +877,6 @@ public partial class XeroService : IPayrollUkApi
         return await UpdateEmployeeSalaryAndWageAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SalaryAndWageObject> response = await UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
@@ -956,8 +889,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -985,8 +916,6 @@ public partial class XeroService : IPayrollUkApi
         return await UpdatePayRunAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRunID, payRun, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRunObject> response = await payrollUkXeroClient.UpdatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, payRun, idempotencyKey, cancellationToken);
@@ -999,8 +928,6 @@ public partial class XeroService : IPayrollUkApi
 
         return await UpdateTimesheetLineAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheetLineID, timesheetLine, idempotencyKey, cancellationToken);
     }
-
-
 
     public async Task<TimesheetLineObject> UpdateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -1019,6 +946,16 @@ public partial class XeroService : IPayrollUkApi
     {
         ApiResponse<TimesheetLineObject> response = await payrollUkXeroClient.UpdateTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLineID, timesheetLine, idempotencyKey, cancellationToken);
         return response;
+    }
+
+    Task<EmployeeObject> IPayrollUkApiAsync.CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey, CancellationToken cancellationToken)
+    {
+        return PayrollUkCreateEmployeeAsync(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
+    }
+
+    Task<ApiResponse<EmployeeObject>> IPayrollUkApiAsync.CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string? idempotencyKey, CancellationToken cancellationToken)
+    {
+        return PayrollUkCreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
     }
 
     Task<TimesheetObject> IPayrollUkApiAsync.ApproveTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey, CancellationToken cancellationToken)
@@ -1129,7 +1066,6 @@ public partial class XeroService : IPayrollUkApi
         return await payrollUkXeroClient.DeleteEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, cancellationToken);
     }
 
-
     Task IPayrollUkApiAsync.DeleteEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken)
     {
         return DeleteEmployeeSalaryAndWageAsync(accessToken, xeroTenantId, employeeID, salaryAndWagesID, cancellationToken);
@@ -1172,12 +1108,12 @@ public partial class XeroService : IPayrollUkApi
 
     Task<Deductions> IPayrollUkApiAsync.GetDeductionsAsync(string accessToken, string xeroTenantId, int? page, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return PayrollUkGetDeductionsAsync(accessToken, xeroTenantId, page, cancellationToken);
     }
 
     Task<ApiResponse<Deductions>> IPayrollUkApiAsync.GetDeductionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return PayrollUkGetDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
     }
 
     Task<EarningsRateObject> IPayrollUkApiAsync.GetEarningsRateAsync(string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken)
@@ -1236,7 +1172,6 @@ public partial class XeroService : IPayrollUkApi
         ApiResponse<EmployeeObject> response = await payrollUkXeroClient.GetEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
         return response;
     }
-
 
     Task<EmployeeLeaveBalances> IPayrollUkApiAsync.GetEmployeeLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken)
     {
@@ -1320,12 +1255,12 @@ public partial class XeroService : IPayrollUkApi
 
     Task<Employees> IPayrollUkApiAsync.GetEmployeesAsync(string accessToken, string xeroTenantId, string filter, int? page, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return PayrollUkGetEmployeesAsync(accessToken, xeroTenantId, filter, page, cancellationToken);
     }
 
     Task<ApiResponse<Employees>> IPayrollUkApiAsync.GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string filter, int? page, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return PayrollUkGetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
     }
 
     Task<EmployeeTaxObject> IPayrollUkApiAsync.GetEmployeeTaxAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken)
@@ -1484,6 +1419,341 @@ public partial class XeroService : IPayrollUkApi
     }
 
     Task<ApiResponse<TimesheetObject>> IPayrollUkApiAsync.RevertTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<BenefitObject> IPayrollUkApiAsync.CreateBenefitAsync(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<BenefitObject>> IPayrollUkApiAsync.CreateBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<DeductionObject> IPayrollUkApiAsync.CreateDeductionAsync(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<DeductionObject>> IPayrollUkApiAsync.CreateDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EarningsRateObject> IPayrollUkApiAsync.CreateEarningsRateAsync(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EarningsRateObject>> IPayrollUkApiAsync.CreateEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EarningsTemplateObject> IPayrollUkApiAsync.CreateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EarningsTemplateObject>> IPayrollUkApiAsync.CreateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeLeaveObject> IPayrollUkApiAsync.CreateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeLeaveObject>> IPayrollUkApiAsync.CreateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeLeaveTypeObject> IPayrollUkApiAsync.CreateEmployeeLeaveTypeAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeLeaveTypeObject>> IPayrollUkApiAsync.CreateEmployeeLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeOpeningBalancesObject> IPayrollUkApiAsync.CreateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeOpeningBalancesObject>> IPayrollUkApiAsync.CreateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<PaymentMethodObject> IPayrollUkApiAsync.CreateEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<PaymentMethodObject>> IPayrollUkApiAsync.CreateEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<SalaryAndWageObject> IPayrollUkApiAsync.CreateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<SalaryAndWageObject>> IPayrollUkApiAsync.CreateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeStatutorySickLeaveObject> IPayrollUkApiAsync.CreateEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeStatutorySickLeaveObject>> IPayrollUkApiAsync.CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmploymentObject> IPayrollUkApiAsync.CreateEmploymentAsync(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmploymentObject>> IPayrollUkApiAsync.CreateEmploymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<LeaveTypeObject> IPayrollUkApiAsync.CreateLeaveTypeAsync(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<LeaveTypeObject>> IPayrollUkApiAsync.CreateLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeePayTemplates> IPayrollUkApiAsync.CreateMultipleEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeePayTemplates>> IPayrollUkApiAsync.CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<PayRunCalendarObject> IPayrollUkApiAsync.CreatePayRunCalendarAsync(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<PayRunCalendarObject>> IPayrollUkApiAsync.CreatePayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ReimbursementObject> IPayrollUkApiAsync.CreateReimbursementAsync(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<ReimbursementObject>> IPayrollUkApiAsync.CreateReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<TimesheetObject> IPayrollUkApiAsync.CreateTimesheetAsync(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<TimesheetObject>> IPayrollUkApiAsync.CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<TimesheetLineObject> IPayrollUkApiAsync.CreateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<TimesheetLineObject>> IPayrollUkApiAsync.CreateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<object>> IPayrollUkApiAsync.DeleteEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<BenefitObject> IPayrollUkApiAsync.GetBenefitAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<BenefitObject>> IPayrollUkApiAsync.GetBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<Benefits> IPayrollUkApiAsync.GetBenefitsAsync(string accessToken, string xeroTenantId, int? page, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<Benefits>> IPayrollUkApiAsync.GetBenefitsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EarningsOrderObject> IPayrollUkApiAsync.GetEarningsOrderAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EarningsOrderObject>> IPayrollUkApiAsync.GetEarningsOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EarningsOrders> IPayrollUkApiAsync.GetEarningsOrdersAsync(string accessToken, string xeroTenantId, int? page, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EarningsOrders>> IPayrollUkApiAsync.GetEarningsOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeLeaveObject> IPayrollUkApiAsync.GetEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeLeaveObject>> IPayrollUkApiAsync.GetEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeePayTemplateObject> IPayrollUkApiAsync.GetEmployeePayTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeePayTemplateObject>> IPayrollUkApiAsync.GetEmployeePayTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeStatutoryLeaveBalanceObject> IPayrollUkApiAsync.GetEmployeeStatutoryLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, string leaveType, DateTime? asOfDate, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeStatutoryLeaveBalanceObject>> IPayrollUkApiAsync.GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, string leaveType, DateTime? asOfDate, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeStatutorySickLeaveObject> IPayrollUkApiAsync.GetEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeStatutorySickLeaveObject>> IPayrollUkApiAsync.GetEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeStatutoryLeavesSummaries> IPayrollUkApiAsync.GetStatutoryLeaveSummaryAsync(string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeStatutoryLeavesSummaries>> IPayrollUkApiAsync.GetStatutoryLeaveSummaryAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeObject> IPayrollUkApiAsync.UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeObject>> IPayrollUkApiAsync.UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EarningsTemplateObject> IPayrollUkApiAsync.UpdateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EarningsTemplateObject>> IPayrollUkApiAsync.UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeLeaveObject> IPayrollUkApiAsync.UpdateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeLeaveObject>> IPayrollUkApiAsync.UpdateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<EmployeeOpeningBalancesObject> IPayrollUkApiAsync.UpdateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<EmployeeOpeningBalancesObject>> IPayrollUkApiAsync.UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<SalaryAndWageObject> IPayrollUkApiAsync.UpdateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<SalaryAndWageObject>> IPayrollUkApiAsync.UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<PayRunObject> IPayrollUkApiAsync.UpdatePayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<PayRunObject>> IPayrollUkApiAsync.UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<TimesheetLineObject> IPayrollUkApiAsync.UpdateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponse<TimesheetLineObject>> IPayrollUkApiAsync.UpdateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

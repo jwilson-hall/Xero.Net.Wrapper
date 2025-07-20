@@ -27,7 +27,6 @@ public partial class XeroService : IProjectApi
         return await CreateProjectAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, projectCreateOrUpdate, idempotencyKey, cancellationToken);
     }
 
-
     public async Task<ApiResponse<Project>> CreateProjectAsyncWithHttpInfo(string accessToken, string xeroTenantId, ProjectCreateOrUpdate projectCreateOrUpdate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Project> response = await projectXeroClient.CreateProjectAsyncWithHttpInfo(accessToken, xeroTenantId, projectCreateOrUpdate, idempotencyKey, cancellationToken);
@@ -63,7 +62,6 @@ public partial class XeroService : IProjectApi
 
         return await CreateTimeEntryAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, projectId, timeEntryCreateOrUpdate, idempotencyKey, cancellationToken);
     }
-
 
     public async Task<ApiResponse<TimeEntry>> CreateTimeEntryAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid projectId, TimeEntryCreateOrUpdate timeEntryCreateOrUpdate, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -182,7 +180,6 @@ public partial class XeroService : IProjectApi
         return await GetProjectUsersAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, pageSize, cancellationToken);
     }
 
-
     public async Task<ApiResponse<ProjectUsers>> GetProjectUsersAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<ProjectUsers> response = await projectXeroClient.GetProjectUsersAsyncWithHttpInfo(accessToken, xeroTenantId, page, pageSize, cancellationToken);
@@ -219,7 +216,6 @@ public partial class XeroService : IProjectApi
         return await GetTasksAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, projectId, page, pageSize, taskIds, chargeType, cancellationToken);
     }
 
-
     public async Task<ApiResponse<Tasks>> GetTasksAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string? taskIds = null, ChargeType? chargeType = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Tasks> response = await projectXeroClient.GetTasksAsyncWithHttpInfo(accessToken, xeroTenantId, projectId, page, pageSize, taskIds, chargeType, cancellationToken);
@@ -246,7 +242,6 @@ public partial class XeroService : IProjectApi
         return await GetTimeEntriesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, projectId, userId, taskId, invoiceId, contactId, page, pageSize, states, isChargeable, dateAfterUtc, dateBeforeUtc, cancellationToken);
     }
 
-
     public async Task<ApiResponse<TimeEntries>> GetTimeEntriesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid projectId, Guid? userId = null, Guid? taskId = null, Guid? invoiceId = null, Guid? contactId = null, int? page = null, int? pageSize = null, List<string>? states = null, bool? isChargeable = null, DateTime? dateAfterUtc = null, DateTime? dateBeforeUtc = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimeEntries> response = await projectXeroClient.GetTimeEntriesAsyncWithHttpInfo(accessToken, xeroTenantId, projectId, userId, taskId, invoiceId, contactId, page, pageSize, states, isChargeable, dateAfterUtc, dateBeforeUtc, cancellationToken);
@@ -272,7 +267,6 @@ public partial class XeroService : IProjectApi
 
         return await GetTimeEntryAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, projectId, timeEntryId, cancellationToken);
     }
-
 
     public async Task<ApiResponse<TimeEntry>> GetTimeEntryAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid projectId, Guid timeEntryId, CancellationToken cancellationToken = default)
     {
