@@ -15,13 +15,20 @@ public partial class XeroService : IAssetApi
     }
 
     public async Task<Asset> CreateAssetAsync(string accessToken, string xeroTenantId, Asset asset, string? idempotencyKey = null, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Asset> response = await CreateAssetAsyncWithHttpInfo(accessToken, xeroTenantId, asset, idempotencyKey, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Asset>> CreateAssetAsyncWithHttpInfo(Asset asset, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateAssetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, asset, idempotencyKey, cancellationToken);
+    }
 
     public async Task<ApiResponse<Asset>> CreateAssetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Asset asset, string? idempotencyKey = null, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Asset> response = await assetXeroClient.CreateAssetAsyncWithHttpInfo(accessToken, xeroTenantId, asset, idempotencyKey, cancellationToken);
         return response;
     }
@@ -35,13 +42,20 @@ public partial class XeroService : IAssetApi
     }
 
     public async Task<AssetType> CreateAssetTypeAsync(string accessToken, string xeroTenantId, AssetType assetType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<AssetType> response = await CreateAssetTypeAsyncWithHttpInfo(accessToken, xeroTenantId, assetType, idempotencyKey, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<AssetType>> CreateAssetTypeAsyncWithHttpInfo(AssetType assetType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateAssetTypeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, assetType, idempotencyKey, cancellationToken);
+    }
 
     public async Task<ApiResponse<AssetType>> CreateAssetTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, AssetType assetType, string? idempotencyKey = null, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<AssetType> response = await assetXeroClient.CreateAssetTypeAsyncWithHttpInfo(accessToken, xeroTenantId, assetType, idempotencyKey, cancellationToken);
         return response;
     }
@@ -55,13 +69,20 @@ public partial class XeroService : IAssetApi
     }
 
     public async Task<Asset> GetAssetByIdAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Asset> response = await GetAssetByIdAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Asset>> GetAssetByIdAsyncWithHttpInfo(Guid id, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAssetByIdAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
+    }
 
     public async Task<ApiResponse<Asset>> GetAssetByIdAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Asset> response = await assetXeroClient.GetAssetByIdAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
         return response;
     }
@@ -75,13 +96,20 @@ public partial class XeroService : IAssetApi
     }
 
     public async Task<Assets> GetAssetsAsync(string accessToken, string xeroTenantId, AssetStatusQueryParam status, int? page = null, int? pageSize = null, string? orderBy = null, string? sortDirection = null, string? filterBy = null, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Assets> response = await GetAssetsAsyncWithHttpInfo(accessToken, xeroTenantId, status, page, pageSize, orderBy, sortDirection, filterBy, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Assets>> GetAssetsAsyncWithHttpInfo(AssetStatusQueryParam status, int? page = null, int? pageSize = null, string? orderBy = null, string? sortDirection = null, string? filterBy = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAssetsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, status, page, pageSize, orderBy, sortDirection, filterBy, cancellationToken);
+    }
 
     public async Task<ApiResponse<Assets>> GetAssetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, AssetStatusQueryParam status, int? page = null, int? pageSize = null, string? orderBy = null, string? sortDirection = null, string? filterBy = null, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Assets> response = await assetXeroClient.GetAssetsAsyncWithHttpInfo(accessToken, xeroTenantId, status, page, pageSize, orderBy, sortDirection, filterBy, cancellationToken);
         return response;
     }
@@ -94,13 +122,20 @@ public partial class XeroService : IAssetApi
     }
 
     public async Task<Setting> GetAssetSettingsAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Setting> response = await GetAssetSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Setting>> GetAssetSettingsAsyncWithHttpInfo(CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAssetSettingsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, cancellationToken);
+    }
 
     public async Task<ApiResponse<Setting>> GetAssetSettingsAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<Setting> response = await assetXeroClient.GetAssetSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response;
     }
@@ -113,13 +148,20 @@ public partial class XeroService : IAssetApi
     }
 
     public async Task<List<AssetType>> GetAssetTypesAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<List<AssetType>> response = await GetAssetTypesAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<List<AssetType>>> GetAssetTypesAsyncWithHttpInfo(CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetAssetTypesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, cancellationToken);
+    }
 
     public async Task<ApiResponse<List<AssetType>>> GetAssetTypesAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
-        {
+    {
         ApiResponse<List<AssetType>> response = await assetXeroClient.GetAssetTypesAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response;
     }

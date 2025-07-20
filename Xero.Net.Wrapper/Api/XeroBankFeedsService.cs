@@ -19,6 +19,13 @@ public partial class XeroService : IBankFeedsApi
         ApiResponse<FeedConnections> response = await CreateFeedConnectionsAsyncWithHttpInfo(accessToken, xeroTenantId, feedConnections, idempotencyKey, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<FeedConnections>> CreateFeedConnectionsAsyncWithHttpInfo(FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateFeedConnectionsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, feedConnections, idempotencyKey, cancellationToken);
+    }
 
     public async Task<ApiResponse<FeedConnections>> CreateFeedConnectionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -34,11 +41,17 @@ public partial class XeroService : IBankFeedsApi
         return await CreateStatementsAsync(accessToken, xeroExtendedConfiguration.TenantId, statements, idempotencyKey, cancellationToken);
     }
 
-
     public async Task<Statements> CreateStatementsAsync(string accessToken, string xeroTenantId, Statements statements, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Statements> response = await CreateStatementsAsyncWithHttpInfo(accessToken, xeroTenantId, statements, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<Statements>> CreateStatementsAsyncWithHttpInfo(Statements statements, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateStatementsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, statements, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<Statements>> CreateStatementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Statements statements, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -60,6 +73,13 @@ public partial class XeroService : IBankFeedsApi
         ApiResponse<FeedConnections> response = await DeleteFeedConnectionsAsyncWithHttpInfo(accessToken, xeroTenantId, feedConnections, idempotencyKey, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<FeedConnections>> DeleteFeedConnectionsAsyncWithHttpInfo(FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await DeleteFeedConnectionsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, feedConnections, idempotencyKey, cancellationToken);
+    }
 
     public async Task<ApiResponse<FeedConnections>> DeleteFeedConnectionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, FeedConnections feedConnections, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -79,6 +99,13 @@ public partial class XeroService : IBankFeedsApi
     {
         ApiResponse<FeedConnection> response = await GetFeedConnectionAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<FeedConnection>> GetFeedConnectionAsyncWithHttpInfo(Guid id, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFeedConnectionAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, id, cancellationToken);
     }
 
     public async Task<ApiResponse<FeedConnection>> GetFeedConnectionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
@@ -100,6 +127,13 @@ public partial class XeroService : IBankFeedsApi
         ApiResponse<FeedConnections> response = await GetFeedConnectionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, pageSize, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<FeedConnections>> GetFeedConnectionsAsyncWithHttpInfo(int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetFeedConnectionsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, pageSize, cancellationToken);
+    }
 
     public async Task<ApiResponse<FeedConnections>> GetFeedConnectionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, int? pageSize = null, CancellationToken cancellationToken = default)
     {
@@ -118,6 +152,13 @@ public partial class XeroService : IBankFeedsApi
     {
         ApiResponse<Statement> response = await GetStatementAsyncWithHttpInfo(accessToken, xeroTenantId, statementId, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<Statement>> GetStatementAsyncWithHttpInfo(Guid statementId, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetStatementAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, statementId, cancellationToken);
     }
 
     public async Task<ApiResponse<Statement>> GetStatementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid statementId, CancellationToken cancellationToken = default)
@@ -138,6 +179,13 @@ public partial class XeroService : IBankFeedsApi
     {
         ApiResponse<Statements> response = await GetStatementsAsyncWithHttpInfo(accessToken, xeroTenantId, page, pageSize, xeroApplicationId, xeroUserId, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<Statements>> GetStatementsAsyncWithHttpInfo(int? page = null, int? pageSize = null, string? xeroApplicationId = null, string? xeroUserId = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetStatementsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, page, pageSize, xeroApplicationId, xeroUserId, cancellationToken);
     }
 
     public async Task<ApiResponse<Statements>> GetStatementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, int? pageSize = null, string? xeroApplicationId = null, string? xeroUserId = null, CancellationToken cancellationToken = default)

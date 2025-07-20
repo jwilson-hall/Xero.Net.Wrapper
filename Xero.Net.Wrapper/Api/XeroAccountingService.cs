@@ -5,9 +5,6 @@ using Xero.NetStandard.OAuth2.Model.Accounting;
 namespace Xero.Net.Wrapper.Api;
 public partial class XeroService : IAccountingApi
 {
-    public IReadableConfiguration Configuration { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public ExceptionFactory ExceptionFactory { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
     public async Task<Accounts> CreateAccountAsync(Account account, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -1799,10 +1796,19 @@ public partial class XeroService : IAccountingApi
         return response;
     }
 
-    public Task EmailInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, RequestEmpty requestEmpty, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task EmailInvoiceAsync(Guid invoiceID, RequestEmpty requestEmpty, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        await EmailInvoiceAsync(accessToken, xeroExtendedConfiguration.TenantId, invoiceID, requestEmpty, idempotencyKey, cancellationToken);
     }
+
+    public async Task EmailInvoiceAsync(string accessToken, string xeroTenantId, Guid invoiceID, RequestEmpty requestEmpty, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ApiResponse<object> response = await EmailInvoiceAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, requestEmpty, idempotencyKey, cancellationToken);
+    }
+
     public async Task<ApiResponse<object>> EmailInvoiceAsyncWithHttpInfo(Guid invoiceID, RequestEmpty requestEmpty, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -1811,10 +1817,12 @@ public partial class XeroService : IAccountingApi
         return await EmailInvoiceAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, invoiceID, requestEmpty, idempotencyKey, cancellationToken);
     }
 
-    public Task<ApiResponse<object>> EmailInvoiceAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, RequestEmpty requestEmpty, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<object>> EmailInvoiceAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid invoiceID, RequestEmpty requestEmpty, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        ApiResponse<object> response = await accountingXeroClient.EmailInvoiceAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, requestEmpty, idempotencyKey, cancellationToken);
+        return response;
     }
+
     public async Task<Accounts> GetAccountAsync(Guid accountID, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));

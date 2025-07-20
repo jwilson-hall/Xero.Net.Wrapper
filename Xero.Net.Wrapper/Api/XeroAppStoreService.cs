@@ -19,6 +19,12 @@ public partial class XeroService : IAppStoreApi
         ApiResponse<Subscription> response = await GetSubscriptionAsyncWithHttpInfo(accessToken, subscriptionId, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Subscription>> GetSubscriptionAsyncWithHttpInfo(Guid subscriptionId, CancellationToken cancellationToken = default)
+    {
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetSubscriptionAsyncWithHttpInfo(subscriptionId, cancellationToken);
+    }
 
     public async Task<ApiResponse<Subscription>> GetSubscriptionAsyncWithHttpInfo(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default)
     {
@@ -37,6 +43,12 @@ public partial class XeroService : IAppStoreApi
     {
         ApiResponse<UsageRecordsList> response = await GetUsageRecordsAsyncWithHttpInfo(accessToken, subscriptionId, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<UsageRecordsList>> GetUsageRecordsAsyncWithHttpInfo(Guid subscriptionId, CancellationToken cancellationToken = default)
+    {
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetUsageRecordsAsyncWithHttpInfo(accessToken, subscriptionId, cancellationToken);
     }
 
     public async Task<ApiResponse<UsageRecordsList>> GetUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default)
@@ -59,6 +71,14 @@ public partial class XeroService : IAppStoreApi
         return response.Data;
     }
 
+    public async Task<ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo(Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await PostUsageRecordsAsyncWithHttpInfo(subscriptionItemId, createUsageRecord, idempotencyKey, cancellationToken);
+    }
+
     public async Task<ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<UsageRecord> response = await appStoreXeroClient.PostUsageRecordsAsyncWithHttpInfo(accessToken, subscriptionId, subscriptionItemId, createUsageRecord, idempotencyKey, cancellationToken);
@@ -77,6 +97,13 @@ public partial class XeroService : IAppStoreApi
     {
         ApiResponse<UsageRecord> response = await PutUsageRecordsAsyncWithHttpInfo(accessToken, subscriptionId, subscriptionItemId, usageRecordId, updateUsageRecord, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo(Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await PutUsageRecordsAsyncWithHttpInfo(subscriptionItemId, usageRecordId, updateUsageRecord, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string? idempotencyKey = null, CancellationToken cancellationToken = default)

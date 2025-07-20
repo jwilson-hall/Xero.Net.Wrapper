@@ -20,6 +20,14 @@ public partial class XeroService : IPayrollAuApi
         return response.Data;
     }
 
+    public async Task<ApiResponse<LeaveApplications>> ApproveLeaveApplicationAsyncWithHttpInfo(Guid leaveApplicationID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await ApproveLeaveApplicationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveApplicationID, idempotencyKey, cancellationToken);
+    }
+
     public async Task<ApiResponse<LeaveApplications>> ApproveLeaveApplicationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid leaveApplicationID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await payrollAuXeroClient.ApproveLeaveApplicationAsyncWithHttpInfo(accessToken, xeroTenantId, leaveApplicationID, idempotencyKey, cancellationToken);
@@ -38,6 +46,14 @@ public partial class XeroService : IPayrollAuApi
     {
         ApiResponse<Employees> response = await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<Employees>> CreateEmployeeAsyncWithHttpInfo(List<Employee> employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employee, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<Employees>> CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Employee> employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -60,6 +76,14 @@ public partial class XeroService : IPayrollAuApi
         return response.Data;
     }
 
+    public async Task<ApiResponse<LeaveApplications>> CreateLeaveApplicationAsyncWithHttpInfo(List<LeaveApplication> leaveApplication, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateLeaveApplicationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveApplication, idempotencyKey, cancellationToken);
+    }
+
     public async Task<ApiResponse<LeaveApplications>> CreateLeaveApplicationAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<LeaveApplication> leaveApplication, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await payrollAuXeroClient.CreateLeaveApplicationAsyncWithHttpInfo(accessToken, xeroTenantId, leaveApplication, idempotencyKey, cancellationToken);
@@ -78,6 +102,13 @@ public partial class XeroService : IPayrollAuApi
     {
         ApiResponse<PayItems> response = await CreatePayItemAsyncWithHttpInfo(accessToken, xeroTenantId, payItem, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<PayItems>> CreatePayItemAsyncWithHttpInfo(PayItem payItem, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreatePayItemAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payItem, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<PayItems>> CreatePayItemAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayItem payItem, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -98,6 +129,13 @@ public partial class XeroService : IPayrollAuApi
     {
         ApiResponse<PayrollCalendars> response = await CreatePayrollCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payrollCalendar, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<PayrollCalendars>> CreatePayrollCalendarAsyncWithHttpInfo(List<PayrollCalendar> payrollCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreatePayrollCalendarAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payrollCalendar, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<PayrollCalendars>> CreatePayrollCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<PayrollCalendar> payrollCalendar, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -121,6 +159,13 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<PayRuns> response = await CreatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRun, idempotencyKey, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<PayRuns>> CreatePayRunAsyncWithHttpInfo(List<PayRun> payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreatePayRunAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRun, idempotencyKey, cancellationToken);
+    }
 
     public async Task<ApiResponse<PayRuns>> CreatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<PayRun> payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -142,6 +187,13 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<SuperFunds> response = await CreateSuperfundAsyncWithHttpInfo(accessToken, xeroTenantId, superFund, idempotencyKey, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<SuperFunds>> CreateSuperfundAsyncWithHttpInfo(List<SuperFund> superFund, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateSuperfundAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, superFund, idempotencyKey, cancellationToken);
+    }
 
     public async Task<ApiResponse<SuperFunds>> CreateSuperfundAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<SuperFund> superFund, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
@@ -160,6 +212,13 @@ public partial class XeroService : IPayrollAuApi
     {
         ApiResponse<Timesheets> response = await CreateTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheet, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<Timesheets>> CreateTimesheetAsyncWithHttpInfo(List<Timesheet> timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await CreateTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheet, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<Timesheets>> CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Timesheet> timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -218,6 +277,13 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<Employees> response = await GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetEmployeesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
+    }
 
     public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -232,12 +298,17 @@ public partial class XeroService : IPayrollAuApi
         return await GetLeaveApplicationAsync(accessToken, xeroExtendedConfiguration.TenantId, leaveApplicationID, cancellationToken);
     }
 
-
-
     public async Task<LeaveApplications> GetLeaveApplicationAsync(string accessToken, string xeroTenantId, Guid leaveApplicationID, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await GetLeaveApplicationAsyncWithHttpInfo(accessToken, xeroTenantId, leaveApplicationID, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<LeaveApplications>> GetLeaveApplicationAsyncWithHttpInfo(Guid leaveApplicationID, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetLeaveApplicationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveApplicationID, cancellationToken);
     }
 
     public async Task<ApiResponse<LeaveApplications>> GetLeaveApplicationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid leaveApplicationID, CancellationToken cancellationToken = default)
@@ -253,12 +324,17 @@ public partial class XeroService : IPayrollAuApi
         return await GetLeaveApplicationsAsync(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
-
-
     public async Task<LeaveApplications> GetLeaveApplicationsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await GetLeaveApplicationsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<LeaveApplications>> GetLeaveApplicationsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetLeaveApplicationsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
     public async Task<ApiResponse<LeaveApplications>> GetLeaveApplicationsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
@@ -274,12 +350,17 @@ public partial class XeroService : IPayrollAuApi
         return await GetLeaveApplicationsV2Async(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
-
-
     public async Task<LeaveApplications> GetLeaveApplicationsV2Async(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await GetLeaveApplicationsV2AsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<LeaveApplications>> GetLeaveApplicationsV2AsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetLeaveApplicationsV2AsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
     public async Task<ApiResponse<LeaveApplications>> GetLeaveApplicationsV2AsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
@@ -302,6 +383,13 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<PayItems> response = await GetPayItemsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response.Data;
     }
+    public async Task<ApiResponse<PayItems>> GetPayItemsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPayItemsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
+    }
 
     public async Task<ApiResponse<PayItems>> GetPayItemsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
@@ -316,12 +404,17 @@ public partial class XeroService : IPayrollAuApi
         return await GetPayrollCalendarAsync(accessToken, xeroExtendedConfiguration.TenantId, payrollCalendarID, cancellationToken);
     }
 
-
-
     public async Task<PayrollCalendars> GetPayrollCalendarAsync(string accessToken, string xeroTenantId, Guid payrollCalendarID, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayrollCalendars> response = await GetPayrollCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payrollCalendarID, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<PayrollCalendars>> GetPayrollCalendarAsyncWithHttpInfo(Guid payrollCalendarID, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPayrollCalendarAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payrollCalendarID, cancellationToken);
     }
 
     public async Task<ApiResponse<PayrollCalendars>> GetPayrollCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payrollCalendarID, CancellationToken cancellationToken = default)
@@ -337,12 +430,18 @@ public partial class XeroService : IPayrollAuApi
         return await GetPayrollCalendarsAsync(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
-
-
     public async Task<PayrollCalendars> GetPayrollCalendarsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayrollCalendars> response = await GetPayrollCalendarsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<PayrollCalendars>> GetPayrollCalendarsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPayrollCalendarsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
     public async Task<ApiResponse<PayrollCalendars>> GetPayrollCalendarsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
@@ -350,6 +449,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<PayrollCalendars> response = await payrollAuXeroClient.GetPayrollCalendarsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response;
     }
+
     public async Task<PayRuns> GetPayRunAsync(Guid payRunID, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -358,12 +458,18 @@ public partial class XeroService : IPayrollAuApi
         return await GetPayRunAsync(accessToken, xeroExtendedConfiguration.TenantId, payRunID, cancellationToken);
     }
 
-
-
     public async Task<PayRuns> GetPayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRuns> response = await GetPayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<PayRuns>> GetPayRunAsyncWithHttpInfo(Guid payRunID, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPayRunAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRunID, cancellationToken);
     }
 
     public async Task<ApiResponse<PayRuns>> GetPayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default)
@@ -371,6 +477,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<PayRuns> response = await payrollAuXeroClient.GetPayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, cancellationToken);
         return response;
     }
+
     public async Task<PayRuns> GetPayRunsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -379,12 +486,17 @@ public partial class XeroService : IPayrollAuApi
         return await GetPayRunsAsync(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
-
-
     public async Task<PayRuns> GetPayRunsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRuns> response = await GetPayRunsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<PayRuns>> GetPayRunsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPayRunsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
     public async Task<ApiResponse<PayRuns>> GetPayRunsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
@@ -392,6 +504,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<PayRuns> response = await payrollAuXeroClient.GetPayRunsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response;
     }
+
     public async Task<PayslipObject> GetPayslipAsync(Guid payslipID, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -399,13 +512,17 @@ public partial class XeroService : IPayrollAuApi
 
         return await GetPayslipAsync(accessToken, xeroExtendedConfiguration.TenantId, payslipID, cancellationToken);
     }
-
-
-
     public async Task<PayslipObject> GetPayslipAsync(string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayslipObject> response = await GetPayslipAsyncWithHttpInfo(accessToken, xeroTenantId, payslipID, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<PayslipObject>> GetPayslipAsyncWithHttpInfo(Guid payslipID, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetPayslipAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payslipID, cancellationToken);
     }
 
     public async Task<ApiResponse<PayslipObject>> GetPayslipAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default)
@@ -413,6 +530,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<PayslipObject> response = await payrollAuXeroClient.GetPayslipAsyncWithHttpInfo(accessToken, xeroTenantId, payslipID, cancellationToken);
         return response;
     }
+
     public async Task<SettingsObject> GetSettingsAsync(CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -421,12 +539,18 @@ public partial class XeroService : IPayrollAuApi
         return await GetSettingsAsync(accessToken, xeroExtendedConfiguration.TenantId, cancellationToken);
     }
 
-
-
     public async Task<SettingsObject> GetSettingsAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
     {
         ApiResponse<SettingsObject> response = await GetSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<SettingsObject>> GetSettingsAsyncWithHttpInfo(CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetSettingsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, cancellationToken);
     }
 
     public async Task<ApiResponse<SettingsObject>> GetSettingsAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
@@ -434,6 +558,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<SettingsObject> response = await payrollAuXeroClient.GetSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
         return response;
     }
+
     public async Task<SuperFunds> GetSuperfundAsync(Guid superFundID, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -442,12 +567,18 @@ public partial class XeroService : IPayrollAuApi
         return await GetSuperfundAsync(accessToken, xeroExtendedConfiguration.TenantId, superFundID, cancellationToken);
     }
 
-
-
     public async Task<SuperFunds> GetSuperfundAsync(string accessToken, string xeroTenantId, Guid superFundID, CancellationToken cancellationToken = default)
     {
         ApiResponse<SuperFunds> response = await GetSuperfundAsyncWithHttpInfo(accessToken, xeroTenantId, superFundID, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<SuperFunds>> GetSuperfundAsyncWithHttpInfo(Guid superFundID, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetSuperfundAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, superFundID, cancellationToken);
     }
 
     public async Task<ApiResponse<SuperFunds>> GetSuperfundAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid superFundID, CancellationToken cancellationToken = default)
@@ -455,6 +586,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<SuperFunds> response = await payrollAuXeroClient.GetSuperfundAsyncWithHttpInfo(accessToken, xeroTenantId, superFundID, cancellationToken);
         return response;
     }
+
     public async Task<SuperFundProducts> GetSuperfundProductsAsync(string? ABN = null, string? USI = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -463,12 +595,17 @@ public partial class XeroService : IPayrollAuApi
         return await GetSuperfundProductsAsync(accessToken, xeroExtendedConfiguration.TenantId, ABN, USI, cancellationToken);
     }
 
-
-
     public async Task<SuperFundProducts> GetSuperfundProductsAsync(string accessToken, string xeroTenantId, string? ABN = null, string? USI = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SuperFundProducts> response = await GetSuperfundProductsAsyncWithHttpInfo(accessToken, xeroTenantId, ABN, USI, cancellationToken);
         return response.Data;
+    }
+    public async Task<ApiResponse<SuperFundProducts>> GetSuperfundProductsAsyncWithHttpInfo(string? ABN = null, string? USI = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetSuperfundProductsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ABN, USI, cancellationToken);
     }
 
     public async Task<ApiResponse<SuperFundProducts>> GetSuperfundProductsAsyncWithHttpInfo(string accessToken, string xeroTenantId, string? ABN = null, string? USI = null, CancellationToken cancellationToken = default)
@@ -476,6 +613,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<SuperFundProducts> response = await payrollAuXeroClient.GetSuperfundProductsAsyncWithHttpInfo(accessToken, xeroTenantId, ABN, USI, cancellationToken);
         return response;
     }
+
     public async Task<SuperFunds> GetSuperfundsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -484,12 +622,18 @@ public partial class XeroService : IPayrollAuApi
         return await GetSuperfundsAsync(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
-
-
     public async Task<SuperFunds> GetSuperfundsAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SuperFunds> response = await GetSuperfundsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<SuperFunds>> GetSuperfundsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetSuperfundsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
     }
 
     public async Task<ApiResponse<SuperFunds>> GetSuperfundsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
@@ -505,12 +649,18 @@ public partial class XeroService : IPayrollAuApi
         return await GetTimesheetAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, cancellationToken);
     }
 
-
-
     public async Task<TimesheetObject> GetTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
     {
         ApiResponse<TimesheetObject> response = await GetTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<TimesheetObject>> GetTimesheetAsyncWithHttpInfo(Guid timesheetID, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, cancellationToken);
     }
 
     public async Task<ApiResponse<TimesheetObject>> GetTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
@@ -518,6 +668,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<TimesheetObject> response = await payrollAuXeroClient.GetTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, cancellationToken);
         return response;
     }
+
     public async Task<Timesheets> GetTimesheetsAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -532,11 +683,20 @@ public partial class XeroService : IPayrollAuApi
         return response.Data;
     }
 
+    public async Task<ApiResponse<Timesheets>> GetTimesheetsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await GetTimesheetsAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, page, cancellationToken);
+    }
+
     public async Task<ApiResponse<Timesheets>> GetTimesheetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, int? page = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Timesheets> response = await payrollAuXeroClient.GetTimesheetsAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, page, cancellationToken);
         return response;
     }
+
     public async Task<LeaveApplications> RejectLeaveApplicationAsync(Guid leaveApplicationID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -545,12 +705,18 @@ public partial class XeroService : IPayrollAuApi
         return await RejectLeaveApplicationAsync(accessToken, xeroExtendedConfiguration.TenantId, leaveApplicationID, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<LeaveApplications> RejectLeaveApplicationAsync(string accessToken, string xeroTenantId, Guid leaveApplicationID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await RejectLeaveApplicationAsyncWithHttpInfo(accessToken, xeroTenantId, leaveApplicationID, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<LeaveApplications>> RejectLeaveApplicationAsyncWithHttpInfo(Guid leaveApplicationID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await RejectLeaveApplicationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveApplicationID, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<LeaveApplications>> RejectLeaveApplicationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid leaveApplicationID, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -566,12 +732,18 @@ public partial class XeroService : IPayrollAuApi
         return await UpdateEmployeeAsync(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employee, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Employees> UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, List<Employee> employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Employees> response = await UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employee, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<Employees>> UpdateEmployeeAsyncWithHttpInfo(Guid employeeID, List<Employee> employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, employeeID, employee, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<Employees>> UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<Employee> employee, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -579,6 +751,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<Employees> response = await payrollAuXeroClient.UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employee, idempotencyKey, cancellationToken);
         return response;
     }
+
     public async Task<LeaveApplications> UpdateLeaveApplicationAsync(Guid leaveApplicationID, List<LeaveApplication> leaveApplication, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -587,19 +760,27 @@ public partial class XeroService : IPayrollAuApi
         return await UpdateLeaveApplicationAsync(accessToken, xeroExtendedConfiguration.TenantId, leaveApplicationID, leaveApplication, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<LeaveApplications> UpdateLeaveApplicationAsync(string accessToken, string xeroTenantId, Guid leaveApplicationID, List<LeaveApplication> leaveApplication, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await UpdateLeaveApplicationAsyncWithHttpInfo(accessToken, xeroTenantId, leaveApplicationID, leaveApplication, idempotencyKey, cancellationToken);
         return response.Data;
     }
 
+    public async Task<ApiResponse<LeaveApplications>> UpdateLeaveApplicationAsyncWithHttpInfo(Guid leaveApplicationID, List<LeaveApplication> leaveApplication, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateLeaveApplicationAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, leaveApplicationID, leaveApplication, idempotencyKey, cancellationToken);
+    }
+
+
     public async Task<ApiResponse<LeaveApplications>> UpdateLeaveApplicationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid leaveApplicationID, List<LeaveApplication> leaveApplication, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<LeaveApplications> response = await payrollAuXeroClient.UpdateLeaveApplicationAsyncWithHttpInfo(accessToken, xeroTenantId, leaveApplicationID, leaveApplication, idempotencyKey, cancellationToken);
         return response;
     }
+
     public async Task<PayRuns> UpdatePayRunAsync(Guid payRunID, List<PayRun> payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -608,12 +789,18 @@ public partial class XeroService : IPayrollAuApi
         return await UpdatePayRunAsync(accessToken, xeroExtendedConfiguration.TenantId, payRunID, payRun, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<PayRuns> UpdatePayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, List<PayRun> payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<PayRuns> response = await UpdatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, payRun, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<PayRuns>> UpdatePayRunAsyncWithHttpInfo(Guid payRunID, List<PayRun> payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdatePayRunAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payRunID, payRun, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<PayRuns>> UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, List<PayRun> payRun, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -629,12 +816,18 @@ public partial class XeroService : IPayrollAuApi
         return await UpdatePayslipAsync(accessToken, xeroExtendedConfiguration.TenantId, payslipID, payslipLines, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Payslips> UpdatePayslipAsync(string accessToken, string xeroTenantId, Guid payslipID, List<PayslipLines> payslipLines, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Payslips> response = await UpdatePayslipAsyncWithHttpInfo(accessToken, xeroTenantId, payslipID, payslipLines, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<Payslips>> UpdatePayslipAsyncWithHttpInfo(Guid payslipID, List<PayslipLines> payslipLines, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdatePayslipAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, payslipID, payslipLines, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<Payslips>> UpdatePayslipAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payslipID, List<PayslipLines> payslipLines, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -642,6 +835,7 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<Payslips> response = await payrollAuXeroClient.UpdatePayslipAsyncWithHttpInfo(accessToken, xeroTenantId, payslipID, payslipLines, idempotencyKey, cancellationToken);
         return response;
     }
+
     public async Task<SuperFunds> UpdateSuperfundAsync(Guid superFundID, List<SuperFund> superFund, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
@@ -650,12 +844,18 @@ public partial class XeroService : IPayrollAuApi
         return await UpdateSuperfundAsync(accessToken, xeroExtendedConfiguration.TenantId, superFundID, superFund, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<SuperFunds> UpdateSuperfundAsync(string accessToken, string xeroTenantId, Guid superFundID, List<SuperFund> superFund, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<SuperFunds> response = await UpdateSuperfundAsyncWithHttpInfo(accessToken, xeroTenantId, superFundID, superFund, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<SuperFunds>> UpdateSuperfundAsyncWithHttpInfo(Guid superFundID, List<SuperFund> superFund, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateSuperfundAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, superFundID, superFund, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<SuperFunds>> UpdateSuperfundAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid superFundID, List<SuperFund> superFund, string? idempotencyKey = null, CancellationToken cancellationToken = default)
@@ -671,12 +871,18 @@ public partial class XeroService : IPayrollAuApi
         return await UpdateTimesheetAsync(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheet, idempotencyKey, cancellationToken);
     }
 
-
-
     public async Task<Timesheets> UpdateTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, List<Timesheet> timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Timesheets> response = await UpdateTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheet, idempotencyKey, cancellationToken);
         return response.Data;
+    }
+
+    public async Task<ApiResponse<Timesheets>> UpdateTimesheetAsyncWithHttpInfo(Guid timesheetID, List<Timesheet> timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
+        string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
+
+        return await UpdateTimesheetAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, timesheetID, timesheet, idempotencyKey, cancellationToken);
     }
 
     public async Task<ApiResponse<Timesheets>> UpdateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, List<Timesheet> timesheet, string? idempotencyKey = null, CancellationToken cancellationToken = default)
