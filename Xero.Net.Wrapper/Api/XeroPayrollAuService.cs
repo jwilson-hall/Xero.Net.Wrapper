@@ -304,7 +304,6 @@ public partial class XeroService : IPayrollAuApi
         return await payrollAuXeroClient.CreateTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheet, idempotencyKey, cancellationToken);
     }
 
-
     // Explicit interface implementations
     Task<Employees> IPayrollAuApiAsync.GetEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken)
     {
@@ -1204,7 +1203,6 @@ public partial class XeroService : IPayrollAuApi
         ApiResponse<SuperFunds> response = await payrollAuXeroClient.UpdateSuperfundAsyncWithHttpInfo(accessToken, xeroTenantId, superFundID, superFund, idempotencyKey, cancellationToken);
         return response;
     }
-
 
     // Explicit interface implementations
     Task<Timesheets> IPayrollAuApiAsync.UpdateTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, List<Timesheet> timesheet, string? idempotencyKey, CancellationToken cancellationToken)

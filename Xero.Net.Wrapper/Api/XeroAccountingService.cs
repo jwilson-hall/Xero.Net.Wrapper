@@ -2981,7 +2981,7 @@ public partial class XeroService : IAccountingApi
         return response;
     }
 
-    Task<Employees> IAccountingApiAsync.GetEmployeesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince, string? where, string? order, CancellationToken cancellationToken = default)
+    Task<Employees> IAccountingApiAsync.GetEmployeesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince, string? where, string? order, CancellationToken cancellationToken)
     {
         return AccountingGetEmployeesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
     }
