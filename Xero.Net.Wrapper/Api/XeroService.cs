@@ -82,6 +82,7 @@ IPayrollAuApi payrollAuXeroClient, IPayrollNzApi payrollNzXeroClient, IPayrollUk
 
         return xeroToken ?? throw new InvalidOperationException($"Failed to retrieve the access token code: {code}");
     }
+
     public Task<IXeroToken> RefreshAccessTokenAsync(IXeroToken xeroToken)
     {
         return baseXeroClient.RefreshAccessTokenAsync(xeroToken);

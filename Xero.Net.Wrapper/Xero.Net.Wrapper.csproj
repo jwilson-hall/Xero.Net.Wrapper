@@ -5,9 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Xero.Net.Wrapper</PackageId>
-    <Version>0.9.2</Version>
+    <Version>0.9.3</Version>
     <Author>jwilson-hall</Author>
     <Product>Xero.Net.Wrapper</Product>
+    <PackageProjectUrl>https://github.com/jwilson-hall/Xero.NetStandard.Wrapper</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jwilson-hall/Xero.NetStandard.Wrapper</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>A .NET 8 library that provides a strongly-typed wrapper for the Xero API. Built on top of the official Xero.NetStandard.OAuth2 library, it simplifies integration with Xero by handling authentication, token caching, request construction, and response parsing. Currently optimized for client credentials flow with single tenant scenarios.</Description>
+    <PackageTags>xero;api;oauth2;accounting;dotnet;csharp;wrapper</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +26,10 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />
     <PackageReference Include="Xero.NetStandard.OAuth2" Version="10.0.0" />
     <PackageReference Include="Xero.NetStandard.OAuth2Client" Version="1.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
