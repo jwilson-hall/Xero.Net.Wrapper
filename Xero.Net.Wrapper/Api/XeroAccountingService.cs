@@ -2981,29 +2981,36 @@ public partial class XeroService : IAccountingApi
         return response;
     }
 
-    public async Task<Employees> GetEmployeesAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
+    Task<Employees> IAccountingApiAsync.GetEmployeesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince, string? where, string? order, CancellationToken cancellationToken = default)
+    {
+        return AccountingGetEmployeesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
+    }
+    Task<ApiResponse<Employees>> IAccountingApiAsync.GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince, string where, string order, CancellationToken cancellationToken)
+    {
+        return AccountingGetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
+    }
+    public async Task<Employees> AccountingGetEmployeesAsync(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await GetEmployeesAsync(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
+        return await AccountingGetEmployeesAsync(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
-
-    public async Task<Employees> GetEmployeesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
+    public async Task<Employees> AccountingGetEmployeesAsync(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
-        ApiResponse<Employees> response = await GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
+        ApiResponse<Employees> response = await AccountingGetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response.Data;
     }
 
-    public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Employees>> AccountingGetEmployeesAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(xeroExtendedConfiguration.TenantId, nameof(xeroExtendedConfiguration.TenantId));
         string accessToken = (await RequestClientCredentialsTokenAsync()).AccessToken;
 
-        return await GetEmployeesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
+        return await accountingXeroClient.GetEmployeesAsyncWithHttpInfo(accessToken, xeroExtendedConfiguration.TenantId, ifModifiedSince, where, order, cancellationToken);
     }
 
-    public async Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<Employees>> AccountingGetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string? where = null, string? order = null, CancellationToken cancellationToken = default)
     {
         ApiResponse<Employees> response = await accountingXeroClient.GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, where, order, cancellationToken);
         return response;
